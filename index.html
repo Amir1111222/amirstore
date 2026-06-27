@@ -152,70 +152,136 @@
             text-align: center;
         }
         
-        /* ===== شريط الإشعارات - أبسط نسخة ===== */
+        /* ===== شريط الإشعارات المنسدل ===== */
         .notif-ticker {
-            background: #0d2a2a;
+            background: linear-gradient(135deg, #0d2a2a, #1a3d3d);
             border-bottom: 2px solid #f9c74f;
-            padding: 6px 12px;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+            max-height: 0;
+            padding: 0 12px;
+        }
+        .notif-ticker.open {
+            max-height: 600px;
+            padding: 12px 12px;
+        }
+        .notif-ticker-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 6px 0;
+            user-select: none;
+        }
+        .notif-ticker-header:hover {
+            opacity: 0.8;
+        }
+        .notif-ticker-header-left {
             display: flex;
             align-items: center;
             gap: 10px;
-            width: 100%;
-            min-height: 34px;
-            transition: all 0.3s ease;
-        }
-        .notif-ticker.hidden {
-            display: none;
         }
         .notif-ticker-icon {
-            font-size: 16px;
-            flex-shrink: 0;
+            font-size: 18px;
         }
-        .notif-ticker-label {
+        .notif-ticker-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #f9c74f;
+        }
+        .notif-ticker-badge {
             background: #f94144;
             color: white;
-            font-size: 9px;
+            font-size: 10px;
             font-weight: bold;
-            padding: 2px 12px;
-            border-radius: 20px;
-            flex-shrink: 0;
-        }
-        .notif-ticker-text {
-            flex: 1;
-            font-size: 13px;
-            color: #ddd;
-            padding: 4px 0;
-            line-height: 1.5;
-        }
-        .notif-ticker-text .highlight {
-            color: #f9c74f;
-            font-weight: bold;
-        }
-        .notif-ticker-text .tag {
-            background: rgba(249, 199, 79, 0.15);
-            color: #f9c74f;
-            padding: 0 10px;
-            border-radius: 20px;
-            font-size: 9px;
-            margin: 0 5px;
-            font-weight: bold;
-        }
-        .notif-ticker-close {
-            background: rgba(255,255,255,0.05);
-            border: none;
-            color: #888;
-            cursor: pointer;
-            font-size: 14px;
             padding: 2px 10px;
             border-radius: 20px;
-            flex-shrink: 0;
+        }
+        .notif-ticker-toggle {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(249,199,79,0.2);
+            color: #f9c74f;
+            padding: 4px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
             transition: 0.3s;
         }
-        .notif-ticker-close:hover {
-            background: rgba(255,255,255,0.1);
-            color: #fff;
+        .notif-ticker-toggle:hover {
+            background: rgba(249,199,79,0.1);
         }
-        /* ===== نهاية شريط الإشعارات ===== */
+        .notif-ticker-body {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(249,199,79,0.1);
+        }
+        .notif-ticker-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+        .notif-ticker-item:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(249,199,79,0.2);
+        }
+        .notif-ticker-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: rgba(0,0,0,0.3);
+            padding: 4px;
+            flex-shrink: 0;
+        }
+        .notif-ticker-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .notif-ticker-item-info .name {
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .notif-ticker-item-info .price {
+            font-size: 13px;
+            color: #f9c74f;
+            font-weight: bold;
+        }
+        .notif-ticker-item-info .desc {
+            font-size: 10px;
+            color: #aaa;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .notif-ticker-item .btn-buy {
+            background: #f9844a;
+            border: none;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+        .notif-ticker-item .btn-buy:hover {
+            background: #f96b2a;
+            transform: scale(0.95);
+        }
+        /* ===== نهاية شريط الإشعارات المنسدل ===== */
 
         .header {
             text-align: center;
@@ -608,15 +674,29 @@
             .header p {
                 font-size: 0.75em;
             }
-            .notif-ticker-text {
-                font-size: 12px;
+            .notif-ticker-body {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
             }
-            .notif-ticker-label {
-                font-size: 8px;
-                padding: 2px 10px;
+            .notif-ticker-item img {
+                width: 40px;
+                height: 40px;
             }
-            .notif-ticker-icon {
-                font-size: 14px;
+            .notif-ticker-item-info .name {
+                font-size: 11px;
+            }
+            .notif-ticker-item-info .price {
+                font-size: 11px;
+            }
+            .notif-ticker-item-info .desc {
+                font-size: 9px;
+            }
+            .notif-ticker-item .btn-buy {
+                font-size: 10px;
+                padding: 3px 10px;
+            }
+            .notif-ticker-title {
+                font-size: 13px;
             }
             .currency-select {
                 font-size: 0.7em;
@@ -650,6 +730,9 @@
             .social-icon {
                 font-size: 10px;
                 padding: 4px 10px;
+            }
+            .notif-ticker.open {
+                max-height: 800px;
             }
         }
 
@@ -699,24 +782,44 @@
             .mobile-nav-select {
                 display: block;
             }
-            .notif-ticker {
-                padding: 5px 8px;
-                gap: 6px;
-                min-height: 30px;
+            .notif-ticker-body {
+                grid-template-columns: 1fr;
+                gap: 8px;
             }
-            .notif-ticker-text {
-                font-size: 11px;
+            .notif-ticker-item {
+                padding: 8px;
             }
-            .notif-ticker-close {
+            .notif-ticker-item img {
+                width: 35px;
+                height: 35px;
+            }
+            .notif-ticker-item-info .name {
+                font-size: 10px;
+            }
+            .notif-ticker-item-info .price {
+                font-size: 10px;
+            }
+            .notif-ticker-item-info .desc {
+                font-size: 8px;
+            }
+            .notif-ticker-item .btn-buy {
+                font-size: 9px;
+                padding: 2px 8px;
+            }
+            .notif-ticker-title {
                 font-size: 12px;
-                padding: 1px 6px;
             }
-            .notif-ticker-label {
-                font-size: 7px;
+            .notif-ticker-badge {
+                font-size: 8px;
                 padding: 1px 8px;
             }
-            .notif-ticker-icon {
-                font-size: 12px;
+            .notif-ticker-toggle {
+                font-size: 10px;
+                padding: 3px 10px;
+            }
+            .notif-ticker.open {
+                max-height: 1000px;
+                padding: 10px 8px;
             }
             .header {
                 padding: 10px 12px;
@@ -830,8 +933,18 @@
                 font-size: 9px;
                 padding: 5px 4px;
             }
-            .notif-ticker-text {
-                font-size: 10px;
+            .notif-ticker-item {
+                padding: 6px;
+            }
+            .notif-ticker-item img {
+                width: 30px;
+                height: 30px;
+            }
+            .notif-ticker-item-info .name {
+                font-size: 9px;
+            }
+            .notif-ticker-item-info .price {
+                font-size: 9px;
             }
             .lang-switch button {
                 font-size: 9px;
@@ -904,14 +1017,19 @@
         </div>
     </div>
 
-    <!-- ===== شريط الإشعارات - أبسط نسخة ===== -->
+    <!-- ===== شريط الإشعارات المنسدل ===== -->
     <div class="notif-ticker" id="notifTicker">
-        <span class="notif-ticker-icon">🔔</span>
-        <span class="notif-ticker-label">جديد</span>
-        <span class="notif-ticker-text">
-            🎉 <span class="highlight">عروض جديدة!</span> 15 و 20 قسيمة سحب <span class="tag">جديد</span>
-        </span>
-        <button class="notif-ticker-close" onclick="hideTicker()">✕</button>
+        <div class="notif-ticker-header" onclick="toggleTicker()">
+            <div class="notif-ticker-header-left">
+                <span class="notif-ticker-icon">🎉</span>
+                <span class="notif-ticker-title">عروض حصرية جديدة</span>
+                <span class="notif-ticker-badge">جديد</span>
+            </div>
+            <span class="notif-ticker-toggle" id="tickerToggleBtn">▼ عرض المنتجات</span>
+        </div>
+        <div class="notif-ticker-body" id="tickerBody">
+            <!-- يتم إضافة المنتجات هنا عن طريق JavaScript -->
+        </div>
     </div>
 
     <div class="header">
@@ -1016,6 +1134,15 @@
             { id: 19, name: "15000 FC", name_en: "15000 FC Points", name_tr: "15000 FC Puan", prices: { USD: 100, EUR: 100, TRY: 4750, ILS: 420, JOD: 78, SAR: 400, QAR: 400, AED: 400, IQD: 170000 }, category: "FC", image: "https://i.ibb.co/9k7YZzMv/fc-points15000-jpg.jpg", type: "fc-normal" }
         ];
 
+        // المنتجات الجديدة للشريط المنسدل
+        const newProductsForTicker = [
+            { id: 3001, name: "15 قسيمة سحب", desc: "15 قسيمة سحب لتعزيز فرصك", image: "https://i.ibb.co/CDfJLsq/15-raffle-coupons-jpg.jpg", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 7.80, SAR: 40, QAR: 40, AED: 40, IQD: 17000 } },
+            { id: 3002, name: "20 قسيمة سحب", desc: "يلزم 1200 فيفا بوينت", image: "https://i.ibb.co/399V3D0W/20-raffle-coupons-jpg.jpg", prices: { USD: 0, EUR: 0, TRY: 0, ILS: 0, JOD: 0, SAR: 0, QAR: 0, AED: 0, IQD: 0 }, isFifaPoints: true, fifaPoints: 1200 },
+            { id: 2001, name: "7500 FC POINTS", desc: "عرض حصري ومحدود", image: "https://i.ibb.co/tPL96xfR/fc-points7500-jpg.jpg", prices: { USD: 45, EUR: 45, TRY: 2100, ILS: 189, JOD: 35.1, SAR: 180, QAR: 180, AED: 180, IQD: 76500 } },
+            { id: 2002, name: "10000 FC POINTS", desc: "عرض حصري ومحدود", image: "https://i.ibb.co/WvMhLGxv/fc-points10000-jpg.jpg", prices: { USD: 45, EUR: 45, TRY: 2100, ILS: 189, JOD: 35.1, SAR: 180, QAR: 180, AED: 180, IQD: 76500 } },
+            { id: 2003, name: "15000 FC POINTS", desc: "عرض حصري ومحدود", image: "https://i.ibb.co/LDVzBS9N/fc-points15000-jpg.jpg", prices: { USD: 90, EUR: 90, TRY: 4275, ILS: 378, JOD: 70.2, SAR: 360, QAR: 360, AED: 360, IQD: 153000 } }
+        ];
+
         // باقات أفضل المبيعات
         const bestSellers = [
             { id: 101, name: "GILBERTO SILVA", desc: "10 قسيمة سحب +300 ترقية تصنيف +لاعب 121", image: "https://i.ibb.co/938fs63N/GILBERTO-SILVA-jpg.jpg", prices: { USD: 6, EUR: 5, TRY: 240, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500 } },
@@ -1046,7 +1173,7 @@
         let currentCurrency = 'TRY';
         let currentLang = 'ar';
         const symbols = { USD: '$', EUR: '€', TRY: '₺', ILS: '₪', JOD: 'د.ا', SAR: '﷼', QAR: 'ر.ق', AED: 'د.إ', IQD: 'د.ع' };
-        let tickerVisible = true;
+        let tickerOpen = false;
 
         function getSpecialPrice(offer) { return offer.prices[currentCurrency] || offer.prices.TRY; }
         function getPrice(product) { return product.prices[currentCurrency] || product.prices.TRY; }
@@ -1213,64 +1340,73 @@
             renderNewOffers('newOffersGrid');
         }
 
-        // ===== دوال شريط الإشعارات البسيط =====
-        function hideTicker() {
-            const ticker = document.getElementById('notifTicker');
-            ticker.classList.add('hidden');
-            tickerVisible = false;
-            updateToggleButton();
-            localStorage.setItem('tickerHidden', 'true');
-            showToast('🔕 تم إخفاء الإشعارات');
-        }
-
-        function showTicker() {
-            const ticker = document.getElementById('notifTicker');
-            ticker.classList.remove('hidden');
-            tickerVisible = true;
-            updateToggleButton();
-            localStorage.setItem('tickerHidden', 'false');
-            showToast('🔔 تم إظهار الإشعارات');
+        // ===== دوال شريط الإشعارات المنسدل =====
+        function renderTickerItems() {
+            const body = document.getElementById('tickerBody');
+            if (!body) return;
+            
+            body.innerHTML = newProductsForTicker.map(item => {
+                let priceDisplay = '';
+                let sym = symbols[currentCurrency];
+                
+                if (item.isFifaPoints) {
+                    priceDisplay = `🎮 ${item.fifaPoints} فيفا بوينت`;
+                } else {
+                    let price = getPrice(item);
+                    let priceDisp = formatPrice(price);
+                    priceDisplay = `${sym} ${priceDisp}`;
+                }
+                
+                return `
+                    <div class="notif-ticker-item">
+                        <img src="${item.image}" loading="lazy" onerror="this.src='https://via.placeholder.com/50x50?text=No+Image'" alt="${item.name}">
+                        <div class="notif-ticker-item-info">
+                            <div class="name">${item.name}</div>
+                            <div class="price">${priceDisplay}</div>
+                            <div class="desc">${item.desc}</div>
+                        </div>
+                        <button class="btn-buy" onclick='quickOrderNew(${JSON.stringify(item)})'>اطلب</button>
+                    </div>
+                `;
+            }).join('');
         }
 
         function toggleTicker() {
-            if (tickerVisible) {
-                hideTicker();
+            const ticker = document.getElementById('notifTicker');
+            const btn = document.getElementById('tickerToggleBtn');
+            
+            tickerOpen = !tickerOpen;
+            
+            if (tickerOpen) {
+                ticker.classList.add('open');
+                btn.textContent = '▲ إخفاء المنتجات';
+                localStorage.setItem('tickerOpen', 'true');
             } else {
-                showTicker();
-            }
-        }
-
-        function updateToggleButton() {
-            const btn = document.getElementById('toggleTickerBtn');
-            if (tickerVisible) {
-                btn.textContent = '🔕 إخفاء الإشعارات';
-                btn.style.borderColor = 'rgba(255,70,70,0.4)';
-                btn.style.color = '#ff6b6b';
-            } else {
-                btn.textContent = '📢 إظهار الإشعارات';
-                btn.style.borderColor = 'rgba(249,199,79,0.3)';
-                btn.style.color = '#f9c74f';
+                ticker.classList.remove('open');
+                btn.textContent = '▼ عرض المنتجات';
+                localStorage.setItem('tickerOpen', 'false');
             }
         }
 
         function checkTickerState() {
-            const hidden = localStorage.getItem('tickerHidden');
-            if (hidden === 'true') {
+            const saved = localStorage.getItem('tickerOpen');
+            if (saved === 'true') {
                 const ticker = document.getElementById('notifTicker');
-                ticker.classList.add('hidden');
-                tickerVisible = false;
-            } else {
-                tickerVisible = true;
+                const btn = document.getElementById('tickerToggleBtn');
+                ticker.classList.add('open');
+                btn.textContent = '▲ إخفاء المنتجات';
+                tickerOpen = true;
             }
-            updateToggleButton();
         }
-        // ===== نهاية دوال شريط الإشعارات =====
+
+        // ===== دوال التحكم =====
 
         function changeCity() { 
             currentCurrency = document.getElementById('city-select').value; 
             displayProducts(); 
             displaySpecialOffers(); 
             renderNewOffers('firstNewOffersGrid');
+            renderTickerItems();
             showToast(`✅ العملة: ${currentCurrency}`); 
         }
         function setLanguage(lang) { 
@@ -1282,6 +1418,7 @@
             displayProducts(); 
             displaySpecialOffers(); 
             renderNewOffers('firstNewOffersGrid');
+            renderTickerItems();
         }
         function scrollToSection(id) { let el = document.getElementById(id); if(el) { let top = el.getBoundingClientRect().top + window.pageYOffset - 120; window.scrollTo({top, behavior:'smooth'}); } }
         function mobileNavChange() { let val = document.getElementById('mobileNavSelect').value; if(val) { scrollToSection(val); document.getElementById('mobileNavSelect').value = ''; } }
@@ -1292,6 +1429,7 @@
         displayProducts(); 
         displaySpecialOffers();
         renderNewOffers('firstNewOffersGrid');
+        renderTickerItems();
         checkTickerState();
     </script>
 </body>
