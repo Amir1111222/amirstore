@@ -370,6 +370,51 @@
             transform: scale(1.02);
             border-color: #f9c74f;
         }
+
+        /* ===== Style for highlighted product card ===== */
+        .card.highlighted-product {
+            border: 3px solid #f9c74f;
+            box-shadow: 0 0 30px rgba(249, 199, 79, 0.5);
+            transform: scale(1.02);
+            animation: pulse-border 2s ease-in-out infinite;
+        }
+        @keyframes pulse-border {
+            0%, 100% { box-shadow: 0 0 20px rgba(249, 199, 79, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(249, 199, 79, 0.6); }
+        }
+        .highlight-badge {
+            background: #f9c74f;
+            color: #0a1f1e;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+            align-self: center;
+            width: fit-content;
+            animation: pulse-badge 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse-badge {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .close-highlight {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-bottom: 10px;
+            transition: 0.3s;
+            align-self: center;
+        }
+        .close-highlight:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        /* ===== End of highlight styles ===== */
         
         .card.fc-points-card { border-top: 4px solid #f94144; }
         .card.fc-points-card::before { content: "⚡ X2"; position: absolute; top: -12px; right: 16px; background: #f94144; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; }
@@ -1190,6 +1235,117 @@
         const symbols = { USD: '$', EUR: '€', TRY: '₺', ILS: '₪', JOD: 'د.ا', SAR: '﷼', QAR: 'ر.ق', AED: 'د.إ', IQD: 'د.ع' };
         let tickerOpen = false;
 
+        // ===== دالة الحصول على المنتج حسب المعرف =====
+        function findProductById(id) {
+            // البحث في جميع مجموعات المنتجات
+            let allProducts = [...products, ...specialOffers, ...bestSellers, ...newOffers, ...newProductsForTicker];
+            return allProducts.find(p => p.id === parseInt(id));
+        }
+
+        // ===== معالجة رابط المنتج في الـ URL =====
+        function handleProductLink() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('product') || urlParams.get('bundle') || urlParams.get('offer');
+            
+            if (productId) {
+                const product = findProductById(productId);
+                if (product) {
+                    // تأخير بسيط للتأكد من تحميل الصفحة بالكامل
+                    setTimeout(() => {
+                        highlightProduct(product);
+                        showToast(`🎯 تم فتح المنتج: ${product.name}`);
+                    }, 500);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // ===== دالة تمييز المنتج =====
+        function highlightProduct(product) {
+            // محاولة العثور على بطاقة المنتج في جميع الشبكات
+            const grids = document.querySelectorAll('.products-grid');
+            let found = false;
+            
+            grids.forEach(grid => {
+                const cards = grid.querySelectorAll('.card');
+                cards.forEach(card => {
+                    // البحث عن المنتج في بيانات البطاقة
+                    const cardHTML = card.innerHTML;
+                    if (cardHTML.includes(product.name) || cardHTML.includes(product.id)) {
+                        // إزالة التمييز من البطاقات الأخرى
+                        document.querySelectorAll('.card.highlighted-product').forEach(c => {
+                            c.classList.remove('highlighted-product');
+                            const badge = c.querySelector('.highlight-badge');
+                            if (badge) badge.remove();
+                            const closeBtn = c.querySelector('.close-highlight');
+                            if (closeBtn) closeBtn.remove();
+                        });
+                        
+                        // إضافة التمييز
+                        card.classList.add('highlighted-product');
+                        
+                        // إضافة شارة "المنتج المطلوب"
+                        const badge = document.createElement('div');
+                        badge.className = 'highlight-badge';
+                        badge.textContent = '🎯 المنتج المطلوب';
+                        card.insertBefore(badge, card.firstChild);
+                        
+                        // إضافة زر إغلاق التمييز
+                        const closeBtn = document.createElement('button');
+                        closeBtn.className = 'close-highlight';
+                        closeBtn.textContent = '✕ إخفاء التمييز';
+                        closeBtn.onclick = function(e) {
+                            e.stopPropagation();
+                            card.classList.remove('highlighted-product');
+                            const b = card.querySelector('.highlight-badge');
+                            if (b) b.remove();
+                            const c = card.querySelector('.close-highlight');
+                            if (c) c.remove();
+                            // إزالة المعامل من الـ URL
+                            const url = new URL(window.location);
+                            url.searchParams.delete('product');
+                            url.searchParams.delete('bundle');
+                            url.searchParams.delete('offer');
+                            window.history.replaceState({}, '', url);
+                            showToast('✅ تم إخفاء التمييز');
+                        };
+                        card.appendChild(closeBtn);
+                        
+                        // التمرير إلى المنتج
+                        setTimeout(() => {
+                            const rect = card.getBoundingClientRect();
+                            const top = rect.top + window.pageYOffset - 150;
+                            window.scrollTo({ top, behavior: 'smooth' });
+                        }, 300);
+                        
+                        found = true;
+                    }
+                });
+            });
+            
+            if (!found) {
+                // محاولة البحث في شريط الإشعارات
+                const tickerItems = document.querySelectorAll('.notif-ticker-item');
+                tickerItems.forEach(item => {
+                    const nameEl = item.querySelector('.name');
+                    if (nameEl && nameEl.textContent.includes(product.name)) {
+                        // تمييز العنصر في الشريط
+                        item.style.border = '2px solid #f9c74f';
+                        item.style.boxShadow = '0 0 20px rgba(249, 199, 79, 0.5)';
+                        item.style.background = 'rgba(249, 199, 79, 0.15)';
+                        
+                        // فتح شريط الإشعارات تلقائياً
+                        if (!tickerOpen) {
+                            toggleTicker();
+                        }
+                        
+                        showToast(`🎯 تم العثور على المنتج: ${product.name}`);
+                    }
+                });
+            }
+        }
+
         function getSpecialPrice(offer) { return offer.prices[currentCurrency] || offer.prices.TRY; }
         function getPrice(product) { return product.prices[currentCurrency] || product.prices.TRY; }
         function getBestsellerPrice(b) { return b.prices[currentCurrency] || b.prices.TRY; }
@@ -1209,8 +1365,19 @@
             return p.name;
         }
 
+        // ===== دالة المشاركة المحسنة - تنشئ رابطاً للمنتج المحدد =====
+        function getProductShareUrl(product) {
+            let baseUrl = window.location.origin + window.location.pathname;
+            return `${baseUrl}?product=${product.id}`;
+        }
+
         function showToast(msg) { let t = document.getElementById('toast'); t.textContent = msg; t.style.display = 'block'; setTimeout(() => t.style.display = 'none', 2800); }
-        async function shareStore() { let url = window.location.origin + window.location.pathname; let txt = `🔰 *أمير ستور* 🔰\n✅ أسرع خدمات FC موبايل\n🛒 ${url}\n📱 واتساب: +905356387200`; if(navigator.share) try{ await navigator.share({title:'Amir Store', text:'متجر FC', url}); } catch(e){} else { await navigator.clipboard.writeText(txt); showToast("✅ تم نسخ رابط المتجر!"); } }
+        
+        async function shareStore() { 
+            let url = window.location.origin + window.location.pathname; 
+            let txt = `🔰 *أمير ستور* 🔰\n✅ أسرع خدمات FC موبايل\n🛒 ${url}\n📱 واتساب: +905356387200`; 
+            if(navigator.share) try{ await navigator.share({title:'Amir Store', text:'متجر FC', url}); } catch(e){} else { await navigator.clipboard.writeText(txt); showToast("✅ تم نسخ رابط المتجر!"); } 
+        }
         
         function quickOrderSpecial(offer) { 
             let price = getSpecialPrice(offer);
@@ -1219,13 +1386,14 @@
             let msg = `مرحباً، أريد طلب العرض المميز: ${offer.name}\n✨ ${offer.desc}\n💰 السعر: ${sym} ${formatted}`; 
             window.open(`https://wa.me/905356387200?text=${encodeURIComponent(msg)}`, '_blank'); 
         }
+        
         function shareSpecial(offer) { 
-            let url = window.location.origin + window.location.pathname; 
+            let url = getProductShareUrl(offer);
             let price = getSpecialPrice(offer);
             let sym = symbols[currentCurrency];
             let formatted = formatPrice(price);
             let txt = `🔥 *${offer.name}*\n✨ ${offer.desc}\n💰 ${sym} ${formatted}\n🔗 ${url}`; 
-            if(navigator.share) try{ navigator.share({title:offer.name, text:offer.desc, url}); } catch(e){} else { navigator.clipboard.writeText(txt); showToast("✅ تم نسخ العرض"); } 
+            if(navigator.share) try{ navigator.share({title:offer.name, text:offer.desc, url}); } catch(e){} else { navigator.clipboard.writeText(txt); showToast("✅ تم نسخ رابط المنتج"); } 
         }
         
         function quickOrder(p) { 
@@ -1235,6 +1403,7 @@
             let msg = `مرحباً، أريد طلب: ${getProductName(p)}\n💰 السعر: ${sym} ${formatted}`; 
             window.open(`https://wa.me/905356387200?text=${encodeURIComponent(msg)}`, '_blank'); 
         }
+        
         function orderBestseller(b) { 
             let price = getBestsellerPrice(b);
             let sym = symbols[currentCurrency];
@@ -1242,6 +1411,7 @@
             let msg = `🏆 طلب عرض حصري:\n📦 الباقة: ${b.name}\n✨ المحتوى: ${b.desc}\n💰 السعر: ${sym} ${formatted}`; 
             window.open(`https://wa.me/905356387200?text=${encodeURIComponent(msg)}`, '_blank'); 
         }
+        
         function sendOrder() { 
             let n=document.getElementById('orderName').value.trim(), p=document.getElementById('orderPhone').value.trim(), d=document.getElementById('orderDetails').value.trim(); 
             if(!n||!p||!d){alert('❌ الرجاء ملء جميع الحقول'); return;} 
@@ -1249,20 +1419,21 @@
         }
         
         async function shareProduct(product) { 
-            let url = window.location.origin + window.location.pathname + `?product=${product.id}`; 
+            let url = getProductShareUrl(product);
             let price = getPrice(product);
             let sym = symbols[currentCurrency];
             let formatted = formatPrice(price);
             let txt = `🎁 *${getProductName(product)}*\n💰 ${sym} ${formatted}\n🔗 ${url}`; 
             if(navigator.share) try{ await navigator.share({title:getProductName(product), text:txt, url}); } catch(e){} else { await navigator.clipboard.writeText(txt); showToast("✅ تم نسخ رابط المنتج"); } 
         }
+        
         async function shareBestseller(b) { 
-            let url = window.location.origin + window.location.pathname + `?bundle=${b.id}`; 
+            let url = getProductShareUrl(b);
             let price = getBestsellerPrice(b);
             let sym = symbols[currentCurrency];
             let formatted = formatPrice(price);
             let txt = `🏆 *${b.name}*\n✨ ${b.desc}\n💰 ${sym} ${formatted}\n🔗 ${url}`; 
-            if(navigator.share) try{ await navigator.share({title:b.name, text:b.desc, url}); } catch(e){} else { await navigator.clipboard.writeText(txt); showToast("✅ تم نسخ العرض"); } 
+            if(navigator.share) try{ await navigator.share({title:b.name, text:b.desc, url}); } catch(e){} else { await navigator.clipboard.writeText(txt); showToast("✅ تم نسخ رابط المنتج"); } 
         }
 
         function quickOrderNew(offer) {
@@ -1279,7 +1450,7 @@
         }
 
         function shareNewOffer(offer) {
-            let url = window.location.origin + window.location.pathname;
+            let url = getProductShareUrl(offer);
             let txt;
             if (offer.isFifaPoints) {
                 txt = `🎫 *${offer.name}*\n✨ ${offer.desc}\n💰 يلزم ${offer.fifaPoints} فيفا بوينت\n🔗 ${url}`;
@@ -1289,7 +1460,7 @@
                 let formatted = formatPrice(price);
                 txt = `🎫 *${offer.name}*\n✨ ${offer.desc}\n💰 ${sym} ${formatted}\n🔗 ${url}`;
             }
-            if(navigator.share) try{ navigator.share({title:offer.name, text:offer.desc, url}); } catch(e){} else { navigator.clipboard.writeText(txt); showToast("✅ تم نسخ العرض"); }
+            if(navigator.share) try{ navigator.share({title:offer.name, text:offer.desc, url}); } catch(e){} else { navigator.clipboard.writeText(txt); showToast("✅ تم نسخ رابط المنتج"); } 
         }
 
         function renderNewOffers(containerId) {
@@ -1300,7 +1471,6 @@
                 let sym = symbols[currentCurrency];
                 let cardClass = 'new-offer-card';
                 
-                // إضافة كلاس خاص للمنتجات الفاخرة
                 if (offer.type === 'luxury') {
                     cardClass = 'luxury-raffle-card';
                 }
@@ -1312,7 +1482,7 @@
                     let priceDisp = formatPrice(price);
                     priceDisplay = `<div class="price-tag">${sym} ${priceDisp}</div>`;
                 }
-                return `<div class="card ${cardClass}"><div class="badge">🎫 عرض جديد</div><div class="card-image-wrapper"><img src="${offer.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/200x180?text=Image+Not+Found'" alt="${offer.name}"></div><h3>${offer.name}</h3><div class="offer-desc">✨ ${offer.desc}</div>${priceDisplay}<button class="btn-order" onclick='quickOrderNew(${JSON.stringify(offer)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareNewOffer(${JSON.stringify(offer)})'>📢 مشاركة العرض</button></div>`;
+                return `<div class="card ${cardClass}" data-product-id="${offer.id}"><div class="badge">🎫 عرض جديد</div><div class="card-image-wrapper"><img src="${offer.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/200x180?text=Image+Not+Found'" alt="${offer.name}"></div><h3>${offer.name}</h3><div class="offer-desc">✨ ${offer.desc}</div>${priceDisplay}<button class="btn-order" onclick='quickOrderNew(${JSON.stringify(offer)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareNewOffer(${JSON.stringify(offer)})'>📢 مشاركة العرض</button></div>`;
             }).join('');
         }
 
@@ -1324,7 +1494,7 @@
                     let sym = symbols[currentCurrency];
                     let priceDisp = formatPrice(price);
                     let cardClass = offer.id === 2008 ? 'monthly-card' : 'special-offer-card';
-                    return `<div class="card ${cardClass}"><div class="badge">🎁 عرض لفترة محدودة</div><div class="card-image-wrapper"><img src="${offer.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/200x180?text=Image+Not+Found'" alt="${offer.name}"></div><h3>${offer.name}</h3><div class="offer-desc">✨ ${offer.desc}</div><div class="price-tag">${sym} ${priceDisp}</div><button class="btn-order" onclick='quickOrderSpecial(${JSON.stringify(offer)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareSpecial(${JSON.stringify(offer)})'>📢 مشاركة العرض</button></div>`;
+                    return `<div class="card ${cardClass}" data-product-id="${offer.id}"><div class="badge">🎁 عرض لفترة محدودة</div><div class="card-image-wrapper"><img src="${offer.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/200x180?text=Image+Not+Found'" alt="${offer.name}"></div><h3>${offer.name}</h3><div class="offer-desc">✨ ${offer.desc}</div><div class="price-tag">${sym} ${priceDisp}</div><button class="btn-order" onclick='quickOrderSpecial(${JSON.stringify(offer)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareSpecial(${JSON.stringify(offer)})'>📢 مشاركة العرض</button></div>`;
                 }).join('');
             }
         }
@@ -1348,7 +1518,7 @@
                     let priceDisp = formatPrice(price);
                     let displayName = getProductName(p);
                     let uniqueId = p.id + Math.random().toString(36).substr(2, 5);
-                    return `<div class="card ${cardClass}" data-id="${uniqueId}"><div class="badge">${badgeText}</div><div class="card-image-wrapper"><img src="${p.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/200x180?text=Image+Not+Found'" alt="${displayName}"></div><h3>${displayName}</h3><div class="price">${sym} ${priceDisp}</div><button class="btn-order" onclick='quickOrder(${JSON.stringify(p)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareProduct(${JSON.stringify(p)})'>📢 مشاركة</button></div>`;
+                    return `<div class="card ${cardClass}" data-product-id="${p.id}" data-id="${uniqueId}"><div class="badge">${badgeText}</div><div class="card-image-wrapper"><img src="${p.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/200x180?text=Image+Not+Found'" alt="${displayName}"></div><h3>${displayName}</h3><div class="price">${sym} ${priceDisp}</div><button class="btn-order" onclick='quickOrder(${JSON.stringify(p)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareProduct(${JSON.stringify(p)})'>📢 مشاركة</button></div>`;
                 }).join('');
             }
             let bsGrid = document.getElementById('bestsellersGrid');
@@ -1357,7 +1527,7 @@
                     let price = getBestsellerPrice(b);
                     let sym = symbols[currentCurrency];
                     let priceDisp = formatPrice(price);
-                    return `<div class="card bestseller-card"><div class="badge">🏆 الأكثر مبيعاً</div><div class="card-image-wrapper"><img src="${b.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/200x180?text=Image+Not+Found'" alt="${b.name}"></div><h3>${b.name}</h3><div class="offer-desc">✨ ${b.desc}</div><div class="price-tag">${sym} ${priceDisp}</div><button class="btn-order" onclick='orderBestseller(${JSON.stringify(b)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareBestseller(${JSON.stringify(b)})'>📢 مشاركة العرض</button></div>`;
+                    return `<div class="card bestseller-card" data-product-id="${b.id}"><div class="badge">🏆 الأكثر مبيعاً</div><div class="card-image-wrapper"><img src="${b.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/200x180?text=Image+Not+Found'" alt="${b.name}"></div><h3>${b.name}</h3><div class="offer-desc">✨ ${b.desc}</div><div class="price-tag">${sym} ${priceDisp}</div><button class="btn-order" onclick='orderBestseller(${JSON.stringify(b)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareBestseller(${JSON.stringify(b)})'>📢 مشاركة العرض</button></div>`;
                 }).join('');
             }
             renderNewOffers('firstNewOffersGrid');
@@ -1381,7 +1551,7 @@
                 }
                 
                 return `
-                    <div class="notif-ticker-item">
+                    <div class="notif-ticker-item" data-product-id="${item.id}">
                         <img src="${item.image}" loading="lazy" onerror="this.src='https://via.placeholder.com/50x50?text=No+Image'" alt="${item.name}">
                         <div class="notif-ticker-item-info">
                             <div class="name">${item.name}</div>
@@ -1448,12 +1618,22 @@
         function scrollToTop() { window.scrollTo({top:0, behavior:'smooth'}); }
         window.addEventListener('scroll', () => { let btn = document.getElementById('scrollTopBtn'); window.scrollY > 300 ? btn.classList.add('show') : btn.classList.remove('show'); });
         
-        // تهيئة الصفحة
+        // ===== تهيئة الصفحة =====
         displayProducts(); 
         displaySpecialOffers();
         renderNewOffers('firstNewOffersGrid');
         renderTickerItems();
         checkTickerState();
+        
+        // ===== معالجة رابط المنتج بعد تحميل الصفحة =====
+        setTimeout(() => {
+            handleProductLink();
+        }, 800);
+
+        // ===== مراقبة تغييرات الـ URL =====
+        window.addEventListener('popstate', function() {
+            handleProductLink();
+        });
     </script>
 </body>
 </html>
