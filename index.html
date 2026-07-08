@@ -1302,8 +1302,14 @@
             return allProducts.find(p => p.id === parseInt(id));
         }
 
-        // ===== عرض منتج واحد فقط =====
-        function showSingleProduct(productId) {
+        // ===== عرض منتج واحد فقط مع العملة المحددة =====
+        function showSingleProduct(productId, currency) {
+            // تغيير العملة إذا تم تمريرها
+            if (currency && symbols[currency]) {
+                currentCurrency = currency;
+                document.getElementById('city-select').value = currency;
+            }
+            
             const product = findProductById(productId);
             if (!product) {
                 showToast('❌ المنتج غير موجود');
@@ -1397,11 +1403,12 @@
             renderNewOffers('firstNewOffersGrid');
             renderTickerItems();
             
-            // إزالة معامل المنتج من الـ URL
+            // إزالة معاملات المنتج والعملة من الـ URL
             const url = new URL(window.location);
             url.searchParams.delete('product');
             url.searchParams.delete('bundle');
             url.searchParams.delete('offer');
+            url.searchParams.delete('currency');
             window.history.replaceState({}, '', url);
             
             isSingleProductView = false;
@@ -1422,21 +1429,21 @@
             let price = product.prices ? product.prices[currentCurrency] || product.prices.TRY : null;
             let sym = symbols[currentCurrency];
             let formatted = price ? formatPrice(price) : '';
-            let txt = `🎁 *${product.name}*\n✨ ${product.desc || ''}\n💰 ${sym} ${formatted}\n🔗 ${url}`;
+            let shareText = `🎁 *${product.name}*\n✨ ${product.desc || ''}\n💰 ${sym} ${formatted}\n🔗 ${url}`;
             
-            // محاولة المشاركة عبر واجهة Web Share API أولاً
+            // محاولة المشاركة عبر واجهة Web Share API
             if (navigator.share) {
                 navigator.share({
                     title: product.name,
                     text: `🎁 ${product.name}\n✨ ${product.desc || ''}\n💰 ${sym} ${formatted}`,
                     url: url
                 }).catch(() => {
-                    // في حال الإلغاء أو الخطأ، ننسخ الرابط
-                    copyToClipboard(txt);
+                    // في حال الإلغاء أو الخطأ، ننسخ
+                    copyToClipboard(shareText);
                 });
             } else {
-                // نسخ مباشر إذا كانت واجهة المشاركة غير مدعومة
-                copyToClipboard(txt);
+                // نسخ مباشر
+                copyToClipboard(shareText);
             }
         }
 
@@ -1492,7 +1499,8 @@
 
         function getProductShareUrl(product) {
             let baseUrl = window.location.origin + window.location.pathname;
-            return `${baseUrl}?product=${product.id}`;
+            // إضافة معامل العملة إلى الرابط
+            return `${baseUrl}?product=${product.id}&currency=${currentCurrency}`;
         }
 
         function showToast(msg) { 
@@ -1502,15 +1510,16 @@
             setTimeout(() => t.style.display = 'none', 3000); 
         }
 
-        // ===== معالجة رابط المنتج =====
+        // ===== معالجة رابط المنتج مع العملة =====
         function handleProductLink() {
             const urlParams = new URLSearchParams(window.location.search);
             const productId = urlParams.get('product') || urlParams.get('bundle') || urlParams.get('offer');
+            const currency = urlParams.get('currency');
             
             if (productId) {
                 // تأخير للتأكد من تحميل الصفحة
                 setTimeout(() => {
-                    const success = showSingleProduct(productId);
+                    const success = showSingleProduct(productId, currency);
                     if (success) {
                         showToast(`🎯 تم فتح المنتج المطلوب`);
                     }
@@ -1668,7 +1677,7 @@
                 // تحديث العرض المفرد
                 const urlParams = new URLSearchParams(window.location.search);
                 const productId = urlParams.get('product');
-                if (productId) showSingleProduct(productId);
+                if (productId) showSingleProduct(productId, currentCurrency);
             }
             showToast(`✅ العملة: ${currentCurrency}`); 
         }
@@ -1687,7 +1696,7 @@
             } else {
                 const urlParams = new URLSearchParams(window.location.search);
                 const productId = urlParams.get('product');
-                if (productId) showSingleProduct(productId);
+                if (productId) showSingleProduct(productId, currentCurrency);
             }
         }
         
@@ -1729,15 +1738,15 @@
             let price = getSpecialPrice(offer);
             let sym = symbols[currentCurrency];
             let formatted = formatPrice(price);
-            let txt = `🔥 *${offer.name}*\n✨ ${offer.desc}\n💰 ${sym} ${formatted}\n🔗 ${url}`; 
+            let shareText = `🔥 *${offer.name}*\n✨ ${offer.desc}\n💰 ${sym} ${formatted}\n🔗 ${url}`; 
             if (navigator.share) {
                 navigator.share({
                     title: offer.name,
                     text: `🔥 ${offer.name}\n✨ ${offer.desc}\n💰 ${sym} ${formatted}`,
                     url: url
-                }).catch(() => copyToClipboard(txt));
+                }).catch(() => copyToClipboard(shareText));
             } else {
-                copyToClipboard(txt);
+                copyToClipboard(shareText);
             }
         }
         
@@ -1768,15 +1777,15 @@
             let price = getPrice(product);
             let sym = symbols[currentCurrency];
             let formatted = formatPrice(price);
-            let txt = `🎁 *${getProductName(product)}*\n💰 ${sym} ${formatted}\n🔗 ${url}`; 
+            let shareText = `🎁 *${getProductName(product)}*\n💰 ${sym} ${formatted}\n🔗 ${url}`; 
             if (navigator.share) {
                 navigator.share({
                     title: getProductName(product),
                     text: `🎁 ${getProductName(product)}\n💰 ${sym} ${formatted}`,
                     url: url
-                }).catch(() => copyToClipboard(txt));
+                }).catch(() => copyToClipboard(shareText));
             } else {
-                copyToClipboard(txt);
+                copyToClipboard(shareText);
             }
         }
         
@@ -1785,15 +1794,15 @@
             let price = getBestsellerPrice(b);
             let sym = symbols[currentCurrency];
             let formatted = formatPrice(price);
-            let txt = `🏆 *${b.name}*\n✨ ${b.desc}\n💰 ${sym} ${formatted}\n🔗 ${url}`; 
+            let shareText = `🏆 *${b.name}*\n✨ ${b.desc}\n💰 ${sym} ${formatted}\n🔗 ${url}`; 
             if (navigator.share) {
                 navigator.share({
                     title: b.name,
                     text: `🏆 ${b.name}\n✨ ${b.desc}\n💰 ${sym} ${formatted}`,
                     url: url
-                }).catch(() => copyToClipboard(txt));
+                }).catch(() => copyToClipboard(shareText));
             } else {
-                copyToClipboard(txt);
+                copyToClipboard(shareText);
             }
         }
 
@@ -1812,37 +1821,37 @@
 
         function shareNewOffer(offer) {
             let url = getProductShareUrl(offer);
-            let txt;
+            let shareText;
             if (offer.isFifaPoints) {
-                txt = `🎫 *${offer.name}*\n✨ ${offer.desc}\n💰 يلزم ${offer.fifaPoints} فيفا بوينت\n🔗 ${url}`;
+                shareText = `🎫 *${offer.name}*\n✨ ${offer.desc}\n💰 يلزم ${offer.fifaPoints} فيفا بوينت\n🔗 ${url}`;
             } else {
                 let price = getNewOfferPrice(offer);
                 let sym = symbols[currentCurrency];
                 let formatted = formatPrice(price);
-                txt = `🎫 *${offer.name}*\n✨ ${offer.desc}\n💰 ${sym} ${formatted}\n🔗 ${url}`;
+                shareText = `🎫 *${offer.name}*\n✨ ${offer.desc}\n💰 ${sym} ${formatted}\n🔗 ${url}`;
             }
             if (navigator.share) {
                 navigator.share({
                     title: offer.name,
                     text: `🎫 ${offer.name}\n✨ ${offer.desc}\n💰 ${sym} ${formatted}`,
                     url: url
-                }).catch(() => copyToClipboard(txt));
+                }).catch(() => copyToClipboard(shareText));
             } else {
-                copyToClipboard(txt);
+                copyToClipboard(shareText);
             }
         }
 
         async function shareStore() { 
             let url = window.location.origin + window.location.pathname; 
-            let txt = `🔰 *أمير ستور* 🔰\n✅ أسرع خدمات FC موبايل\n🛒 ${url}\n📱 واتساب: +905356387200`; 
+            let shareText = `🔰 *أمير ستور* 🔰\n✅ أسرع خدمات FC موبايل\n🛒 ${url}\n📱 واتساب: +905356387200`; 
             if (navigator.share) {
                 navigator.share({
                     title: 'Amir Store',
                     text: '🔰 أمير ستور - أسرع خدمات FC موبايل',
                     url: url
-                }).catch(() => copyToClipboard(txt));
+                }).catch(() => copyToClipboard(shareText));
             } else {
-                copyToClipboard(txt);
+                copyToClipboard(shareText);
             }
         }
 
