@@ -1772,7 +1772,7 @@
             window.open(`https://wa.me/905356387200?text=${encodeURIComponent(`📦 طلب جديد:\n👤 الاسم: ${n}\n📱 الهاتف: ${p}\n📋 الطلب: ${d}`)}`, '_blank'); 
         }
         
-        async function shareProduct(product) { 
+        function shareProduct(product) { 
             let url = getProductShareUrl(product);
             let price = getPrice(product);
             let sym = symbols[currentCurrency];
@@ -1789,7 +1789,7 @@
             }
         }
         
-        async function shareBestseller(b) { 
+        function shareBestseller(b) { 
             let url = getProductShareUrl(b);
             let price = getBestsellerPrice(b);
             let sym = symbols[currentCurrency];
@@ -1821,13 +1821,16 @@
 
         function shareNewOffer(offer) {
             let url = getProductShareUrl(offer);
+            let sym = symbols[currentCurrency];
+            let formatted = '';
+            if (!offer.isFifaPoints) {
+                let price = getNewOfferPrice(offer);
+                formatted = formatPrice(price);
+            }
             let shareText;
             if (offer.isFifaPoints) {
                 shareText = `🎫 *${offer.name}*\n✨ ${offer.desc}\n💰 يلزم ${offer.fifaPoints} فيفا بوينت\n🔗 ${url}`;
             } else {
-                let price = getNewOfferPrice(offer);
-                let sym = symbols[currentCurrency];
-                let formatted = formatPrice(price);
                 shareText = `🎫 *${offer.name}*\n✨ ${offer.desc}\n💰 ${sym} ${formatted}\n🔗 ${url}`;
             }
             if (navigator.share) {
@@ -1841,7 +1844,7 @@
             }
         }
 
-        async function shareStore() { 
+        function shareStore() { 
             let url = window.location.origin + window.location.pathname; 
             let shareText = `🔰 *أمير ستور* 🔰\n✅ أسرع خدمات FC موبايل\n🛒 ${url}\n📱 واتساب: +905356387200`; 
             if (navigator.share) {
