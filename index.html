@@ -1423,12 +1423,51 @@
             let sym = symbols[currentCurrency];
             let formatted = price ? formatPrice(price) : '';
             let txt = `🎁 *${product.name}*\n✨ ${product.desc || ''}\n💰 ${sym} ${formatted}\n🔗 ${url}`;
-            if(navigator.share) {
-                try { navigator.share({title:product.name, text:product.desc, url}); } catch(e){}
+            
+            // محاولة المشاركة عبر واجهة Web Share API أولاً
+            if (navigator.share) {
+                navigator.share({
+                    title: product.name,
+                    text: `🎁 ${product.name}\n✨ ${product.desc || ''}\n💰 ${sym} ${formatted}`,
+                    url: url
+                }).catch(() => {
+                    // في حال الإلغاء أو الخطأ، ننسخ الرابط
+                    copyToClipboard(txt);
+                });
             } else {
-                navigator.clipboard.writeText(txt);
-                showToast("✅ تم نسخ رابط المنتج");
+                // نسخ مباشر إذا كانت واجهة المشاركة غير مدعومة
+                copyToClipboard(txt);
             }
+        }
+
+        // ===== دالة مساعدة للنسخ =====
+        function copyToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast("✅ تم نسخ الرابط مع تفاصيل المنتج");
+                }).catch(() => {
+                    fallbackCopy(text);
+                });
+            } else {
+                fallbackCopy(text);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast("✅ تم نسخ الرابط مع تفاصيل المنتج");
+            } catch (err) {
+                showToast("❌ تعذر النسخ، حاول مرة أخرى");
+            }
+            document.body.removeChild(textArea);
         }
 
         // ===== دوال عامة =====
@@ -1691,7 +1730,15 @@
             let sym = symbols[currentCurrency];
             let formatted = formatPrice(price);
             let txt = `🔥 *${offer.name}*\n✨ ${offer.desc}\n💰 ${sym} ${formatted}\n🔗 ${url}`; 
-            if(navigator.share) try{ navigator.share({title:offer.name, text:offer.desc, url}); } catch(e){} else { navigator.clipboard.writeText(txt); showToast("✅ تم نسخ رابط المنتج"); } 
+            if (navigator.share) {
+                navigator.share({
+                    title: offer.name,
+                    text: `🔥 ${offer.name}\n✨ ${offer.desc}\n💰 ${sym} ${formatted}`,
+                    url: url
+                }).catch(() => copyToClipboard(txt));
+            } else {
+                copyToClipboard(txt);
+            }
         }
         
         function quickOrder(p) { 
@@ -1722,7 +1769,15 @@
             let sym = symbols[currentCurrency];
             let formatted = formatPrice(price);
             let txt = `🎁 *${getProductName(product)}*\n💰 ${sym} ${formatted}\n🔗 ${url}`; 
-            if(navigator.share) try{ await navigator.share({title:getProductName(product), text:txt, url}); } catch(e){} else { await navigator.clipboard.writeText(txt); showToast("✅ تم نسخ رابط المنتج"); } 
+            if (navigator.share) {
+                navigator.share({
+                    title: getProductName(product),
+                    text: `🎁 ${getProductName(product)}\n💰 ${sym} ${formatted}`,
+                    url: url
+                }).catch(() => copyToClipboard(txt));
+            } else {
+                copyToClipboard(txt);
+            }
         }
         
         async function shareBestseller(b) { 
@@ -1731,7 +1786,15 @@
             let sym = symbols[currentCurrency];
             let formatted = formatPrice(price);
             let txt = `🏆 *${b.name}*\n✨ ${b.desc}\n💰 ${sym} ${formatted}\n🔗 ${url}`; 
-            if(navigator.share) try{ await navigator.share({title:b.name, text:b.desc, url}); } catch(e){} else { await navigator.clipboard.writeText(txt); showToast("✅ تم نسخ رابط المنتج"); } 
+            if (navigator.share) {
+                navigator.share({
+                    title: b.name,
+                    text: `🏆 ${b.name}\n✨ ${b.desc}\n💰 ${sym} ${formatted}`,
+                    url: url
+                }).catch(() => copyToClipboard(txt));
+            } else {
+                copyToClipboard(txt);
+            }
         }
 
         function quickOrderNew(offer) {
@@ -1758,13 +1821,29 @@
                 let formatted = formatPrice(price);
                 txt = `🎫 *${offer.name}*\n✨ ${offer.desc}\n💰 ${sym} ${formatted}\n🔗 ${url}`;
             }
-            if(navigator.share) try{ navigator.share({title:offer.name, text:offer.desc, url}); } catch(e){} else { navigator.clipboard.writeText(txt); showToast("✅ تم نسخ رابط المنتج"); } 
+            if (navigator.share) {
+                navigator.share({
+                    title: offer.name,
+                    text: `🎫 ${offer.name}\n✨ ${offer.desc}\n💰 ${sym} ${formatted}`,
+                    url: url
+                }).catch(() => copyToClipboard(txt));
+            } else {
+                copyToClipboard(txt);
+            }
         }
 
         async function shareStore() { 
             let url = window.location.origin + window.location.pathname; 
             let txt = `🔰 *أمير ستور* 🔰\n✅ أسرع خدمات FC موبايل\n🛒 ${url}\n📱 واتساب: +905356387200`; 
-            if(navigator.share) try{ await navigator.share({title:'Amir Store', text:'متجر FC', url}); } catch(e){} else { await navigator.clipboard.writeText(txt); showToast("✅ تم نسخ رابط المتجر!"); } 
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Amir Store',
+                    text: '🔰 أمير ستور - أسرع خدمات FC موبايل',
+                    url: url
+                }).catch(() => copyToClipboard(txt));
+            } else {
+                copyToClipboard(txt);
+            }
         }
 
         // ===== تهيئة الصفحة =====
