@@ -234,7 +234,7 @@
         .notif-ticker-item img {
             width: 50px;
             height: 50px;
-            object-fit: contain;
+            object-fit: cover;
             border-radius: 8px;
             background: rgba(0,0,0,0.3);
             padding: 4px;
@@ -348,11 +348,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 150px;
+            min-height: 160px;
             background: rgba(0, 0, 0, 0.25);
             border-radius: 16px;
             margin: 6px 0 12px;
-            padding: 8px;
+            padding: 10px;
         }
         .card-image {
             max-width: 100%;
@@ -383,10 +383,10 @@
             box-shadow: 0 0 50px rgba(249, 199, 79, 0.3);
         }
         .single-product-view .card-image {
-            height: 200px;
+            height: 220px;
         }
         .single-product-view .card-image-wrapper {
-            min-height: 220px;
+            min-height: 240px;
         }
         .single-product-view .card h3 {
             font-size: 1.4rem;
@@ -456,6 +456,12 @@
         .card.new-offer-card::before { content: "🎫 عرض جديد"; position: absolute; top: -12px; right: 16px; background: #00d2ff; color: #0a1f1e; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
         .card.luxury-raffle-card { border-top: 4px solid #ff66aa; background: linear-gradient(145deg, rgba(255,102,170,0.15), rgba(15,45,40,0.95)); box-shadow: 0 0 20px rgba(255,102,170,0.2); }
         .card.luxury-raffle-card::before { content: "✨ فاخرة"; position: absolute; top: -12px; right: 16px; background: #ff66aa; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.champions-card { border-top: 4px solid #ffd700; background: linear-gradient(145deg, rgba(255,215,0,0.15), rgba(15,45,40,0.95)); box-shadow: 0 0 20px rgba(255,215,0,0.2); }
+        .card.champions-card::before { content: "🏆 أبطال"; position: absolute; top: -12px; right: 16px; background: #ffd700; color: #0a1f1e; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.pogba-card { border-top: 4px solid #ff6b9d; background: linear-gradient(145deg, rgba(255,107,157,0.15), rgba(15,45,40,0.95)); box-shadow: 0 0 20px rgba(255,107,157,0.2); }
+        .card.pogba-card::before { content: "⭐ Pogba"; position: absolute; top: -12px; right: 16px; background: #ff6b9d; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.pogba-premium-card { border-top: 4px solid #ff2d55; background: linear-gradient(145deg, rgba(255,45,85,0.2), rgba(15,45,40,0.95)); box-shadow: 0 0 25px rgba(255,45,85,0.3); }
+        .card.pogba-premium-card::before { content: "⭐ Pogba مميز"; position: absolute; top: -12px; right: 16px; background: #ff2d55; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
         
         .badge {
             background: #f9c74f;
@@ -715,7 +721,7 @@
                 border-radius: 16px;
             }
             .card-image-wrapper {
-                min-height: 120px;
+                min-height: 130px;
                 padding: 6px;
             }
             .card-image {
@@ -823,10 +829,10 @@
                 max-height: 800px;
             }
             .single-product-view .card-image {
-                height: 180px;
+                height: 190px;
             }
             .single-product-view .card-image-wrapper {
-                min-height: 200px;
+                min-height: 210px;
             }
         }
 
@@ -839,7 +845,7 @@
                 height: 130px;
             }
             .card-image-wrapper {
-                min-height: 140px;
+                min-height: 150px;
             }
             .section {
                 margin: 14px 8px;
@@ -1000,10 +1006,10 @@
                 font-size: 0.65rem;
             }
             .single-product-view .card-image {
-                height: 160px;
+                height: 170px;
             }
             .single-product-view .card-image-wrapper {
-                min-height: 180px;
+                min-height: 190px;
             }
         }
 
@@ -1012,7 +1018,7 @@
                 height: 100px;
             }
             .card-image-wrapper {
-                min-height: 110px;
+                min-height: 120px;
             }
             .card h3 {
                 font-size: 0.8rem;
@@ -1063,10 +1069,10 @@
                 padding: 4px 8px;
             }
             .single-product-view .card-image {
-                height: 130px;
+                height: 140px;
             }
             .single-product-view .card-image-wrapper {
-                min-height: 150px;
+                min-height: 160px;
             }
         }
     </style>
@@ -1228,6 +1234,10 @@
             { id: 35, name: "تصريح نجم مميز", name_en: "Premium Star Pass", name_tr: "Premium Yıldız Kartı", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 7.8, SAR: 40, QAR: 40, AED: 40, IQD: 17000 }, category: "عروض خاصة", image: "https://i.ibb.co/fVNr0y4m/Star-Pass-FERNANDO-TORRES-jpg.jpg", type: "premium" },
             { id: 7, name: "1700 ترقية تصنيف", name_en: "1700 OVR Upgrade", name_tr: "1700 Reyting Yükseltme", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000 }, category: "عروض خاصة", image: "https://i.ibb.co/Kx20DxgQ/upgrade1700-jpg.jpg", type: "upgrade" },
             { id: 20, name: "40 قسيمة سحب", name_en: "40 Withdrawal Vouchers", name_tr: "40 Çekiliş Bileti", prices: { USD: 30, EUR: 25, TRY: 1187.5, ILS: 105, JOD: 19.5, SAR: 100, QAR: 100, AED: 100, IQD: 42500 }, category: "عروض خاصة", image: "https://i.ibb.co/1fJz0q5R/Withdrawal-voucher-jpg.jpg", type: "voucher" },
+            // منتجات Pogba الجديدة
+            { id: 36, name: "تصريح نجم الصيف Pogba", name_en: "Summer Star Pass Pogba", name_tr: "Yaz Yıldız Kartı Pogba", prices: { USD: 6, EUR: 5, TRY: 237.5, ILS: 21, JOD: 3.9, SAR: 20, QAR: 20, AED: 20, IQD: 8500 }, category: "عروض خاصة", image: "https://i.ibb.co/WNvzSdpF/Pogba-jpg.jpg", type: "pogba", desc: "تصريح مصغر" },
+            { id: 37, name: "تصريح الصيف مميز Pogba", name_en: "Premium Summer Pass Pogba", name_tr: "Premium Yaz Kartı Pogba", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000 }, category: "عروض خاصة", image: "https://i.ibb.co/WNvzSdpF/Pogba-jpg.jpg", type: "pogba-premium", desc: "تصريح مميز مع مكافآت إضافية" },
+            // منتجات FC Points
             { id: 8, name: "1000 FC X2", name_en: "1000 FC Points X2", name_tr: "1000 FC Puan X2", prices: { USD: 6, EUR: 5, TRY: 237.5, ILS: 21, JOD: 3.9, SAR: 20, QAR: 20, AED: 20, IQD: 8500 }, category: "FCX2", image: "https://i.ibb.co/zVDnqBfG/fc-points1000-jpg.jpg", type: "fc" },
             { id: 9, name: "2000 FC X2", name_en: "2000 FC Points X2", name_tr: "2000 FC Puan X2", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 7.8, SAR: 40, QAR: 40, AED: 40, IQD: 17000 }, category: "FCX2", image: "https://i.ibb.co/3YG9hBdz/fc-points2000-jpg.jpg", type: "fc" },
             { id: 10, name: "4000 FC X2", name_en: "4000 FC Points X2", name_tr: "4000 FC Puan X2", prices: { USD: 24, EUR: 20, TRY: 950, ILS: 84, JOD: 15.6, SAR: 80, QAR: 80, AED: 80, IQD: 34000 }, category: "FCX2", image: "https://i.ibb.co/Ymvt8r9/fc-points4000-jpg.jpg", type: "fc" },
@@ -1240,54 +1250,50 @@
             { id: 19, name: "15000 FC", name_en: "15000 FC Points", name_tr: "15000 FC Puan", prices: { USD: 100, EUR: 100, TRY: 4750, ILS: 420, JOD: 78, SAR: 400, QAR: 400, AED: 400, IQD: 170000 }, category: "FC", image: "https://i.ibb.co/9k7YZzMv/fc-points15000-jpg.jpg", type: "fc-normal" }
         ];
 
-        // المنتجات الجديدة للشريط المنسدل
-        const newProductsForTicker = [
-            { id: 3001, name: "15 قسيمة سحب", desc: "15 قسيمة سحب لتعزيز فرصك", image: "https://i.ibb.co/CDfJLsq/15-raffle-coupons-jpg.jpg", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 7.80, SAR: 40, QAR: 40, AED: 40, IQD: 17000 } },
-            { id: 3002, name: "10 قسيمة سحب فاخرة", desc: "قسائم سحب فاخرة لفرص أفضل", image: "https://i.ibb.co/gZHpnNtG/Luxury-raffle-coupon10-jpg.jpg", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000 } },
-            { id: 3003, name: "20 قسيمة سحب فاخرة", desc: "قسائم سحب فاخرة لفرص أفضل", image: "https://i.ibb.co/jZbFSkhb/Luxury-raffle-coupon20-jpg.jpg", prices: { USD: 24, EUR: 20, TRY: 950, ILS: 84, JOD: 16, SAR: 80, QAR: 80, AED: 80, IQD: 34000 } },
-            { id: 3004, name: "50 قسيمة سحب فاخرة", desc: "قسائم سحب فاخرة لفرص أفضل", image: "https://i.ibb.co/5WTz7htW/Luxury-raffle-coupon50-jpg.jpg", prices: { USD: 55, EUR: 55, TRY: 2650, ILS: 231, JOD: 45, SAR: 220, QAR: 220, AED: 220, IQD: 93000 } }
+        // ===== عروض جديدة =====
+        const newOffers = [
+            {
+                id: 4001,
+                name: "10 قسيمة سحب فاخرة +1500 قطعة نجم",
+                desc: "احصل على 10 قسائم سحب فاخرة مع 1500 قطعة نجم لتعزيز فريقك",
+                image: "https://i.ibb.co/8gnV12Rq/Luxury-raffle-coupon10-jpg.jpg",
+                type: "luxury",
+                prices: { USD: 18, EUR: 15, TRY: 712.5, ILS: 63, JOD: 11.7, SAR: 60, QAR: 60, AED: 60, IQD: 25500 }
+            },
+            {
+                id: 4002,
+                name: "20 قسيمة سحب فاخرة +3000 قطعة نجم",
+                desc: "احصل على 20 قسيمة سحب فاخرة مع 3000 قطعة نجم لتعزيز فريقك",
+                image: "https://i.ibb.co/WNnkpJVN/Luxury-raffle-coupon20-jpg.jpg",
+                type: "luxury",
+                prices: { USD: 30, EUR: 25, TRY: 1187.5, ILS: 105, JOD: 19.5, SAR: 100, QAR: 100, AED: 100, IQD: 42500 }
+            },
+            {
+                id: 4003,
+                name: "30 قسيمة سحب فاخرة",
+                desc: "احصل على 30 قسيمة سحب فاخرة لتعزيز فرصك في الحصول على أفضل اللاعبين",
+                image: "https://i.ibb.co/fzsMy950/Luxury-raffle-coupon30-jpg.jpg",
+                type: "luxury",
+                prices: { USD: 54, EUR: 45, TRY: 2137.5, ILS: 189, JOD: 35.1, SAR: 180, QAR: 180, AED: 180, IQD: 76500 }
+            },
+            {
+                id: 4004,
+                name: "بكج لاعب الأبطال",
+                desc: "أقوى بكج في اللعبة! احصل على لاعب أسطوري مع مكافآت حصرية",
+                image: "https://i.ibb.co/Tq0bdS8S/Champions-Player-Show-jpg.jpg",
+                type: "champions",
+                prices: { USD: 60, EUR: 50, TRY: 2375, ILS: 210, JOD: 39, SAR: 200, QAR: 200, AED: 200, IQD: 85000 }
+            }
         ];
+
+        // المنتجات الجديدة للشريط المنسدل (نفس المنتجات)
+        const newProductsForTicker = newOffers;
 
         // باقات أفضل المبيعات
         const bestSellers = [
             { id: 101, name: "GILBERTO SILVA", desc: "10 قسيمة سحب +300 ترقية تصنيف +لاعب 121", image: "https://i.ibb.co/938fs63N/GILBERTO-SILVA-jpg.jpg", prices: { USD: 6, EUR: 5, TRY: 240, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500 } },
             { id: 102, name: "CAHILL", desc: "10 قسيمة سحب +300 ترقية تصنيف +لاعب 121", image: "https://i.ibb.co/8VQW3RT/CAHILL-jpg.jpg", prices: { USD: 6, EUR: 5, TRY: 240, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500 } },
             { id: 103, name: "KUYT", desc: "10 قسيمة سحب +300 ترقية تصنيف +لاعب 121", image: "https://i.ibb.co/gM4dxpHw/KUYT-jpg.jpg", prices: { USD: 6, EUR: 5, TRY: 240, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500 } }
-        ];
-
-        // العروض الجديدة
-        const newOffers = [
-            {
-                id: 3001,
-                name: "15 قسيمة سحب",
-                desc: "15 قسيمة سحب لتعزيز فرصك في الحصول على أفضل اللاعبين",
-                image: "https://i.ibb.co/CDfJLsq/15-raffle-coupons-jpg.jpg",
-                prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 7.80, SAR: 40, QAR: 40, AED: 40, IQD: 17000 }
-            },
-            {
-                id: 3002,
-                name: "10 قسيمة سحب فاخرة",
-                desc: "قسائم سحب فاخرة لفرص أفضل في الحصول على أفضل اللاعبين",
-                image: "https://i.ibb.co/gZHpnNtG/Luxury-raffle-coupon10-jpg.jpg",
-                prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000 },
-                type: "luxury"
-            },
-            {
-                id: 3003,
-                name: "20 قسيمة سحب فاخرة",
-                desc: "قسائم سحب فاخرة لفرص أفضل في الحصول على أفضل اللاعبين",
-                image: "https://i.ibb.co/jZbFSkhb/Luxury-raffle-coupon20-jpg.jpg",
-                prices: { USD: 24, EUR: 20, TRY: 950, ILS: 84, JOD: 16, SAR: 80, QAR: 80, AED: 80, IQD: 34000 },
-                type: "luxury"
-            },
-            {
-                id: 3004,
-                name: "50 قسيمة سحب فاخرة",
-                desc: "قسائم سحب فاخرة لفرص أفضل في الحصول على أفضل اللاعبين",
-                image: "https://i.ibb.co/5WTz7htW/Luxury-raffle-coupon50-jpg.jpg",
-                prices: { USD: 55, EUR: 55, TRY: 2650, ILS: 231, JOD: 45, SAR: 220, QAR: 220, AED: 220, IQD: 93000 },
-                type: "luxury"
-            }
         ];
 
         let currentCurrency = 'TRY';
@@ -1304,7 +1310,6 @@
 
         // ===== عرض منتج واحد فقط مع العملة المحددة =====
         function showSingleProduct(productId, currency) {
-            // تغيير العملة إذا تم تمريرها
             if (currency && symbols[currency]) {
                 currentCurrency = currency;
                 document.getElementById('city-select').value = currency;
@@ -1316,20 +1321,21 @@
                 return false;
             }
 
-            // إخفاء جميع الأقسام الأخرى
             document.body.classList.add('single-product-view');
-            
-            // إظهار زر العودة
             document.getElementById('backToStoreBtn').classList.add('show');
             
-            // عرض المنتج فقط في القسم الأول
             const grid = document.getElementById('firstNewOffersGrid');
             if (!grid) return false;
             
-            // تحديد الكلاس المناسب للبطاقة
             let cardClass = 'new-offer-card';
             if (product.type === 'luxury') {
                 cardClass = 'luxury-raffle-card';
+            } else if (product.type === 'champions') {
+                cardClass = 'champions-card';
+            } else if (product.type === 'pogba') {
+                cardClass = 'pogba-card';
+            } else if (product.type === 'pogba-premium') {
+                cardClass = 'pogba-premium-card';
             } else if (product.type === 'bestseller') {
                 cardClass = 'bestseller-card';
             } else if (product.type === 'special') {
@@ -1351,7 +1357,6 @@
             let priceDisplay = '';
             let sym = symbols[currentCurrency];
             
-            // عرض السعر
             let price = product.prices ? product.prices[currentCurrency] || product.prices.TRY : null;
             let priceDisp = price ? formatPrice(price) : '';
             
@@ -1361,7 +1366,6 @@
                 priceDisplay = `<div class="price-tag">${sym} ${priceDisp}</div>`;
             }
 
-            // عرض وصف المنتج
             let descText = product.desc || '';
             
             grid.innerHTML = `
@@ -1378,7 +1382,6 @@
                 </div>
             `;
             
-            // التمرير إلى المنتج
             setTimeout(() => {
                 const card = grid.querySelector('.card');
                 if (card) {
@@ -1397,13 +1400,11 @@
             document.body.classList.remove('single-product-view');
             document.getElementById('backToStoreBtn').classList.remove('show');
             
-            // إعادة عرض جميع المنتجات
             displayProducts();
             displaySpecialOffers();
             renderNewOffers('firstNewOffersGrid');
             renderTickerItems();
             
-            // إزالة معاملات المنتج والعملة من الـ URL
             const url = new URL(window.location);
             url.searchParams.delete('product');
             url.searchParams.delete('bundle');
@@ -1431,23 +1432,19 @@
             let formatted = price ? formatPrice(price) : '';
             let shareText = `🎁 *${product.name}*\n✨ ${product.desc || ''}\n💰 ${sym} ${formatted}\n🔗 ${url}`;
             
-            // محاولة المشاركة عبر واجهة Web Share API
             if (navigator.share) {
                 navigator.share({
                     title: product.name,
                     text: `🎁 ${product.name}\n✨ ${product.desc || ''}\n💰 ${sym} ${formatted}`,
                     url: url
                 }).catch(() => {
-                    // في حال الإلغاء أو الخطأ، ننسخ
                     copyToClipboard(shareText);
                 });
             } else {
-                // نسخ مباشر
                 copyToClipboard(shareText);
             }
         }
 
-        // ===== دالة مساعدة للنسخ =====
         function copyToClipboard(text) {
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(text).then(() => {
@@ -1477,7 +1474,6 @@
             document.body.removeChild(textArea);
         }
 
-        // ===== دوال عامة =====
         function getSpecialPrice(offer) { return offer.prices[currentCurrency] || offer.prices.TRY; }
         function getPrice(product) { return product.prices[currentCurrency] || product.prices.TRY; }
         function getBestsellerPrice(b) { return b.prices[currentCurrency] || b.prices.TRY; }
@@ -1499,7 +1495,6 @@
 
         function getProductShareUrl(product) {
             let baseUrl = window.location.origin + window.location.pathname;
-            // إضافة معامل العملة إلى الرابط
             return `${baseUrl}?product=${product.id}&currency=${currentCurrency}`;
         }
 
@@ -1510,14 +1505,12 @@
             setTimeout(() => t.style.display = 'none', 3000); 
         }
 
-        // ===== معالجة رابط المنتج مع العملة =====
         function handleProductLink() {
             const urlParams = new URLSearchParams(window.location.search);
             const productId = urlParams.get('product') || urlParams.get('bundle') || urlParams.get('offer');
             const currency = urlParams.get('currency');
             
             if (productId) {
-                // تأخير للتأكد من تحميل الصفحة
                 setTimeout(() => {
                     const success = showSingleProduct(productId, currency);
                     if (success) {
@@ -1529,9 +1522,7 @@
             return false;
         }
 
-        // ===== عرض المنتجات =====
         function displayProducts() {
-            // في حالة العرض المفرد، لا نعرض المنتجات العادية
             if (isSingleProductView) return;
             
             const cats = { خدمات: 'productsGrid2', 'عروض خاصة': 'productsGrid3', FCX2: 'productsGrid4', FC: 'productsGrid5' };
@@ -1545,13 +1536,16 @@
                     else if(p.type==='upgrade'){ cardClass='upgrade-card'; badgeText='⬆️ ترقية'; }
                     else if(p.type==='luxury'){ cardClass='luxury-card'; badgeText='🎟️ قسيمة 10'; }
                     else if(p.type==='voucher'){ cardClass='voucher-card'; badgeText='🎫 40 قسيمة'; }
+                    else if(p.type==='pogba'){ cardClass='pogba-card'; badgeText='⭐ Pogba'; }
+                    else if(p.type==='pogba-premium'){ cardClass='pogba-premium-card'; badgeText='⭐ Pogba مميز'; }
                     else if(p.type==='fc'){ cardClass='fc-points-card'; badgeText='⚡ X2'; }
                     else if(p.type==='fc-normal'){ cardClass='fc-normal-card'; badgeText='⚽ FC'; }
                     let price = getPrice(p);
                     let sym = symbols[currentCurrency];
                     let priceDisp = formatPrice(price);
                     let displayName = getProductName(p);
-                    return `<div class="card ${cardClass}" data-product-id="${p.id}"><div class="badge">${badgeText}</div><div class="card-image-wrapper"><img src="${p.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/200x180?text=Image+Not+Found'" alt="${displayName}"></div><h3>${displayName}</h3><div class="price">${sym} ${priceDisp}</div><button class="btn-order" onclick='quickOrder(${JSON.stringify(p)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareProduct(${JSON.stringify(p)})'>📢 مشاركة</button></div>`;
+                    let descHtml = p.desc ? `<div class="offer-desc">✨ ${p.desc}</div>` : '';
+                    return `<div class="card ${cardClass}" data-product-id="${p.id}"><div class="badge">${badgeText}</div><div class="card-image-wrapper"><img src="${p.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/200x180?text=Image+Not+Found'" alt="${displayName}"></div><h3>${displayName}</h3>${descHtml}<div class="price">${sym} ${priceDisp}</div><button class="btn-order" onclick='quickOrder(${JSON.stringify(p)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareProduct(${JSON.stringify(p)})'>📢 مشاركة</button></div>`;
                 }).join('');
             }
             let bsGrid = document.getElementById('bestsellersGrid');
@@ -1581,11 +1575,13 @@
             }
         }
 
+        // ===== عرض العروض الجديدة =====
         function renderNewOffers(containerId) {
             if (isSingleProductView) return;
             
             const grid = document.getElementById(containerId);
             if(!grid) return;
+            
             grid.innerHTML = newOffers.map(offer => {
                 let priceDisplay = '';
                 let sym = symbols[currentCurrency];
@@ -1593,6 +1589,8 @@
                 
                 if (offer.type === 'luxury') {
                     cardClass = 'luxury-raffle-card';
+                } else if (offer.type === 'champions') {
+                    cardClass = 'champions-card';
                 }
                 
                 if (offer.isFifaPoints) {
@@ -1610,7 +1608,8 @@
             const body = document.getElementById('tickerBody');
             if (!body) return;
             
-            body.innerHTML = newProductsForTicker.map(item => {
+            // عرض المنتجات الجديدة في الشريط المنسدل
+            body.innerHTML = newOffers.map(item => {
                 let priceDisplay = '';
                 let sym = symbols[currentCurrency];
                 
@@ -1664,8 +1663,6 @@
             }
         }
 
-        // ===== دوال التحكم =====
-
         function changeCity() { 
             currentCurrency = document.getElementById('city-select').value; 
             if (!isSingleProductView) {
@@ -1674,7 +1671,6 @@
                 renderNewOffers('firstNewOffersGrid');
                 renderTickerItems();
             } else {
-                // تحديث العرض المفرد
                 const urlParams = new URLSearchParams(window.location.search);
                 const productId = urlParams.get('product');
                 if (productId) showSingleProduct(productId, currentCurrency);
@@ -1724,7 +1720,6 @@
         function scrollToTop() { window.scrollTo({top:0, behavior:'smooth'}); }
         window.addEventListener('scroll', () => { let btn = document.getElementById('scrollTopBtn'); window.scrollY > 300 ? btn.classList.add('show') : btn.classList.remove('show'); });
 
-        // ===== دوال الطلب والمشاركة للعروض =====
         function quickOrderSpecial(offer) { 
             let price = getSpecialPrice(offer);
             let sym = symbols[currentCurrency];
@@ -1858,19 +1853,16 @@
             }
         }
 
-        // ===== تهيئة الصفحة =====
         displayProducts(); 
         displaySpecialOffers();
         renderNewOffers('firstNewOffersGrid');
         renderTickerItems();
         checkTickerState();
         
-        // ===== معالجة رابط المنتج بعد تحميل الصفحة =====
         setTimeout(() => {
             handleProductLink();
         }, 800);
 
-        // ===== مراقبة تغييرات الـ URL =====
         window.addEventListener('popstate', function() {
             handleProductLink();
         });
