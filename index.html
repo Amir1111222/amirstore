@@ -489,6 +489,14 @@
         .card.pogba-card::before { content: "⭐ Pogba"; position: absolute; top: -12px; right: 16px; background: #ff6b9d; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
         .card.pogba-premium-card { border-top: 4px solid #ff2d55; background: linear-gradient(145deg, rgba(255,45,85,0.2), rgba(15,45,40,0.95)); box-shadow: 0 0 25px rgba(255,45,85,0.3); }
         .card.pogba-premium-card::before { content: "⭐ Pogba مميز"; position: absolute; top: -12px; right: 16px; background: #ff2d55; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.voucher-champion-card { border-top: 4px solid #ffd700; background: linear-gradient(145deg, rgba(255,215,0,0.12), rgba(15,45,40,0.95)); }
+        .card.voucher-champion-card::before { content: "🎫 قسيمة أبطال"; position: absolute; top: -12px; right: 16px; background: #ffd700; color: #0a1f1e; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.bestseller-new-card { border-top: 4px solid #ff6b6b; background: linear-gradient(145deg, rgba(255,107,107,0.15), rgba(15,45,40,0.95)); box-shadow: 0 0 20px rgba(255,107,107,0.2); }
+        .card.bestseller-new-card::before { content: "🏆 الأكثر مبيعاً"; position: absolute; top: -12px; right: 16px; background: #ff6b6b; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.buffon-card { border-top: 4px solid #00b894; background: linear-gradient(145deg, rgba(0,184,148,0.15), rgba(15,45,40,0.95)); }
+        .card.buffon-card::before { content: "🧤 BUFFON"; position: absolute; top: -12px; right: 16px; background: #00b894; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.buffon-premium-card { border-top: 4px solid #00cec9; background: linear-gradient(145deg, rgba(0,206,201,0.2), rgba(15,45,40,0.95)); box-shadow: 0 0 25px rgba(0,206,201,0.3); }
+        .card.buffon-premium-card::before { content: "🧤 BUFFON مميز"; position: absolute; top: -12px; right: 16px; background: #00cec9; color: #0a1f1e; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
         
         .badge {
             background: #f9c74f;
@@ -1268,16 +1276,18 @@
             { id: 2008, name: "الامداد الشهري", desc: "كل يوم تستلم جواهر ونقاط ترقية تصنيف", image: "https://i.ibb.co/N2zTXFfk/Monthly-supply-jpg.jpg", prices: { USD: 10, EUR: 8, TRY: 380, ILS: 35, JOD: 6.5, SAR: 35, QAR: 35, AED: 35, IQD: 16200 } }
         ];
 
-        // المنتجات
+        // المنتجات - تم إزالة منتجات توريس (id: 34, 35) وإضافة منتجات BUFFON
         const products = [
             { id: 2, name: "نمط وجه لوجه", name_en: "Face to Face", name_tr: "Yüz Yüze", prices: { USD: 20, EUR: 25, TRY: 850, ILS: 105, JOD: 19.5, SAR: 100, QAR: 100, AED: 100, IQD: 42500 }, category: "خدمات", image: "https://i.ibb.co/G4XpsNNj/Face-to-face-jpg.jpg", type: "normal" },
             { id: 3, name: "نمط هجوم تنافسي", name_en: "Competitive Attack", name_tr: "Rekabetçi Atak", prices: { USD: 20, EUR: 25, TRY: 850, ILS: 105, JOD: 19.5, SAR: 100, QAR: 100, AED: 100, IQD: 42500 }, category: "خدمات", image: "https://i.ibb.co/zWRRG3XF/Competitive-attack-jpg.jpg", type: "normal" },
             { id: 4, name: "مدير فني", name_en: "Technical Director", name_tr: "Teknik Direktör", prices: { USD: 20, EUR: 25, TRY: 850, ILS: 105, JOD: 19.5, SAR: 100, QAR: 100, AED: 100, IQD: 42500 }, category: "خدمات", image: "https://i.ibb.co/rfN8WHhB/Technical-Director-jpg.jpg", type: "normal" },
-            { id: 34, name: "تصريح نجم FERNANDO TORRES", name_en: "Star Pass FERNANDO TORRES", name_tr: "Yıldız Kartı FERNANDO TORRES", prices: { USD: 6, EUR: 5, TRY: 240, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500 }, category: "عروض خاصة", image: "https://i.ibb.co/fVNr0y4m/Star-Pass-FERNANDO-TORRES-jpg.jpg", type: "torres" },
-            { id: 35, name: "تصريح نجم مميز", name_en: "Premium Star Pass", name_tr: "Premium Yıldız Kartı", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 7.8, SAR: 40, QAR: 40, AED: 40, IQD: 17000 }, category: "عروض خاصة", image: "https://i.ibb.co/fVNr0y4m/Star-Pass-FERNANDO-TORRES-jpg.jpg", type: "premium" },
+            // تم إزالة منتجات توريس (id: 34, 35)
+            // إضافة منتجات BUFFON
+            { id: 40, name: "تصريح نجم BUFFON", name_en: "Star Pass BUFFON", name_tr: "Yıldız Kartı BUFFON", prices: { USD: 12, EUR: 10, TRY: 490, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000 }, category: "عروض خاصة", image: "https://i.ibb.co/hJPrTHtM/BUFFON-STARPASS-jpg.jpg", type: "buffon" },
+            { id: 41, name: "تصريح نجم مميز BUFFON", name_en: "Premium Star Pass BUFFON", name_tr: "Premium Yıldız Kartı BUFFON", prices: { USD: 24, EUR: 20, TRY: 975, ILS: 84, JOD: 16, SAR: 80, QAR: 80, AED: 80, IQD: 34000 }, category: "عروض خاصة", image: "https://i.ibb.co/hJPrTHtM/BUFFON-STARPASS-jpg.jpg", type: "buffon-premium" },
             { id: 7, name: "1700 ترقية تصنيف", name_en: "1700 OVR Upgrade", name_tr: "1700 Reyting Yükseltme", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000 }, category: "عروض خاصة", image: "https://i.ibb.co/Kx20DxgQ/upgrade1700-jpg.jpg", type: "upgrade" },
             { id: 20, name: "40 قسيمة سحب", name_en: "40 Withdrawal Vouchers", name_tr: "40 Çekiliş Bileti", prices: { USD: 30, EUR: 25, TRY: 1187.5, ILS: 105, JOD: 19.5, SAR: 100, QAR: 100, AED: 100, IQD: 42500 }, category: "عروض خاصة", image: "https://i.ibb.co/1fJz0q5R/Withdrawal-voucher-jpg.jpg", type: "voucher" },
-            // منتجات Pogba الجديدة
+            // منتجات Pogba
             { id: 36, name: "تصريح نجم الصيف Pogba", name_en: "Summer Star Pass Pogba", name_tr: "Yaz Yıldız Kartı Pogba", prices: { USD: 6, EUR: 5, TRY: 237.5, ILS: 21, JOD: 3.9, SAR: 20, QAR: 20, AED: 20, IQD: 8500 }, category: "عروض خاصة", image: "https://i.ibb.co/WNvzSdpF/Pogba-jpg.jpg", type: "pogba", desc: "تصريح مصغر" },
             { id: 37, name: "تصريح الصيف مميز Pogba", name_en: "Premium Summer Pass Pogba", name_tr: "Premium Yaz Kartı Pogba", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000 }, category: "عروض خاصة", image: "https://i.ibb.co/WNvzSdpF/Pogba-jpg.jpg", type: "pogba-premium", desc: "تصريح مميز مع مكافآت إضافية" },
             // منتجات FC Points
@@ -1326,17 +1336,67 @@
                 image: "https://i.ibb.co/Tq0bdS8S/Champions-Player-Show-jpg.jpg",
                 type: "champions",
                 prices: { USD: 60, EUR: 50, TRY: 2375, ILS: 210, JOD: 39, SAR: 200, QAR: 200, AED: 200, IQD: 85000 }
+            },
+            {
+                id: 4005,
+                name: "5 قسائم أبطال",
+                desc: "احصل على 5 قسائم أبطال لتعزيز فريقك",
+                image: "https://i.ibb.co/CKbLQTnc/Withdrawal-voucher-5-jpg.jpg",
+                type: "voucher-champion",
+                prices: { USD: 6, EUR: 5, TRY: 245, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500 }
+            },
+            {
+                id: 4006,
+                name: "10 قسائم أبطال",
+                desc: "احصل على 10 قسائم أبطال لتعزيز فريقك",
+                image: "https://i.ibb.co/nvpgD7x/Withdrawal-voucher-10-jpg.jpg",
+                type: "voucher-champion",
+                prices: { USD: 12, EUR: 10, TRY: 490, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000 }
+            },
+            {
+                id: 4007,
+                name: "20 قسيمة سحب",
+                desc: "احصل على 20 قسيمة سحب لتعزيز فرصك",
+                image: "https://i.ibb.co/tW50xxb/Withdrawal-voucher-20-jpg.jpg",
+                type: "voucher-champion",
+                prices: { USD: 24, EUR: 20, TRY: 975, ILS: 84, JOD: 16, SAR: 80, QAR: 80, AED: 80, IQD: 34000 }
+            },
+            {
+                id: 4008,
+                name: "50 قسيمة سحب",
+                desc: "احصل على 50 قسيمة سحب لتعزيز فرصك بشكل كبير",
+                image: "https://i.ibb.co/3YvMnqz2/Withdrawal-voucher-50-jpg.jpg",
+                type: "voucher-champion",
+                prices: { USD: 55, EUR: 50, TRY: 2400, ILS: 210, JOD: 42, SAR: 200, QAR: 200, AED: 200, IQD: 85000 }
             }
         ];
 
-        // المنتجات الجديدة للشريط المنسدل (نفس المنتجات)
-        const newProductsForTicker = newOffers;
-
-        // باقات أفضل المبيعات
+        // ===== أفضل المبيعات =====
         const bestSellers = [
-            { id: 101, name: "GILBERTO SILVA", desc: "10 قسيمة سحب +300 ترقية تصنيف +لاعب 121", image: "https://i.ibb.co/938fs63N/GILBERTO-SILVA-jpg.jpg", prices: { USD: 6, EUR: 5, TRY: 240, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500 } },
-            { id: 102, name: "CAHILL", desc: "10 قسيمة سحب +300 ترقية تصنيف +لاعب 121", image: "https://i.ibb.co/8VQW3RT/CAHILL-jpg.jpg", prices: { USD: 6, EUR: 5, TRY: 240, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500 } },
-            { id: 103, name: "KUYT", desc: "10 قسيمة سحب +300 ترقية تصنيف +لاعب 121", image: "https://i.ibb.co/gM4dxpHw/KUYT-jpg.jpg", prices: { USD: 6, EUR: 5, TRY: 240, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500 } }
+            {
+                id: 101,
+                name: "PETIT",
+                desc: "10 قسيمة سحب +300 ترقية تصنيف +لاعب 123",
+                image: "https://i.ibb.co/pvYGdhZH/PETIT-jpg.jpg",
+                type: "bestseller-new",
+                prices: { USD: 6, EUR: 5, TRY: 245, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500 }
+            },
+            {
+                id: 102,
+                name: "KROOS",
+                desc: "10 قسيمة سحب +300 ترقية تصنيف +لاعب 123",
+                image: "https://i.ibb.co/gp20F8n/KROOS-jpg.jpg",
+                type: "bestseller-new",
+                prices: { USD: 6, EUR: 5, TRY: 245, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500 }
+            },
+            {
+                id: 103,
+                name: "TEVEZ",
+                desc: "10 قسيمة سحب +300 ترقية تصنيف +لاعب 123",
+                image: "https://i.ibb.co/ZRshDJb2/TEVEZ-jpg.jpg",
+                type: "bestseller-new",
+                prices: { USD: 6, EUR: 5, TRY: 245, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500 }
+            }
         ];
 
         let currentCurrency = 'TRY';
@@ -1347,7 +1407,7 @@
 
         // ===== دالة الحصول على المنتج حسب المعرف =====
         function findProductById(id) {
-            let allProducts = [...products, ...specialOffers, ...bestSellers, ...newOffers, ...newProductsForTicker];
+            let allProducts = [...products, ...specialOffers, ...bestSellers, ...newOffers];
             return allProducts.find(p => p.id === parseInt(id));
         }
 
@@ -1381,12 +1441,16 @@
                 cardClass = 'pogba-premium-card';
             } else if (product.type === 'bestseller') {
                 cardClass = 'bestseller-card';
+            } else if (product.type === 'bestseller-new') {
+                cardClass = 'bestseller-new-card';
             } else if (product.type === 'special') {
                 cardClass = 'special-offer-card';
             } else if (product.type === 'monthly') {
                 cardClass = 'monthly-card';
-            } else if (product.type === 'torres') {
-                cardClass = 'torres-card';
+            } else if (product.type === 'buffon') {
+                cardClass = 'buffon-card';
+            } else if (product.type === 'buffon-premium') {
+                cardClass = 'buffon-premium-card';
             } else if (product.type === 'premium') {
                 cardClass = 'premium-card';
             } else if (product.type === 'upgrade') {
@@ -1395,6 +1459,8 @@
                 cardClass = 'fc-points-card';
             } else if (product.type === 'fc-normal') {
                 cardClass = 'fc-normal-card';
+            } else if (product.type === 'voucher-champion') {
+                cardClass = 'voucher-champion-card';
             }
 
             let priceDisplay = '';
@@ -1574,7 +1640,8 @@
                 let filtered = products.filter(p => p.category === cat);
                 grid.innerHTML = filtered.map(p => {
                     let cardClass='', badgeText='⭐';
-                    if(p.type==='torres'){ cardClass='torres-card'; badgeText='⚡ F.TORRES'; }
+                    if(p.type==='buffon'){ cardClass='buffon-card'; badgeText='🧤 BUFFON'; }
+                    else if(p.type==='buffon-premium'){ cardClass='buffon-premium-card'; badgeText='🧤 BUFFON مميز'; }
                     else if(p.type==='premium'){ cardClass='premium-card'; badgeText='🔥 مميز'; }
                     else if(p.type==='upgrade'){ cardClass='upgrade-card'; badgeText='⬆️ ترقية'; }
                     else if(p.type==='luxury'){ cardClass='luxury-card'; badgeText='🎟️ قسيمة 10'; }
@@ -1597,7 +1664,8 @@
                     let price = getBestsellerPrice(b);
                     let sym = symbols[currentCurrency];
                     let priceDisp = formatPrice(price);
-                    return `<div class="card bestseller-card" data-product-id="${b.id}"><div class="badge">🏆 الأكثر مبيعاً</div><div class="card-image-wrapper"><img src="${b.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/200x180?text=Image+Not+Found'" alt="${b.name}"></div><h3>${b.name}</h3><div class="offer-desc">✨ ${b.desc}</div><div class="price-tag">${sym} ${priceDisp}</div><button class="btn-order" onclick='orderBestseller(${JSON.stringify(b)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareBestseller(${JSON.stringify(b)})'>📢 مشاركة العرض</button></div>`;
+                    let cardClass = b.type === 'bestseller-new' ? 'bestseller-new-card' : 'bestseller-card';
+                    return `<div class="card ${cardClass}" data-product-id="${b.id}"><div class="badge">🏆 الأكثر مبيعاً</div><div class="card-image-wrapper"><img src="${b.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/200x180?text=Image+Not+Found'" alt="${b.name}"></div><h3>${b.name}</h3><div class="offer-desc">✨ ${b.desc}</div><div class="price-tag">${sym} ${priceDisp}</div><button class="btn-order" onclick='orderBestseller(${JSON.stringify(b)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareBestseller(${JSON.stringify(b)})'>📢 مشاركة العرض</button></div>`;
                 }).join('');
             }
             renderNewOffers('firstNewOffersGrid');
@@ -1634,6 +1702,8 @@
                     cardClass = 'luxury-raffle-card';
                 } else if (offer.type === 'champions') {
                     cardClass = 'champions-card';
+                } else if (offer.type === 'voucher-champion') {
+                    cardClass = 'voucher-champion-card';
                 }
                 
                 if (offer.isFifaPoints) {
