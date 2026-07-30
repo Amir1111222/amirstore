@@ -232,8 +232,8 @@
             border-color: rgba(249,199,79,0.2);
         }
         .notif-ticker-item img {
-            width: 50px;
-            height: 50px;
+            width: 70px;
+            height: 70px;
             object-fit: cover;
             border-radius: 8px;
             background: rgba(0,0,0,0.3);
@@ -354,8 +354,8 @@
             position: relative;
             display: flex;
             flex-direction: column;
-            min-width: 260px;
-            max-width: 300px;
+            min-width: 280px;
+            max-width: 320px;
             flex: 0 0 auto;
             scroll-snap-align: start;
             height: auto;
@@ -370,21 +370,21 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 140px;
+            min-height: 180px;
             background: rgba(0, 0, 0, 0.25);
             border-radius: 16px;
             margin: 6px 0 12px;
-            padding: 8px;
+            padding: 10px;
         }
         .card-image {
             max-width: 100%;
             width: auto;
-            height: 120px;
+            height: 160px;
             object-fit: contain;
             border-radius: 14px;
             border: 2px solid rgba(249, 199, 79, 0.4);
             background: rgba(15, 35, 30, 0.5);
-            padding: 6px;
+            padding: 8px;
             transition: transform 0.2s, border-color 0.2s;
             display: block;
         }
@@ -397,7 +397,7 @@
         .single-product-view .products-grid {
             display: grid;
             grid-template-columns: 1fr;
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto;
             overflow-x: visible;
             padding: 0;
@@ -410,29 +410,29 @@
             box-shadow: 0 0 50px rgba(249, 199, 79, 0.3);
         }
         .single-product-view .card-image {
-            height: 200px;
+            height: 280px;
         }
         .single-product-view .card-image-wrapper {
-            min-height: 220px;
+            min-height: 300px;
         }
         .single-product-view .card h3 {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
         }
         .single-product-view .price-tag, .single-product-view .price {
-            font-size: 28px;
-            padding: 8px 24px;
+            font-size: 30px;
+            padding: 10px 28px;
         }
         .single-product-view .offer-desc {
-            font-size: 16px;
-            padding: 12px 16px;
+            font-size: 18px;
+            padding: 14px 18px;
         }
         .single-product-view .btn-order {
-            font-size: 18px;
-            padding: 14px 8px;
+            font-size: 20px;
+            padding: 16px 10px;
         }
         .single-product-view .btn-share {
-            font-size: 16px;
-            padding: 12px 8px;
+            font-size: 18px;
+            padding: 14px 10px;
         }
         .back-to-store-btn {
             display: none;
@@ -513,7 +513,7 @@
         .card h3 {
             color: #f9c74f;
             margin: 10px 0 8px;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: bold;
             min-height: 48px;
             display: flex;
@@ -521,33 +521,33 @@
             justify-content: center;
         }
         .price {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
             margin: 8px 0;
             color: #90e0ef;
             background: rgba(0,0,0,0.35);
             display: inline-block;
-            padding: 4px 16px;
+            padding: 6px 20px;
             border-radius: 40px;
             width: fit-content;
             align-self: center;
         }
         .price-tag {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             margin: 8px 0;
             color: #f9c74f;
             background: rgba(0,0,0,0.5);
             display: inline-block;
-            padding: 6px 18px;
+            padding: 8px 22px;
             border-radius: 40px;
             width: fit-content;
             align-self: center;
         }
         .offer-desc {
-            font-size: 12px;
+            font-size: 13px;
             background: rgba(0,0,0,0.5);
-            padding: 6px 10px;
+            padding: 8px 12px;
             border-radius: 40px;
             display: inline-block;
             margin: 6px auto;
@@ -556,7 +556,7 @@
             line-height: 1.4;
             width: 100%;
             font-weight: 500;
-            min-height: 36px;
+            min-height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -565,10 +565,10 @@
             background: #f9844a;
             width: 100%;
             border: none;
-            padding: 9px 8px;
+            padding: 11px 10px;
             border-radius: 40px;
             font-weight: bold;
-            font-size: 13px;
+            font-size: 14px;
             cursor: pointer;
             margin-bottom: 6px;
             transition: all 0.2s;
@@ -583,10 +583,10 @@
             background: #25D366;
             width: 100%;
             border: none;
-            padding: 8px 8px;
+            padding: 10px 10px;
             border-radius: 40px;
             font-weight: bold;
-            font-size: 12px;
+            font-size: 13px;
             cursor: pointer;
             color: white;
             display: flex;
@@ -756,38 +756,38 @@
 
         @media (max-width: 768px) {
             .card {
-                min-width: 220px;
-                max-width: 260px;
-                padding: 12px 10px;
+                min-width: 240px;
+                max-width: 280px;
+                padding: 14px 12px;
                 border-radius: 16px;
             }
             .card-image-wrapper {
-                min-height: 110px;
-                padding: 6px;
+                min-height: 140px;
+                padding: 8px;
             }
             .card-image {
-                height: 100px;
+                height: 130px;
             }
             .card h3 {
-                font-size: 0.9rem;
+                font-size: 1rem;
                 min-height: 42px;
             }
             .price, .price-tag {
-                font-size: 16px;
-                padding: 4px 14px;
+                font-size: 18px;
+                padding: 5px 16px;
             }
             .offer-desc {
-                font-size: 10px;
-                padding: 5px 8px;
-                min-height: 32px;
+                font-size: 11px;
+                padding: 6px 10px;
+                min-height: 34px;
             }
             .btn-order {
-                font-size: 11px;
-                padding: 7px 6px;
+                font-size: 12px;
+                padding: 8px 6px;
             }
             .btn-share {
-                font-size: 10px;
-                padding: 6px 6px;
+                font-size: 11px;
+                padding: 7px 6px;
             }
             .badge {
                 font-size: 9px;
@@ -814,8 +814,8 @@
                 gap: 8px;
             }
             .notif-ticker-item img {
-                width: 40px;
-                height: 40px;
+                width: 55px;
+                height: 55px;
             }
             .notif-ticker-item-info .name {
                 font-size: 11px;
@@ -870,48 +870,51 @@
                 max-height: 800px;
             }
             .single-product-view .card-image {
-                height: 180px;
+                height: 220px;
             }
             .single-product-view .card-image-wrapper {
-                min-height: 200px;
+                min-height: 240px;
+            }
+            .single-product-view .card h3 {
+                font-size: 1.4rem;
             }
         }
 
         @media (max-width: 480px) {
             .card {
-                min-width: 180px;
-                max-width: 220px;
-                padding: 10px 8px;
+                min-width: 200px;
+                max-width: 240px;
+                padding: 12px 10px;
                 border-radius: 14px;
             }
             .card-image-wrapper {
-                min-height: 100px;
-                padding: 4px;
+                min-height: 120px;
+                padding: 6px;
             }
             .card-image {
-                height: 80px;
+                height: 100px;
             }
             .card h3 {
-                font-size: 0.8rem;
+                font-size: 0.9rem;
                 min-height: 36px;
                 margin: 6px 0;
             }
             .price, .price-tag {
-                font-size: 14px;
-                padding: 3px 12px;
+                font-size: 16px;
+                padding: 4px 14px;
             }
             .offer-desc {
-                font-size: 9px;
-                padding: 4px 6px;
-                min-height: 28px;
+                font-size: 10px;
+                padding: 5px 8px;
+                min-height: 30px;
             }
             .btn-order {
-                font-size: 10px;
-                padding: 6px 4px;
+                font-size: 11px;
+                padding: 7px 4px;
             }
             .btn-share {
-                font-size: 9px;
-                padding: 5px 4px;
+                font-size: 10px;
+                padding: 6px 4px;
             }
             .badge {
                 font-size: 8px;
@@ -966,8 +969,8 @@
                 padding: 8px;
             }
             .notif-ticker-item img {
-                width: 35px;
-                height: 35px;
+                width: 45px;
+                height: 45px;
             }
             .notif-ticker-item-info .name {
                 font-size: 10px;
@@ -1050,52 +1053,55 @@
                 font-size: 0.65rem;
             }
             .single-product-view .card-image {
-                height: 160px;
+                height: 190px;
             }
             .single-product-view .card-image-wrapper {
-                min-height: 180px;
+                min-height: 210px;
+            }
+            .single-product-view .card h3 {
+                font-size: 1.2rem;
             }
         }
 
         @media (max-width: 360px) {
             .card {
-                min-width: 150px;
-                max-width: 190px;
-                padding: 8px 6px;
+                min-width: 170px;
+                max-width: 200px;
+                padding: 10px 8px;
             }
             .card-image {
-                height: 70px;
+                height: 85px;
             }
             .card-image-wrapper {
-                min-height: 80px;
+                min-height: 100px;
             }
             .card h3 {
-                font-size: 0.7rem;
+                font-size: 0.8rem;
                 min-height: 30px;
             }
             .price, .price-tag {
-                font-size: 12px;
-                padding: 2px 10px;
+                font-size: 14px;
+                padding: 3px 12px;
             }
             .offer-desc {
-                font-size: 8px;
-                padding: 3px 4px;
-                min-height: 22px;
+                font-size: 9px;
+                padding: 4px 6px;
+                min-height: 24px;
             }
             .btn-order {
-                font-size: 9px;
-                padding: 5px 3px;
+                font-size: 10px;
+                padding: 6px 3px;
             }
             .btn-share {
-                font-size: 8px;
-                padding: 4px 3px;
+                font-size: 9px;
+                padding: 5px 3px;
             }
             .notif-ticker-item {
                 padding: 6px;
             }
             .notif-ticker-item img {
-                width: 30px;
-                height: 30px;
+                width: 40px;
+                height: 40px;
             }
             .notif-ticker-item-info .name {
                 font-size: 9px;
@@ -1120,10 +1126,13 @@
                 padding: 4px 8px;
             }
             .single-product-view .card-image {
-                height: 130px;
+                height: 160px;
             }
             .single-product-view .card-image-wrapper {
-                min-height: 150px;
+                min-height: 180px;
+            }
+            .single-product-view .card h3 {
+                font-size: 1rem;
             }
         }
     </style>
@@ -1276,21 +1285,17 @@
             { id: 2008, name: "الامداد الشهري", desc: "كل يوم تستلم جواهر ونقاط ترقية تصنيف", image: "https://i.ibb.co/N2zTXFfk/Monthly-supply-jpg.jpg", prices: { USD: 10, EUR: 8, TRY: 380, ILS: 35, JOD: 6.5, SAR: 35, QAR: 35, AED: 35, IQD: 16200 } }
         ];
 
-        // المنتجات - تم إزالة منتجات توريس (id: 34, 35) وإضافة منتجات BUFFON
+        // المنتجات
         const products = [
             { id: 2, name: "نمط وجه لوجه", name_en: "Face to Face", name_tr: "Yüz Yüze", prices: { USD: 20, EUR: 25, TRY: 850, ILS: 105, JOD: 19.5, SAR: 100, QAR: 100, AED: 100, IQD: 42500 }, category: "خدمات", image: "https://i.ibb.co/G4XpsNNj/Face-to-face-jpg.jpg", type: "normal" },
             { id: 3, name: "نمط هجوم تنافسي", name_en: "Competitive Attack", name_tr: "Rekabetçi Atak", prices: { USD: 20, EUR: 25, TRY: 850, ILS: 105, JOD: 19.5, SAR: 100, QAR: 100, AED: 100, IQD: 42500 }, category: "خدمات", image: "https://i.ibb.co/zWRRG3XF/Competitive-attack-jpg.jpg", type: "normal" },
             { id: 4, name: "مدير فني", name_en: "Technical Director", name_tr: "Teknik Direktör", prices: { USD: 20, EUR: 25, TRY: 850, ILS: 105, JOD: 19.5, SAR: 100, QAR: 100, AED: 100, IQD: 42500 }, category: "خدمات", image: "https://i.ibb.co/rfN8WHhB/Technical-Director-jpg.jpg", type: "normal" },
-            // تم إزالة منتجات توريس (id: 34, 35)
-            // إضافة منتجات BUFFON
             { id: 40, name: "تصريح نجم BUFFON", name_en: "Star Pass BUFFON", name_tr: "Yıldız Kartı BUFFON", prices: { USD: 12, EUR: 10, TRY: 490, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000 }, category: "عروض خاصة", image: "https://i.ibb.co/hJPrTHtM/BUFFON-STARPASS-jpg.jpg", type: "buffon" },
             { id: 41, name: "تصريح نجم مميز BUFFON", name_en: "Premium Star Pass BUFFON", name_tr: "Premium Yıldız Kartı BUFFON", prices: { USD: 24, EUR: 20, TRY: 975, ILS: 84, JOD: 16, SAR: 80, QAR: 80, AED: 80, IQD: 34000 }, category: "عروض خاصة", image: "https://i.ibb.co/hJPrTHtM/BUFFON-STARPASS-jpg.jpg", type: "buffon-premium" },
             { id: 7, name: "1700 ترقية تصنيف", name_en: "1700 OVR Upgrade", name_tr: "1700 Reyting Yükseltme", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000 }, category: "عروض خاصة", image: "https://i.ibb.co/Kx20DxgQ/upgrade1700-jpg.jpg", type: "upgrade" },
             { id: 20, name: "40 قسيمة سحب", name_en: "40 Withdrawal Vouchers", name_tr: "40 Çekiliş Bileti", prices: { USD: 30, EUR: 25, TRY: 1187.5, ILS: 105, JOD: 19.5, SAR: 100, QAR: 100, AED: 100, IQD: 42500 }, category: "عروض خاصة", image: "https://i.ibb.co/1fJz0q5R/Withdrawal-voucher-jpg.jpg", type: "voucher" },
-            // منتجات Pogba
             { id: 36, name: "تصريح نجم الصيف Pogba", name_en: "Summer Star Pass Pogba", name_tr: "Yaz Yıldız Kartı Pogba", prices: { USD: 6, EUR: 5, TRY: 237.5, ILS: 21, JOD: 3.9, SAR: 20, QAR: 20, AED: 20, IQD: 8500 }, category: "عروض خاصة", image: "https://i.ibb.co/WNvzSdpF/Pogba-jpg.jpg", type: "pogba", desc: "تصريح مصغر" },
             { id: 37, name: "تصريح الصيف مميز Pogba", name_en: "Premium Summer Pass Pogba", name_tr: "Premium Yaz Kartı Pogba", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000 }, category: "عروض خاصة", image: "https://i.ibb.co/WNvzSdpF/Pogba-jpg.jpg", type: "pogba-premium", desc: "تصريح مميز مع مكافآت إضافية" },
-            // منتجات FC Points
             { id: 8, name: "1000 FC X2", name_en: "1000 FC Points X2", name_tr: "1000 FC Puan X2", prices: { USD: 6, EUR: 5, TRY: 237.5, ILS: 21, JOD: 3.9, SAR: 20, QAR: 20, AED: 20, IQD: 8500 }, category: "FCX2", image: "https://i.ibb.co/zVDnqBfG/fc-points1000-jpg.jpg", type: "fc" },
             { id: 9, name: "2000 FC X2", name_en: "2000 FC Points X2", name_tr: "2000 FC Puan X2", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 7.8, SAR: 40, QAR: 40, AED: 40, IQD: 17000 }, category: "FCX2", image: "https://i.ibb.co/3YG9hBdz/fc-points2000-jpg.jpg", type: "fc" },
             { id: 10, name: "4000 FC X2", name_en: "4000 FC Points X2", name_tr: "4000 FC Puan X2", prices: { USD: 24, EUR: 20, TRY: 950, ILS: 84, JOD: 15.6, SAR: 80, QAR: 80, AED: 80, IQD: 34000 }, category: "FCX2", image: "https://i.ibb.co/Ymvt8r9/fc-points4000-jpg.jpg", type: "fc" },
@@ -1481,7 +1486,7 @@
                 <div class="card ${cardClass}" data-product-id="${product.id}">
                     <div class="badge">🎯 المنتج المطلوب</div>
                     <div class="card-image-wrapper">
-                        <img src="${product.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/200x180?text=Image+Not+Found'" alt="${product.name}">
+                        <img src="${product.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x280?text=Image+Not+Found'" alt="${product.name}">
                     </div>
                     <h3>${product.name}</h3>
                     <div class="offer-desc">✨ ${descText}</div>
@@ -1655,7 +1660,7 @@
                     let priceDisp = formatPrice(price);
                     let displayName = getProductName(p);
                     let descHtml = p.desc ? `<div class="offer-desc">✨ ${p.desc}</div>` : '';
-                    return `<div class="card ${cardClass}" data-product-id="${p.id}"><div class="badge">${badgeText}</div><div class="card-image-wrapper"><img src="${p.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/200x180?text=Image+Not+Found'" alt="${displayName}"></div><h3>${displayName}</h3>${descHtml}<div class="price">${sym} ${priceDisp}</div><button class="btn-order" onclick='quickOrder(${JSON.stringify(p)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareProduct(${JSON.stringify(p)})'>📢 مشاركة</button></div>`;
+                    return `<div class="card ${cardClass}" data-product-id="${p.id}"><div class="badge">${badgeText}</div><div class="card-image-wrapper"><img src="${p.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x280?text=Image+Not+Found'" alt="${displayName}"></div><h3>${displayName}</h3>${descHtml}<div class="price">${sym} ${priceDisp}</div><button class="btn-order" onclick='quickOrder(${JSON.stringify(p)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareProduct(${JSON.stringify(p)})'>📢 مشاركة</button></div>`;
                 }).join('');
             }
             let bsGrid = document.getElementById('bestsellersGrid');
@@ -1665,7 +1670,7 @@
                     let sym = symbols[currentCurrency];
                     let priceDisp = formatPrice(price);
                     let cardClass = b.type === 'bestseller-new' ? 'bestseller-new-card' : 'bestseller-card';
-                    return `<div class="card ${cardClass}" data-product-id="${b.id}"><div class="badge">🏆 الأكثر مبيعاً</div><div class="card-image-wrapper"><img src="${b.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/200x180?text=Image+Not+Found'" alt="${b.name}"></div><h3>${b.name}</h3><div class="offer-desc">✨ ${b.desc}</div><div class="price-tag">${sym} ${priceDisp}</div><button class="btn-order" onclick='orderBestseller(${JSON.stringify(b)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareBestseller(${JSON.stringify(b)})'>📢 مشاركة العرض</button></div>`;
+                    return `<div class="card ${cardClass}" data-product-id="${b.id}"><div class="badge">🏆 الأكثر مبيعاً</div><div class="card-image-wrapper"><img src="${b.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x280?text=Image+Not+Found'" alt="${b.name}"></div><h3>${b.name}</h3><div class="offer-desc">✨ ${b.desc}</div><div class="price-tag">${sym} ${priceDisp}</div><button class="btn-order" onclick='orderBestseller(${JSON.stringify(b)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareBestseller(${JSON.stringify(b)})'>📢 مشاركة العرض</button></div>`;
                 }).join('');
             }
             renderNewOffers('firstNewOffersGrid');
@@ -1681,7 +1686,7 @@
                     let sym = symbols[currentCurrency];
                     let priceDisp = formatPrice(price);
                     let cardClass = offer.id === 2008 ? 'monthly-card' : 'special-offer-card';
-                    return `<div class="card ${cardClass}" data-product-id="${offer.id}"><div class="badge">🎁 عرض لفترة محدودة</div><div class="card-image-wrapper"><img src="${offer.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/200x180?text=Image+Not+Found'" alt="${offer.name}"></div><h3>${offer.name}</h3><div class="offer-desc">✨ ${offer.desc}</div><div class="price-tag">${sym} ${priceDisp}</div><button class="btn-order" onclick='quickOrderSpecial(${JSON.stringify(offer)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareSpecial(${JSON.stringify(offer)})'>📢 مشاركة العرض</button></div>`;
+                    return `<div class="card ${cardClass}" data-product-id="${offer.id}"><div class="badge">🎁 عرض لفترة محدودة</div><div class="card-image-wrapper"><img src="${offer.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x280?text=Image+Not+Found'" alt="${offer.name}"></div><h3>${offer.name}</h3><div class="offer-desc">✨ ${offer.desc}</div><div class="price-tag">${sym} ${priceDisp}</div><button class="btn-order" onclick='quickOrderSpecial(${JSON.stringify(offer)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareSpecial(${JSON.stringify(offer)})'>📢 مشاركة العرض</button></div>`;
                 }).join('');
             }
         }
@@ -1713,7 +1718,7 @@
                     let priceDisp = formatPrice(price);
                     priceDisplay = `<div class="price-tag">${sym} ${priceDisp}</div>`;
                 }
-                return `<div class="card ${cardClass}" data-product-id="${offer.id}"><div class="badge">🎫 عرض جديد</div><div class="card-image-wrapper"><img src="${offer.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/200x180?text=Image+Not+Found'" alt="${offer.name}"></div><h3>${offer.name}</h3><div class="offer-desc">✨ ${offer.desc}</div>${priceDisplay}<button class="btn-order" onclick='quickOrderNew(${JSON.stringify(offer)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareNewOffer(${JSON.stringify(offer)})'>📢 مشاركة العرض</button></div>`;
+                return `<div class="card ${cardClass}" data-product-id="${offer.id}"><div class="badge">🎫 عرض جديد</div><div class="card-image-wrapper"><img src="${offer.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x280?text=Image+Not+Found'" alt="${offer.name}"></div><h3>${offer.name}</h3><div class="offer-desc">✨ ${offer.desc}</div>${priceDisplay}<button class="btn-order" onclick='quickOrderNew(${JSON.stringify(offer)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareNewOffer(${JSON.stringify(offer)})'>📢 مشاركة العرض</button></div>`;
             }).join('');
         }
 
@@ -1736,7 +1741,7 @@
                 
                 return `
                     <div class="notif-ticker-item" data-product-id="${item.id}">
-                        <img src="${item.image}" loading="lazy" onerror="this.src='https://via.placeholder.com/50x50?text=No+Image'" alt="${item.name}">
+                        <img src="${item.image}" loading="lazy" onerror="this.src='https://via.placeholder.com/70x70?text=No+Image'" alt="${item.name}">
                         <div class="notif-ticker-item-info">
                             <div class="name">${item.name}</div>
                             <div class="price">${priceDisplay}</div>
