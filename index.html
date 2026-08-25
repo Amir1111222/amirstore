@@ -1237,7 +1237,7 @@
     </div>
 
     <div id="section-tots" class="section">
-        <div class="section-title">🌟 عروض خاصة</div>
+        <div class="section-title">🌟 عروض خاصة - بطاقات النجوم وترقيات التصنيف</div>
         <div class="products-grid" id="productsGrid3"></div>
     </div>
 
@@ -1340,15 +1340,18 @@
             }
         ];
 
-        // ===== المنتجات (تم إضافة منتجات MAGUIRE) =====
+        // ===== المنتجات (تم تعديل أسعار FC X2 و FC العادية) =====
         const products = [
             { id: 2, name: "نمط وجه لوجه", name_en: "Face to Face", name_tr: "Yüz Yüze", prices: { USD: 20, EUR: 25, TRY: 850, ILS: 105, JOD: 19.5, SAR: 100, QAR: 100, AED: 100, IQD: 42500, SYP: 3200, USDT: 20, ITUNES: 25 }, category: "خدمات", image: "https://i.ibb.co/G4XpsNNj/Face-to-face-jpg.jpg", type: "normal" },
             { id: 3, name: "نمط هجوم تنافسي", name_en: "Competitive Attack", name_tr: "Rekabetçi Atak", prices: { USD: 20, EUR: 25, TRY: 850, ILS: 105, JOD: 19.5, SAR: 100, QAR: 100, AED: 100, IQD: 42500, SYP: 3200, USDT: 20, ITUNES: 25 }, category: "خدمات", image: "https://i.ibb.co/zWRRG3XF/Competitive-attack-jpg.jpg", type: "normal" },
             { id: 4, name: "مدير فني", name_en: "Technical Director", name_tr: "Teknik Direktör", prices: { USD: 20, EUR: 25, TRY: 850, ILS: 105, JOD: 19.5, SAR: 100, QAR: 100, AED: 100, IQD: 42500, SYP: 3200, USDT: 20, ITUNES: 25 }, category: "خدمات", image: "https://i.ibb.co/rfN8WHhB/Technical-Director-jpg.jpg", type: "normal" },
-            { id: 40, name: "تصريح نجم BUFFON", name_en: "Star Pass BUFFON", name_tr: "Yıldız Kartı BUFFON", prices: { USD: 12, EUR: 10, TRY: 490, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1920, USDT: 12, ITUNES: 10 }, category: "عروض خاصة", image: "https://i.ibb.co/hJPrTHtM/BUFFON-STARPASS-jpg.jpg", type: "buffon" },
-            { id: 41, name: "تصريح نجم مميز BUFFON", name_en: "Premium Star Pass BUFFON", name_tr: "Premium Yıldız Kartı BUFFON", prices: { USD: 24, EUR: 20, TRY: 975, ILS: 84, JOD: 16, SAR: 80, QAR: 80, AED: 80, IQD: 34000, SYP: 3840, USDT: 24, ITUNES: 20 }, category: "عروض خاصة", image: "https://i.ibb.co/hJPrTHtM/BUFFON-STARPASS-jpg.jpg", type: "buffon-premium" },
-            { id: 7, name: "1700 ترقية تصنيف", name_en: "1700 OVR Upgrade", name_tr: "1700 Reyting Yükseltme", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1920, USDT: 12, ITUNES: 10 }, category: "عروض خاصة", image: "https://i.ibb.co/Kx20DxgQ/upgrade1700-jpg.jpg", type: "upgrade" },
-            // ===== منتجات MAGUIRE الجديدة =====
+            
+            { id: 40, name: "تصريح نجم BUFFON", name_en: "Star Pass BUFFON", name_tr: "Yıldız Kartı BUFFON", prices: { USD: 12, EUR: 10, TRY: 490, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 }, category: "عروض خاصة", image: "https://i.ibb.co/hJPrTHtM/BUFFON-STARPASS-jpg.jpg", type: "buffon" },
+            
+            { id: 41, name: "تصريح نجم مميز BUFFON", name_en: "Premium Star Pass BUFFON", name_tr: "Premium Yıldız Kartı BUFFON", prices: { USD: 24, EUR: 20, TRY: 975, ILS: 84, JOD: 16, SAR: 80, QAR: 80, AED: 80, IQD: 34000, SYP: 3200, USDT: 24, ITUNES: 25 }, category: "عروض خاصة", image: "https://i.ibb.co/hJPrTHtM/BUFFON-STARPASS-jpg.jpg", type: "buffon-premium" },
+            
+            { id: 7, name: "1700 ترقية تصنيف", name_en: "1700 OVR Upgrade", name_tr: "1700 Reyting Yükseltme", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 }, category: "عروض خاصة", image: "https://i.ibb.co/Kx20DxgQ/upgrade1700-jpg.jpg", type: "upgrade" },
+            
             { 
                 id: 42, 
                 name: "تصريح نجم مصغر MAGUIRE", 
@@ -1371,16 +1374,20 @@
                 type: "maguire-premium",
                 desc: "تصريح نجم مصغر مميز للاعب MAGUIRE مع مكافآت إضافية"
             },
-            { id: 8, name: "1000 FC X2", name_en: "1000 FC Points X2", name_tr: "1000 FC Puan X2", prices: { USD: 6, EUR: 5, TRY: 237.5, ILS: 21, JOD: 3.9, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 960, USDT: 6, ITUNES: 5 }, category: "FCX2", image: "https://i.ibb.co/zVDnqBfG/fc-points1000-jpg.jpg", type: "fc" },
-            { id: 9, name: "2000 FC X2", name_en: "2000 FC Points X2", name_tr: "2000 FC Puan X2", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 7.8, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1920, USDT: 12, ITUNES: 10 }, category: "FCX2", image: "https://i.ibb.co/3YG9hBdz/fc-points2000-jpg.jpg", type: "fc" },
-            { id: 10, name: "4000 FC X2", name_en: "4000 FC Points X2", name_tr: "4000 FC Puan X2", prices: { USD: 24, EUR: 20, TRY: 950, ILS: 84, JOD: 15.6, SAR: 80, QAR: 80, AED: 80, IQD: 34000, SYP: 3840, USDT: 24, ITUNES: 20 }, category: "FCX2", image: "https://i.ibb.co/Ymvt8r9/fc-points4000-jpg.jpg", type: "fc" },
-            { id: 11, name: "10000 FC X2", name_en: "10000 FC Points X2", name_tr: "10000 FC Puan X2", prices: { USD: 50, EUR: 50, TRY: 2375, ILS: 210, JOD: 39, SAR: 200, QAR: 200, AED: 200, IQD: 85000, SYP: 8000, USDT: 50, ITUNES: 50 }, category: "FCX2", image: "https://i.ibb.co/QFqh7FWB/fc-points10000-jpg.jpg", type: "fc" },
-            { id: 12, name: "20000 FC X2", name_en: "20000 FC Points X2", name_tr: "20000 FC Puan X2", prices: { USD: 100, EUR: 100, TRY: 4750, ILS: 420, JOD: 78, SAR: 400, QAR: 400, AED: 400, IQD: 170000, SYP: 16000, USDT: 100, ITUNES: 100 }, category: "FCX2", image: "https://i.ibb.co/VWG3p69b/fc-points20000-jpg.jpg", type: "fc" },
-            { id: 15, name: "750 FC", name_en: "750 FC Points", name_tr: "750 FC Puan", prices: { USD: 6, EUR: 5, TRY: 237.5, ILS: 21, JOD: 3.9, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 960, USDT: 6, ITUNES: 5 }, category: "FC", image: "https://i.ibb.co/FLff4WzY/fc-points750-jpg.jpg", type: "fc-normal" },
-            { id: 16, name: "1500 FC", name_en: "1500 FC Points", name_tr: "1500 FC Puan", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 7.8, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1920, USDT: 12, ITUNES: 10 }, category: "FC", image: "https://i.ibb.co/7xFnXqdt/fc-points1500-jpg.jpg", type: "fc-normal" },
-            { id: 17, name: "3000 FC", name_en: "3000 FC Points", name_tr: "3000 FC Puan", prices: { USD: 24, EUR: 20, TRY: 950, ILS: 84, JOD: 15.6, SAR: 80, QAR: 80, AED: 80, IQD: 34000, SYP: 3840, USDT: 24, ITUNES: 20 }, category: "FC", image: "https://i.ibb.co/n207hrx/fc-points3000-jpg.jpg", type: "fc-normal" },
-            { id: 18, name: "7500 FC", name_en: "7500 FC Points", name_tr: "7500 FC Puan", prices: { USD: 50, EUR: 50, TRY: 2375, ILS: 210, JOD: 39, SAR: 200, QAR: 200, AED: 200, IQD: 85000, SYP: 8000, USDT: 50, ITUNES: 50 }, category: "FC", image: "https://i.ibb.co/DPjhswn4/fc-points7500-jpg.jpg", type: "fc-normal" },
-            { id: 19, name: "15000 FC", name_en: "15000 FC Points", name_tr: "15000 FC Puan", prices: { USD: 100, EUR: 100, TRY: 4750, ILS: 420, JOD: 78, SAR: 400, QAR: 400, AED: 400, IQD: 170000, SYP: 16000, USDT: 100, ITUNES: 100 }, category: "FC", image: "https://i.ibb.co/9k7YZzMv/fc-points15000-jpg.jpg", type: "fc-normal" }
+            
+            // ===== قسم FC POINTS X2 (عروض مضاعفة) - تم تعديل الأسعار =====
+            { id: 8, name: "1000 FC X2", name_en: "1000 FC Points X2", name_tr: "1000 FC Puan X2", prices: { USD: 6, EUR: 5, TRY: 245.5, ILS: 21, JOD: 4.38, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 }, category: "FCX2", image: "https://i.ibb.co/zVDnqBfG/fc-points1000-jpg.jpg", type: "fc" },
+            { id: 9, name: "2000 FC X2", name_en: "2000 FC Points X2", name_tr: "2000 FC Puan X2", prices: { USD: 12, EUR: 10, TRY: 491, ILS: 42, JOD: 8.75, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 }, category: "FCX2", image: "https://i.ibb.co/3YG9hBdz/fc-points2000-jpg.jpg", type: "fc" },
+            { id: 10, name: "4000 FC X2", name_en: "4000 FC Points X2", name_tr: "4000 FC Puan X2", prices: { USD: 24, EUR: 20, TRY: 982, ILS: 84, JOD: 17.5, SAR: 80, QAR: 80, AED: 80, IQD: 34000, SYP: 3200, USDT: 24, ITUNES: 25 }, category: "FCX2", image: "https://i.ibb.co/Ymvt8r9/fc-points4000-jpg.jpg", type: "fc" },
+            { id: 11, name: "10000 FC X2", name_en: "10000 FC Points X2", name_tr: "10000 FC Puan X2", prices: { USD: 50, EUR: 50, TRY: 2455, ILS: 210, JOD: 43.75, SAR: 200, QAR: 200, AED: 200, IQD: 85000, SYP: 8000, USDT: 60, ITUNES: 62.5 }, category: "FCX2", image: "https://i.ibb.co/QFqh7FWB/fc-points10000-jpg.jpg", type: "fc" },
+            { id: 12, name: "20000 FC X2", name_en: "20000 FC Points X2", name_tr: "20000 FC Puan X2", prices: { USD: 100, EUR: 100, TRY: 4910, ILS: 420, JOD: 87.5, SAR: 400, QAR: 400, AED: 400, IQD: 170000, SYP: 16000, USDT: 120, ITUNES: 125 }, category: "FCX2", image: "https://i.ibb.co/VWG3p69b/fc-points20000-jpg.jpg", type: "fc" },
+            
+            // ===== قسم FC POINTS (العادية) - تم تعديل الأسعار =====
+            { id: 15, name: "750 FC", name_en: "750 FC Points", name_tr: "750 FC Puan", prices: { USD: 6, EUR: 5, TRY: 245.5, ILS: 21, JOD: 4.38, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 }, category: "FC", image: "https://i.ibb.co/FLff4WzY/fc-points750-jpg.jpg", type: "fc-normal" },
+            { id: 16, name: "1500 FC", name_en: "1500 FC Points", name_tr: "1500 FC Puan", prices: { USD: 12, EUR: 10, TRY: 491, ILS: 42, JOD: 8.75, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 }, category: "FC", image: "https://i.ibb.co/7xFnXqdt/fc-points1500-jpg.jpg", type: "fc-normal" },
+            { id: 17, name: "3000 FC", name_en: "3000 FC Points", name_tr: "3000 FC Puan", prices: { USD: 24, EUR: 20, TRY: 982, ILS: 84, JOD: 17.5, SAR: 80, QAR: 80, AED: 80, IQD: 34000, SYP: 3200, USDT: 24, ITUNES: 25 }, category: "FC", image: "https://i.ibb.co/n207hrx/fc-points3000-jpg.jpg", type: "fc-normal" },
+            { id: 18, name: "7500 FC", name_en: "7500 FC Points", name_tr: "7500 FC Puan", prices: { USD: 50, EUR: 50, TRY: 2455, ILS: 210, JOD: 43.75, SAR: 200, QAR: 200, AED: 200, IQD: 85000, SYP: 8000, USDT: 60, ITUNES: 62.5 }, category: "FC", image: "https://i.ibb.co/DPjhswn4/fc-points7500-jpg.jpg", type: "fc-normal" },
+            { id: 19, name: "15000 FC", name_en: "15000 FC Points", name_tr: "15000 FC Puan", prices: { USD: 100, EUR: 100, TRY: 4910, ILS: 420, JOD: 87.5, SAR: 400, QAR: 400, AED: 400, IQD: 170000, SYP: 16000, USDT: 120, ITUNES: 125 }, category: "FC", image: "https://i.ibb.co/9k7YZzMv/fc-points15000-jpg.jpg", type: "fc-normal" }
         ];
 
         // ===== عروض جديدة =====
@@ -1427,7 +1434,7 @@
                 desc: "10 قسيمة سحب +300 ترقية تصنيف +لاعب 123",
                 image: "https://i.ibb.co/pvYGdhZH/PETIT-jpg.jpg",
                 type: "bestseller-new",
-                prices: { USD: 6, EUR: 5, TRY: 245, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 960, USDT: 6, ITUNES: 6.25 }
+                prices: { USD: 6, EUR: 5, TRY: 245, ILS: 21, JOD: 4.38, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 }
             },
             {
                 id: 102,
@@ -1435,7 +1442,7 @@
                 desc: "10 قسيمة سحب +300 ترقية تصنيف +لاعب 123",
                 image: "https://i.ibb.co/gp20F8n/KROOS-jpg.jpg",
                 type: "bestseller-new",
-                prices: { USD: 6, EUR: 5, TRY: 245, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 960, USDT: 6, ITUNES: 6.25 }
+                prices: { USD: 6, EUR: 5, TRY: 245, ILS: 21, JOD: 4.38, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 }
             },
             {
                 id: 103,
@@ -1443,7 +1450,7 @@
                 desc: "10 قسيمة سحب +300 ترقية تصنيف +لاعب 123",
                 image: "https://i.ibb.co/ZRshDJb2/TEVEZ-jpg.jpg",
                 type: "bestseller-new",
-                prices: { USD: 6, EUR: 5, TRY: 245, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 960, USDT: 6, ITUNES: 6.25 }
+                prices: { USD: 6, EUR: 5, TRY: 245, ILS: 21, JOD: 4.38, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 }
             }
         ];
 
