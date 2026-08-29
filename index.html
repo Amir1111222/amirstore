@@ -83,6 +83,14 @@
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
         }
+        .toggle-ticker-btn {
+            background: rgba(249, 199, 79, 0.15);
+            border: 1px solid rgba(249, 199, 79, 0.3) !important;
+            color: #f9c74f;
+        }
+        .toggle-ticker-btn:hover {
+            background: rgba(249, 199, 79, 0.25);
+        }
         
         .currency-nav-bar {
             background: linear-gradient(135deg, #1e3a3a, #0d2a2a);
@@ -129,6 +137,151 @@
             background: #f9c74f;
             color: #0a1f1e;
         }
+        
+        .mobile-nav-select {
+            display: none;
+            width: 100%;
+            background: #2c5a57;
+            color: #f9c74f;
+            border: 1px solid #f9c74f;
+            border-radius: 30px;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        /* ===== شريط الإشعارات المنسدل ===== */
+        .notif-ticker {
+            background: linear-gradient(135deg, #0d2a2a, #1a3d3d);
+            border-bottom: 2px solid #f9c74f;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+            max-height: 0;
+            padding: 0 12px;
+        }
+        .notif-ticker.open {
+            max-height: 600px;
+            padding: 12px 12px;
+        }
+        .notif-ticker-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 6px 0;
+            user-select: none;
+        }
+        .notif-ticker-header:hover {
+            opacity: 0.8;
+        }
+        .notif-ticker-header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .notif-ticker-icon {
+            font-size: 18px;
+        }
+        .notif-ticker-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #f9c74f;
+        }
+        .notif-ticker-badge {
+            background: #f94144;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 10px;
+            border-radius: 20px;
+        }
+        .notif-ticker-toggle {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(249,199,79,0.2);
+            color: #f9c74f;
+            padding: 4px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+        .notif-ticker-toggle:hover {
+            background: rgba(249,199,79,0.1);
+        }
+        .notif-ticker-body {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(249,199,79,0.1);
+        }
+        .notif-ticker-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+        .notif-ticker-item:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(249,199,79,0.2);
+        }
+        .notif-ticker-item img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: rgba(0,0,0,0.3);
+            padding: 4px;
+            flex-shrink: 0;
+        }
+        .notif-ticker-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .notif-ticker-item-info .name {
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .notif-ticker-item-info .price {
+            font-size: 13px;
+            color: #f9c74f;
+            font-weight: bold;
+        }
+        .notif-ticker-item-info .desc {
+            font-size: 10px;
+            color: #aaa;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .notif-ticker-item .btn-buy {
+            background: #f9844a;
+            border: none;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+        .notif-ticker-item .btn-buy:hover {
+            background: #f96b2a;
+            transform: scale(0.95);
+        }
+        /* ===== نهاية شريط الإشعارات المنسدل ===== */
 
         .header {
             text-align: center;
@@ -140,8 +293,24 @@
             font-size: 1.6em;
             color: #f9c74f;
         }
+        .header p {
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
 
-        .section-first, .section {
+        .section-first {
+            margin: 8px 10px 20px 10px;
+            scroll-margin-top: 130px;
+        }
+        .section-first .section-title {
+            font-size: 1.2em;
+            border-right: 4px solid #00d2ff;
+            padding-right: 12px;
+            margin-bottom: 15px;
+            color: #00d2ff;
+        }
+
+        .section {
             margin: 20px 10px;
             scroll-margin-top: 130px;
         }
@@ -150,10 +319,9 @@
             border-right: 4px solid #f9c74f;
             padding-right: 12px;
             margin-bottom: 15px;
-            color: #f9c74f;
         }
-
-        /* ===== متجاوب مع جميع الشاشات ===== */
+        
+        /* ===== تعديل لعرض المنتجات بشكل أفقي ===== */
         .products-grid {
             display: flex;
             flex-wrap: nowrap;
@@ -165,6 +333,10 @@
         }
         .products-grid::-webkit-scrollbar {
             height: 6px;
+        }
+        .products-grid::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
         }
         .products-grid::-webkit-scrollbar-thumb {
             background: #f9c74f;
@@ -182,11 +354,11 @@
             position: relative;
             display: flex;
             flex-direction: column;
-            width: 300px;
             min-width: 280px;
-            max-width: 100%;
+            max-width: 320px;
             flex: 0 0 auto;
             scroll-snap-align: start;
+            height: auto;
         }
         .card:hover {
             transform: translateY(-4px);
@@ -194,77 +366,303 @@
             border-color: rgba(249,199,79,0.7);
         }
         
-        /* تنسيق متجاوب للصور */
         .card-image-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
-            height: 180px;
+            min-height: 180px;
             background: rgba(0, 0, 0, 0.25);
             border-radius: 16px;
             margin: 6px 0 12px;
-            padding: 8px;
-            overflow: hidden;
+            padding: 10px;
         }
         .card-image {
             max-width: 100%;
-            max-height: 100%;
             width: auto;
-            height: auto;
+            height: 160px;
             object-fit: contain;
-            border-radius: 12px;
+            border-radius: 14px;
             border: 2px solid rgba(249, 199, 79, 0.4);
             background: rgba(15, 35, 30, 0.5);
-            transition: transform 0.3s ease;
+            padding: 8px;
+            transition: transform 0.2s, border-color 0.2s;
+            display: block;
         }
         .card:hover .card-image {
-            transform: scale(1.05);
+            transform: scale(1.02);
             border-color: #f9c74f;
         }
-        
-        .card.special-stars-card { 
-            border-top: 4px solid #ffaa44; 
-            background: linear-gradient(145deg, rgba(255,170,68,0.15), rgba(15,45,40,0.95)); 
+
+        /* ===== Style for single product view ===== */
+        .single-product-view .products-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow-x: visible;
+            padding: 0;
         }
-        .card.special-stars-card::before { 
-            content: "🌟 معزز خاص"; 
+        .single-product-view .card {
+            min-width: unset;
+            max-width: 100%;
+            transform: scale(1.05);
+            border: 3px solid #f9c74f;
+            box-shadow: 0 0 50px rgba(249, 199, 79, 0.3);
+        }
+        .single-product-view .card-image {
+            height: 280px;
+        }
+        .single-product-view .card-image-wrapper {
+            min-height: 300px;
+        }
+        .single-product-view .card h3 {
+            font-size: 1.6rem;
+        }
+        .single-product-view .price-tag, .single-product-view .price {
+            font-size: 30px;
+            padding: 10px 28px;
+        }
+        .single-product-view .offer-desc {
+            font-size: 18px;
+            padding: 14px 18px;
+        }
+        .single-product-view .btn-order {
+            font-size: 20px;
+            padding: 16px 10px;
+        }
+        .single-product-view .btn-share {
+            font-size: 18px;
+            padding: 14px 10px;
+        }
+        .back-to-store-btn {
+            display: none;
+            background: #2c5a57;
+            color: #f9c74f;
+            border: 2px solid #f9c74f;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px auto 20px;
+            transition: 0.3s;
+            width: fit-content;
+        }
+        .back-to-store-btn:hover {
+            background: #f9c74f;
+            color: #0a1f1e;
+        }
+        .back-to-store-btn.show {
+            display: block;
+        }
+        .single-product-view .back-to-store-btn {
+            display: block;
+        }
+        
+        .card.fc-points-card { border-top: 4px solid #f94144; }
+        .card.fc-points-card::before { content: "⚡ X2"; position: absolute; top: -12px; right: 16px; background: #f94144; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; }
+        .card.fc-normal-card { border-top: 4px solid #4ecdc4; }
+        .card.fc-normal-card::before { content: "⚽ FC"; position: absolute; top: -12px; right: 16px; background: #4ecdc4; color: #0a1f1e; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; }
+        .card.upgrade-card { border-top: 4px solid #20c997; }
+        .card.upgrade-card::before { content: "⬆️ ترقية"; position: absolute; top: -12px; right: 16px; background: #20c997; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; }
+        .card.luxury-card { border-top: 4px solid #ff66aa; }
+        .card.luxury-card::before { content: "🎟️ قسيمة 10"; position: absolute; top: -12px; right: 16px; background: #ff66aa; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; }
+        .card.voucher-card { border-top: 4px solid #f39c12; }
+        .card.voucher-card::before { content: "🎫 40 قسيمة"; position: absolute; top: -12px; right: 16px; background: #f39c12; color: #0a1f1e; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; }
+        .card.torres-card { border-top: 4px solid #ff6b35; background: linear-gradient(145deg, rgba(255,107,53,0.15), rgba(15,45,40,0.95)); }
+        .card.torres-card::before { content: "⚡ F.TORRES"; position: absolute; top: -12px; right: 16px; background: #ff6b35; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.premium-card { border-top: 4px solid #e84393; background: linear-gradient(145deg, rgba(232,67,147,0.15), rgba(15,45,40,0.95)); }
+        .card.premium-card::before { content: "🔥 مميز"; position: absolute; top: -12px; right: 16px; background: #e84393; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.monthly-card { border-top: 4px solid #00d2ff; background: linear-gradient(145deg, rgba(0,210,255,0.12), rgba(15,45,40,0.95)); }
+        .card.monthly-card::before { content: "📅 شهري"; position: absolute; top: -12px; right: 16px; background: #00d2ff; color: #0a1f1e; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.bestseller-card { border-top: 4px solid #ffaa44; background: linear-gradient(145deg, rgba(255,200,100,0.15), rgba(15,45,40,0.95)); box-shadow: 0 0 12px rgba(249,199,79,0.2); }
+        .card.bestseller-card::before { content: "🏆 الأكثر مبيعاً"; position: absolute; top: -12px; right: 16px; background: #f9c74f; color: #0a1f1e; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; }
+        .card.special-offer-card { border-top: 4px solid #ffaa44; background: linear-gradient(145deg, rgba(255,170,68,0.15), rgba(15,45,40,0.95)); box-shadow: 0 0 16px rgba(255,170,68,0.3); }
+        .card.special-offer-card::before { content: "🔥 عرض مميز"; position: absolute; top: -12px; right: 16px; background: #ff8800; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.new-offer-card { border-top: 4px solid #00d2ff; background: linear-gradient(145deg, rgba(0,210,255,0.12), rgba(15,45,40,0.95)); }
+        .card.new-offer-card::before { content: "🎫 عرض جديد"; position: absolute; top: -12px; right: 16px; background: #00d2ff; color: #0a1f1e; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.luxury-raffle-card { border-top: 4px solid #ff66aa; background: linear-gradient(145deg, rgba(255,102,170,0.15), rgba(15,45,40,0.95)); box-shadow: 0 0 20px rgba(255,102,170,0.2); }
+        .card.luxury-raffle-card::before { content: "✨ فاخرة"; position: absolute; top: -12px; right: 16px; background: #ff66aa; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.champions-card { border-top: 4px solid #ffd700; background: linear-gradient(145deg, rgba(255,215,0,0.15), rgba(15,45,40,0.95)); box-shadow: 0 0 20px rgba(255,215,0,0.2); }
+        .card.champions-card::before { content: "🏆 أبطال"; position: absolute; top: -12px; right: 16px; background: #ffd700; color: #0a1f1e; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.pogba-card { border-top: 4px solid #ff6b9d; background: linear-gradient(145deg, rgba(255,107,157,0.15), rgba(15,45,40,0.95)); box-shadow: 0 0 20px rgba(255,107,157,0.2); }
+        .card.pogba-card::before { content: "⭐ Pogba"; position: absolute; top: -12px; right: 16px; background: #ff6b9d; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.pogba-premium-card { border-top: 4px solid #ff2d55; background: linear-gradient(145deg, rgba(255,45,85,0.2), rgba(15,45,40,0.95)); box-shadow: 0 0 25px rgba(255,45,85,0.3); }
+        .card.pogba-premium-card::before { content: "⭐ Pogba مميز"; position: absolute; top: -12px; right: 16px; background: #ff2d55; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.voucher-champion-card { border-top: 4px solid #ffd700; background: linear-gradient(145deg, rgba(255,215,0,0.12), rgba(15,45,40,0.95)); }
+        .card.voucher-champion-card::before { content: "🎫 قسيمة أبطال"; position: absolute; top: -12px; right: 16px; background: #ffd700; color: #0a1f1e; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.bestseller-new-card { border-top: 4px solid #ff6b6b; background: linear-gradient(145deg, rgba(255,107,107,0.15), rgba(15,45,40,0.95)); box-shadow: 0 0 20px rgba(255,107,107,0.2); }
+        .card.bestseller-new-card::before { content: "🏆 الأكثر مبيعاً"; position: absolute; top: -12px; right: 16px; background: #ff6b6b; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.buffon-card { border-top: 4px solid #00b894; background: linear-gradient(145deg, rgba(0,184,148,0.15), rgba(15,45,40,0.95)); }
+        .card.buffon-card::before { content: "🧤 BUFFON"; position: absolute; top: -12px; right: 16px; background: #00b894; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.buffon-premium-card { border-top: 4px solid #00cec9; background: linear-gradient(145deg, rgba(0,206,201,0.2), rgba(15,45,40,0.95)); box-shadow: 0 0 25px rgba(0,206,201,0.3); }
+        .card.buffon-premium-card::before { content: "🧤 BUFFON مميز"; position: absolute; top: -12px; right: 16px; background: #00cec9; color: #0a1f1e; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.maguire-card { border-top: 4px solid #ff6b35; background: linear-gradient(145deg, rgba(255,107,53,0.15), rgba(15,45,40,0.95)); }
+        .card.maguire-card::before { content: "⭐ MAGUIRE"; position: absolute; top: -12px; right: 16px; background: #ff6b35; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        .card.maguire-premium-card { border-top: 4px solid #ff2d55; background: linear-gradient(145deg, rgba(255,45,85,0.2), rgba(15,45,40,0.95)); box-shadow: 0 0 25px rgba(255,45,85,0.3); }
+        .card.maguire-premium-card::before { content: "⭐ MAGUIRE مميز"; position: absolute; top: -12px; right: 16px; background: #ff2d55; color: white; padding: 4px 14px; border-radius: 30px; font-size: 10px; font-weight: bold; z-index: 2; letter-spacing: 0.5px; }
+        /* ===== كلاسات GRIEZMANN ===== */
+        .card.griezmann-card { 
+            border-top: 4px solid #ff6b6b; 
+            background: linear-gradient(145deg, rgba(255,107,107,0.15), rgba(15,45,40,0.95)); 
+            box-shadow: 0 0 20px rgba(255,107,107,0.2); 
+        }
+        .card.griezmann-card::before { 
+            content: "⭐ GRIEZMANN"; 
             position: absolute; 
             top: -12px; 
             right: 16px; 
-            background: #ffaa44; 
+            background: #ff6b6b; 
+            color: white; 
+            padding: 4px 14px; 
+            border-radius: 30px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            z-index: 2; 
+            letter-spacing: 0.5px; 
+        }
+        .card.griezmann-premium-card { 
+            border-top: 4px solid #ff2d55; 
+            background: linear-gradient(145deg, rgba(255,45,85,0.2), rgba(15,45,40,0.95)); 
+            box-shadow: 0 0 25px rgba(255,45,85,0.3); 
+        }
+        .card.griezmann-premium-card::before { 
+            content: "⭐ GRIEZMANN مميز"; 
+            position: absolute; 
+            top: -12px; 
+            right: 16px; 
+            background: #ff2d55; 
+            color: white; 
+            padding: 4px 14px; 
+            border-radius: 30px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            z-index: 2; 
+            letter-spacing: 0.5px; 
+        }
+        /* ===== كلاس معزز يومي ===== */
+        .card.daily-booster-card { 
+            border-top: 4px solid #ffd93d; 
+            background: linear-gradient(145deg, rgba(255,217,61,0.15), rgba(15,45,40,0.95)); 
+            box-shadow: 0 0 25px rgba(255,217,61,0.2); 
+        }
+        .card.daily-booster-card::before { 
+            content: "☀️ معزز يومي"; 
+            position: absolute; 
+            top: -12px; 
+            right: 16px; 
+            background: #ffd93d; 
             color: #0a1f1e; 
             padding: 4px 14px; 
             border-radius: 30px; 
             font-size: 10px; 
             font-weight: bold; 
             z-index: 2; 
+            letter-spacing: 0.5px; 
         }
-
+        /* ===== كلاس لاعب عشوائي ===== */
+        .card.random-player-card { 
+            border-top: 4px solid #a29bfe; 
+            background: linear-gradient(145deg, rgba(162,155,254,0.15), rgba(15,45,40,0.95)); 
+            box-shadow: 0 0 25px rgba(162,155,254,0.2); 
+        }
+        .card.random-player-card::before { 
+            content: "🎲 حظك اليوم"; 
+            position: absolute; 
+            top: -12px; 
+            right: 16px; 
+            background: #a29bfe; 
+            color: white; 
+            padding: 4px 14px; 
+            border-radius: 30px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            z-index: 2; 
+            letter-spacing: 0.5px; 
+        }
+        /* ===== كلاس بيع ساخن ===== */
+        .card.hot-sale-card { 
+            border-top: 4px solid #fd79a8; 
+            background: linear-gradient(145deg, rgba(253,121,168,0.15), rgba(15,45,40,0.95)); 
+            box-shadow: 0 0 25px rgba(253,121,168,0.2); 
+        }
+        .card.hot-sale-card::before { 
+            content: "🔥 عرض ساخن"; 
+            position: absolute; 
+            top: -12px; 
+            right: 16px; 
+            background: #fd79a8; 
+            color: white; 
+            padding: 4px 14px; 
+            border-radius: 30px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            z-index: 2; 
+            letter-spacing: 0.5px; 
+        }
+        
+        .badge {
+            background: #f9c74f;
+            color: #0a1f1e;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 11px;
+            display: inline-block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            align-self: center;
+            width: fit-content;
+        }
         .card h3 {
             color: #f9c74f;
-            margin: 8px 0;
+            margin: 10px 0 8px;
             font-size: 1.1rem;
+            font-weight: bold;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .offer-desc {
-            font-size: 12px;
-            background: rgba(0,0,0,0.4);
-            padding: 6px 10px;
-            border-radius: 20px;
-            color: #ffecb3;
-            margin-bottom: 8px;
-            font-weight: 500;
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 8px 0;
+            color: #90e0ef;
+            background: rgba(0,0,0,0.35);
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 40px;
+            width: fit-content;
+            align-self: center;
         }
         .price-tag {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
-            margin: 6px 0 12px;
+            margin: 8px 0;
             color: #f9c74f;
             background: rgba(0,0,0,0.5);
-            padding: 6px 16px;
+            display: inline-block;
+            padding: 8px 22px;
             border-radius: 40px;
+            width: fit-content;
             align-self: center;
+        }
+        .offer-desc {
+            font-size: 13px;
+            background: rgba(0,0,0,0.5);
+            padding: 8px 12px;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 6px auto;
+            color: #ffecb3;
+            text-align: center;
+            line-height: 1.4;
             width: 100%;
+            font-weight: 500;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .btn-order {
             background: #f9844a;
@@ -275,166 +673,1525 @@
             font-weight: bold;
             font-size: 14px;
             cursor: pointer;
+            margin-bottom: 6px;
+            transition: all 0.2s;
             color: #fff;
+            font-family: inherit;
+        }
+        .btn-order:hover {
+            background: #f96b2a;
+            transform: scale(0.97);
+        }
+        .btn-share {
+            background: #25D366;
+            width: 100%;
+            border: none;
+            padding: 10px 10px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
             transition: 0.2s;
         }
-        .btn-order:hover { 
-            background: #f96b2a; 
+        .btn-share:hover {
+            background: #128C7E;
+            transform: scale(0.97);
         }
-
         footer {
             background: #0d1f1e;
             margin-top: 30px;
-            padding: 20px 12px;
-            text-align: center;
+            padding: 20px 12px 12px;
         }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .social-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #1e3a3a;
+            padding: 5px 12px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 11px;
+            transition: 0.3s;
+        }
+        .social-icon:hover {
+            transform: scale(0.95);
+        }
+        .social-icon.whatsapp { background: #25D366; }
+        .social-icon.instagram { background: linear-gradient(45deg, #f09433, #d62976, #962fbf); }
+        .social-icon.tiktok { background: #010101; border: 1px solid #25F4EE; }
+        
         .copyright {
+            text-align: center;
+            width: 100%;
             margin-top: 10px;
             font-size: 0.75rem;
             color: #666;
         }
+        
+        .order-form {
+            background: rgba(0,0,0,0.5);
+            padding: 20px 16px;
+            border-radius: 24px;
+            margin: 15px 10px;
+            text-align: center;
+            scroll-margin-top: 130px;
+        }
+        .order-form h3 {
+            font-size: 1.1rem;
+        }
+        .order-form input, .order-form textarea {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px 16px;
+            margin: 6px 0;
+            border-radius: 40px;
+            border: none;
+            background: #2c5a57;
+            color: white;
+            font-size: 13px;
+        }
+        .order-form input::placeholder, .order-form textarea::placeholder {
+            color: #8aa8a5;
+        }
+        .order-form button {
+            background: #f9c74f;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: 0.3s;
+        }
+        .order-form button:hover {
+            transform: scale(0.95);
+        }
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #20c997;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 40px;
+            z-index: 1000;
+            display: none;
+            font-weight: bold;
+            font-size: 13px;
+            white-space: nowrap;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+        }
+        .scroll-top {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            background: #f9c74f;
+            color: #0a1f1e;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 22px;
+            font-weight: bold;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .scroll-top:hover {
+            transform: scale(0.9);
+        }
 
-        /* تعديلات الشاشات الصغيرة (الموبايل) */
+        /* ===== Hide all grids except first in single product view ===== */
+        .single-product-view .section:not(.section-first) {
+            display: none !important;
+        }
+        .single-product-view .order-form {
+            display: none !important;
+        }
+        .single-product-view .section-first {
+            margin: 20px 10px;
+        }
+        .single-product-view .section-first .section-title {
+            display: none;
+        }
+        .single-product-view .notif-ticker {
+            display: none !important;
+        }
+        .single-product-view .header {
+            margin-bottom: 10px;
+        }
+        .single-product-view .header h1 {
+            font-size: 1.3em;
+        }
+
         @media (max-width: 768px) {
             .card {
-                width: 260px;
-                min-width: 250px;
-                padding: 12px 10px;
+                min-width: 240px;
+                max-width: 280px;
+                padding: 14px 12px;
+                border-radius: 16px;
             }
             .card-image-wrapper {
-                height: 150px;
+                min-height: 140px;
+                padding: 8px;
+            }
+            .card-image {
+                height: 130px;
             }
             .card h3 {
                 font-size: 1rem;
+                min-height: 42px;
             }
-            .price-tag {
-                font-size: 15px;
+            .price, .price-tag {
+                font-size: 18px;
+                padding: 5px 16px;
+            }
+            .offer-desc {
+                font-size: 11px;
+                padding: 6px 10px;
+                min-height: 34px;
+            }
+            .btn-order {
+                font-size: 12px;
+                padding: 8px 6px;
+            }
+            .btn-share {
+                font-size: 11px;
+                padding: 7px 6px;
+            }
+            .badge {
+                font-size: 9px;
+                padding: 3px 12px;
+            }
+            .card::before {
+                font-size: 8px !important;
+                padding: 3px 10px !important;
+                top: -10px !important;
+                right: 12px !important;
+            }
+            .section-first .section-title, .section-title {
+                font-size: 1.05em;
+                padding-right: 10px;
+            }
+            .header h1 {
+                font-size: 1.3em;
+            }
+            .header p {
+                font-size: 0.75em;
+            }
+            .notif-ticker-body {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .notif-ticker-item img {
+                width: 55px;
+                height: 55px;
+            }
+            .notif-ticker-item-info .name {
+                font-size: 11px;
+            }
+            .notif-ticker-item-info .price {
+                font-size: 11px;
+            }
+            .notif-ticker-item-info .desc {
+                font-size: 9px;
+            }
+            .notif-ticker-item .btn-buy {
+                font-size: 10px;
+                padding: 3px 10px;
+            }
+            .notif-ticker-title {
+                font-size: 13px;
+            }
+            .currency-select {
+                font-size: 0.7em;
+                min-width: 100px;
+                padding: 5px 10px;
+            }
+            .nav-btn {
+                font-size: 10px;
+                padding: 3px 8px;
+            }
+            .lang-switch button {
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+            .top-actions button {
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+            .order-form {
+                padding: 16px 12px;
+                margin: 12px 8px;
+            }
+            .order-form input, .order-form textarea {
+                font-size: 12px;
+                padding: 8px 14px;
+            }
+            .order-form button {
+                font-size: 13px;
+                padding: 8px 24px;
+            }
+            .social-icon {
+                font-size: 10px;
+                padding: 4px 10px;
+            }
+            .notif-ticker.open {
+                max-height: 800px;
+            }
+            .single-product-view .card-image {
+                height: 220px;
+            }
+            .single-product-view .card-image-wrapper {
+                min-height: 240px;
+            }
+            .single-product-view .card h3 {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                min-width: 200px;
+                max-width: 240px;
+                padding: 12px 10px;
+                border-radius: 14px;
+            }
+            .card-image-wrapper {
+                min-height: 120px;
+                padding: 6px;
+            }
+            .card-image {
+                height: 100px;
+            }
+            .card h3 {
+                font-size: 0.9rem;
+                min-height: 36px;
+                margin: 6px 0;
+            }
+            .price, .price-tag {
+                font-size: 16px;
+                padding: 4px 14px;
+            }
+            .offer-desc {
+                font-size: 10px;
+                padding: 5px 8px;
+                min-height: 30px;
+            }
+            .btn-order {
+                font-size: 11px;
+                padding: 7px 4px;
+            }
+            .btn-share {
+                font-size: 10px;
+                padding: 6px 4px;
+            }
+            .badge {
+                font-size: 8px;
+                padding: 2px 10px;
+            }
+            .card::before {
+                font-size: 7px !important;
+                padding: 2px 8px !important;
+                top: -8px !important;
+                right: 10px !important;
+            }
+            .section {
+                margin: 14px 8px;
+            }
+            .section-first {
+                margin: 6px 8px 14px 8px;
+            }
+            .top-bar {
+                padding: 6px 8px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 4px;
+            }
+            .lang-switch {
+                justify-content: center;
+            }
+            .top-actions {
+                justify-content: center;
+            }
+            .currency-nav-bar {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 6px 8px;
+                gap: 6px;
+            }
+            .currency-select {
+                width: 100%;
+                text-align: center;
+                min-width: unset;
+            }
+            .nav-buttons {
+                display: none;
+            }
+            .mobile-nav-select {
+                display: block;
+            }
+            .notif-ticker-body {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            .notif-ticker-item {
+                padding: 8px;
+            }
+            .notif-ticker-item img {
+                width: 45px;
+                height: 45px;
+            }
+            .notif-ticker-item-info .name {
+                font-size: 10px;
+            }
+            .notif-ticker-item-info .price {
+                font-size: 10px;
+            }
+            .notif-ticker-item-info .desc {
+                font-size: 8px;
+            }
+            .notif-ticker-item .btn-buy {
+                font-size: 9px;
+                padding: 2px 8px;
+            }
+            .notif-ticker-title {
+                font-size: 12px;
+            }
+            .notif-ticker-badge {
+                font-size: 8px;
+                padding: 1px 8px;
+            }
+            .notif-ticker-toggle {
+                font-size: 10px;
+                padding: 3px 10px;
+            }
+            .notif-ticker.open {
+                max-height: 1000px;
+                padding: 10px 8px;
+            }
+            .header {
+                padding: 10px 12px;
+            }
+            .header h1 {
+                font-size: 1.1em;
+            }
+            .toast {
+                font-size: 11px;
+                padding: 8px 16px;
+                white-space: normal;
+                max-width: 90%;
+            }
+            .scroll-top {
+                width: 38px;
+                height: 38px;
+                font-size: 18px;
+                bottom: 12px;
+                right: 12px;
+            }
+            .section-first .section-title, .section-title {
+                font-size: 0.95em;
+                padding-right: 8px;
+            }
+            .order-form h3 {
+                font-size: 0.95rem;
+            }
+            .order-form input, .order-form textarea {
+                font-size: 11px;
+                padding: 7px 12px;
+            }
+            .order-form button {
+                font-size: 12px;
+                padding: 7px 20px;
+            }
+            footer {
+                padding: 14px 10px 10px;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+            .social-links {
+                justify-content: center;
+            }
+            .social-icon {
+                font-size: 9px;
+                padding: 3px 8px;
+            }
+            .copyright {
+                font-size: 0.65rem;
+            }
+            .single-product-view .card-image {
+                height: 190px;
+            }
+            .single-product-view .card-image-wrapper {
+                min-height: 210px;
+            }
+            .single-product-view .card h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .card {
+                min-width: 170px;
+                max-width: 200px;
+                padding: 10px 8px;
+            }
+            .card-image {
+                height: 85px;
+            }
+            .card-image-wrapper {
+                min-height: 100px;
+            }
+            .card h3 {
+                font-size: 0.8rem;
+                min-height: 30px;
+            }
+            .price, .price-tag {
+                font-size: 14px;
+                padding: 3px 12px;
+            }
+            .offer-desc {
+                font-size: 9px;
+                padding: 4px 6px;
+                min-height: 24px;
+            }
+            .btn-order {
+                font-size: 10px;
+                padding: 6px 3px;
+            }
+            .btn-share {
+                font-size: 9px;
+                padding: 5px 3px;
+            }
+            .notif-ticker-item {
+                padding: 6px;
+            }
+            .notif-ticker-item img {
+                width: 40px;
+                height: 40px;
+            }
+            .notif-ticker-item-info .name {
+                font-size: 9px;
+            }
+            .notif-ticker-item-info .price {
+                font-size: 9px;
+            }
+            .lang-switch button {
+                font-size: 9px;
+                padding: 3px 6px;
+            }
+            .top-actions button {
+                font-size: 9px;
+                padding: 3px 6px;
+            }
+            .nav-btn {
+                font-size: 9px;
+                padding: 2px 6px;
+            }
+            .currency-select {
+                font-size: 0.65em;
+                padding: 4px 8px;
+            }
+            .single-product-view .card-image {
+                height: 160px;
+            }
+            .single-product-view .card-image-wrapper {
+                min-height: 180px;
+            }
+            .single-product-view .card h3 {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-
-    <header class="sticky-header">
+    <div class="sticky-header">
         <div class="top-bar">
             <div class="lang-switch">
-                <button class="active">العربية</button>
-                <button>English</button>
-                <button>Türkçe</button>
+                <button onclick="setLanguage('ar')" id="lang-ar" class="active">🇸🇦</button>
+                <button onclick="setLanguage('en')" id="lang-en">🇬🇧</button>
+                <button onclick="setLanguage('tr')" id="lang-tr">🇹🇷</button>
             </div>
             <div class="top-actions">
-                <button class="share-main">مشاركة المتجر 📲</button>
+                <button class="toggle-ticker-btn" id="toggleTickerBtn" onclick="toggleTicker()">🔕 إخفاء الإشعارات</button>
+                <button class="share-main" onclick="shareStore()">📢 مشاركة</button>
             </div>
         </div>
+        
         <div class="currency-nav-bar">
-            <select class="currency-select" id="currencySelect" onchange="changeCurrency()">
-                <option value="USD">USD ($)</option>
-                <option value="EUR">EUR (€)</option>
-                <option value="TRY">تركيا (₺)</option>
-                <option value="SYP">سوريا (SYP)</option>
-                <option value="ILS">فلسطين (₪)</option>
-                <option value="JOD">الأردن (JOD)</option>
-                <option value="IQD">العراق (IQD)</option>
-                <option value="GCC">السعودية / الإمارات / قطر (ر.س/د.إ)</option>
-                <option value="USDT">Binance (USDT)</option>
-                <option value="ITUNES">آيتونز (iTunes)</option>
+            <select id="city-select" class="currency-select" onchange="changeCity()">
+                <option value="USD">🇺🇸 دولار - $</option>
+                <option value="EUR">🇪🇺 يورو - €</option>
+                <option value="TRY" selected>🇹🇷 ليرة - ₺</option>
+                <option value="ILS">🇵🇸 شيكل - ₪</option>
+                <option value="JOD">🇯🇴 دينار - د.ا</option>
+                <option value="SAR">🇸🇦 ريال - ﷼</option>
+                <option value="QAR">🇶🇦 ريال - ر.ق</option>
+                <option value="AED">🇦🇪 درهم - د.إ</option>
+                <option value="IQD">🇮🇶 دينار - د.ع</option>
+                <option value="SYP">🇸🇾 ليرة سورية - ل.س</option>
+                <option value="USDT">🪙 USDT</option>
+                <option value="ITUNES">🎵 ايتونز</option>
             </select>
-            <nav class="nav-buttons">
-                <a href="#special-stars" class="nav-btn">🌟 عروض خاصة</a>
-            </nav>
+            
+            <div class="nav-buttons" id="navButtons">
+                <a href="#section-first" class="nav-btn" onclick="scrollToSection('section-first')">🎫 جديد</a>
+                <a href="#section-special-offers" class="nav-btn" onclick="scrollToSection('section-special-offers')">🔥 مميزة</a>
+                <a href="#section-services" class="nav-btn" onclick="scrollToSection('section-services')">⚔️ خدمات</a>
+                <a href="#section-tots" class="nav-btn" onclick="scrollToSection('section-tots')">🌟 خاصة</a>
+                <a href="#section-bestsellers" class="nav-btn" onclick="scrollToSection('section-bestsellers')">🏆 الأكثر</a>
+                <a href="#section-fcx2" class="nav-btn" onclick="scrollToSection('section-fcx2')">⚡ X2</a>
+                <a href="#section-fc" class="nav-btn" onclick="scrollToSection('section-fc')">⚽ عادية</a>
+                <a href="#order-form" class="nav-btn" onclick="scrollToSection('order-form')">📝 طلب</a>
+            </div>
+            
+            <select id="mobileNavSelect" class="mobile-nav-select" onchange="mobileNavChange()">
+                <option value="">📋 اختر القسم</option>
+                <option value="section-first">🎫 عروض جديدة</option>
+                <option value="section-special-offers">🔥 عروض مميزة</option>
+                <option value="section-services">⚔️ خدمات منفردة</option>
+                <option value="section-tots">🌟 عروض خاصة</option>
+                <option value="section-bestsellers">🏆 أفضل المبيعات</option>
+                <option value="section-fcx2">⚡ FC POINTS X2</option>
+                <option value="section-fc">⚽ FC POINTS عادية</option>
+                <option value="order-form">📝 طلب خدمة مخصصة</option>
+            </select>
         </div>
-    </header>
-
-    <div class="header">
-        <h1>Amir Store ⚽</h1>
-        <p>متجرك الموثوق لشحن FC Mobile بأسعار تنافسية</p>
     </div>
 
-    <main>
-        <!-- قسم العروض الخاصة وبطاقات النجوم -->
-        <section id="special-stars" class="section-first">
-            <h2 class="section-title">🌟 عروض خاصة - بطاقات النجوم وترقيات التصنيف</h2>
-            <div class="products-grid">
-                
-                <!-- كارت منتج معزز يومي -->
-                <div class="card special-stars-card" 
-                     data-price-usd="6 $"
-                     data-price-eur="5 €"
-                     data-price-try="245.5 ₺"
-                     data-price-syp="800 ل.س"
-                     data-price-ils="21 ₪"
-                     data-price-jod="4 JOD"
-                     data-price-iqd="8,500 IQD"
-                     data-price-gcc="20 ر.س/د.إ"
-                     data-price-usdt="6 USDT"
-                     data-price-itunes="6.25 $">
-                    
-                    <div class="card-image-wrapper">
-                        <a href="https://imgbb.com/" target="_blank">
-                            <img src="https://i.ibb.co/4nfR3GKT/Daily-booster-jpg.jpg" alt="معزز يومي" class="card-image" border="0">
-                        </a>
-                    </div>
-                    <h3>معزز يومي</h3>
-                    <div class="offer-desc">700 fc + درافت3 + 350 شارد</div>
-                    <div class="price-tag" id="daily-booster-price">6 $</div>
-                    <button class="btn-order" onclick="sendToWhatsApp(this)">اطلب عبر واتساب 💬</button>
-                </div>
-
+    <!-- ===== شريط الإشعارات المنسدل ===== -->
+    <div class="notif-ticker" id="notifTicker">
+        <div class="notif-ticker-header" onclick="toggleTicker()">
+            <div class="notif-ticker-header-left">
+                <span class="notif-ticker-icon">🎉</span>
+                <span class="notif-ticker-title">عروض حصرية جديدة</span>
+                <span class="notif-ticker-badge">جديد</span>
             </div>
-        </section>
-    </main>
+            <span class="notif-ticker-toggle" id="tickerToggleBtn">▼ عرض المنتجات</span>
+        </div>
+        <div class="notif-ticker-body" id="tickerBody">
+            <!-- يتم إضافة المنتجات هنا عن طريق JavaScript -->
+        </div>
+    </div>
+
+    <div class="header">
+        <h1>⚡ AMIR STORE ⚡</h1>
+        <p id="slogan">أسرع خدمات رفع التصنيف والشحن | دعم 24 ساعة</p>
+    </div>
+
+    <!-- ===== زر العودة إلى المتجر ===== -->
+    <button class="back-to-store-btn" id="backToStoreBtn" onclick="backToStore()">← العودة إلى المتجر</button>
+
+    <!-- ===== قسم العروض الجديدة ===== -->
+    <div id="section-first" class="section-first">
+        <div class="section-title">🎫 عروض جديدة 🔥</div>
+        <div class="products-grid" id="firstNewOffersGrid"></div>
+    </div>
+
+    <!-- قسم العروض المميزة -->
+    <div id="section-special-offers" class="section">
+        <div class="section-title">🔥 عروض مميزة 🔥</div>
+        <div class="products-grid" id="specialOffersGrid"></div>
+    </div>
+
+    <div id="section-services" class="section">
+        <div class="section-title">⚔️ خدمات منفردة</div>
+        <div class="products-grid" id="productsGrid2"></div>
+    </div>
+
+    <div id="section-tots" class="section">
+        <div class="section-title">🌟 عروض خاصة - بطاقات النجوم وترقيات التصنيف</div>
+        <div class="products-grid" id="productsGrid3"></div>
+    </div>
+
+    <div id="section-bestsellers" class="section">
+        <div class="section-title">🏆 أفضل المبيعات - عروض حصرية 🏆</div>
+        <div class="products-grid" id="bestsellersGrid"></div>
+    </div>
+
+    <div id="section-fcx2" class="section">
+        <div class="section-title">⚡ FC POINTS X2 (عروض مضاعفة)</div>
+        <div class="products-grid" id="productsGrid4"></div>
+    </div>
+
+    <div id="section-fc" class="section">
+        <div class="section-title">⚽ FC POINTS (العادية)</div>
+        <div class="products-grid" id="productsGrid5"></div>
+    </div>
+
+    <div id="order-form" class="order-form">
+        <h3>📝 طلب خدمة مخصصة</h3>
+        <input type="text" id="orderName" placeholder="👤 اسمك الكامل">
+        <input type="tel" id="orderPhone" placeholder="📱 رقم الهاتف">
+        <input type="email" id="orderEmail" placeholder="📧 البريد الإلكتروني">
+        <textarea id="orderDetails" placeholder="📋 تفاصيل الطلب (الخدمة المطلوبة، اللعبة، id...)" rows="3"></textarea>
+        <button onclick="sendOrder()">📨 إرسال الطلب عبر واتساب</button>
+    </div>
 
     <footer>
         <div class="footer-content">
-            <p>جميع الحقوق محفوظة &copy; 2026 Amir Store</p>
+            <div class="social-links">
+                <a href="https://wa.me/905356387200" target="_blank" class="social-icon whatsapp">💬 واتساب</a>
+                <a href="https://www.instagram.com/amir_gaming333?igsh=MWZlM2Y3a3d3bnU5Yg%3D%3D&utm_source=qr" target="_blank" class="social-icon instagram">📷 انستغرام</a>
+                <a href="https://www.tiktok.com/@amir_gaming333?_r=1&_t=ZS-96qWpsV1O3J" target="_blank" class="social-icon tiktok">🎵 تيك توك</a>
+            </div>
+            <div style="font-size:12px;">💎 الدعم الفني 24 ساعة</div>
         </div>
-        <div class="copyright">تصميم وتطوير متجر FC موبايل الاحترافي</div>
+        <div class="copyright">© 2026 Amir Store</div>
     </footer>
+    <div id="toast" class="toast"></div>
+    <button class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()">↑</button>
 
     <script>
-        const phoneNumber = "905356387200";
+        // ===== عروض مميزة =====
+        const specialOffers = [
+            { 
+                id: 2001, 
+                name: "7500 FC POINTS", 
+                desc: "عرض حصري ومحدود لفترة قصيرة", 
+                image: "https://i.ibb.co/tPL96xfR/fc-points7500-jpg.jpg", 
+                prices: { USD: 50, EUR: 48, TRY: 2356.8, ILS: 201.6, JOD: 42, SAR: 192, QAR: 192, AED: 192, IQD: 81600, SYP: 7680, USDT: 57.6, ITUNES: 60 } 
+            },
+            { 
+                id: 2002, 
+                name: "10000 FC POINTS", 
+                desc: "عرض حصري ومحدود لفترة قصيرة", 
+                image: "https://i.ibb.co/WvMhLGxv/fc-points10000-jpg.jpg", 
+                prices: { USD: 47, EUR: 45, TRY: 2137.5, ILS: 189, JOD: 35.1, SAR: 180, QAR: 180, AED: 180, IQD: 76500, SYP: 7200, USDT: 54, ITUNES: 56.25 } 
+            },
+            { 
+                id: 2003, 
+                name: "15000 FC POINTS", 
+                desc: "عرض حصري ومحدود لفترة قصيرة", 
+                image: "https://i.ibb.co/LDVzBS9N/fc-points15000-jpg.jpg", 
+                prices: { USD: 90, EUR: 90, TRY: 4275, ILS: 378, JOD: 70.2, SAR: 360, QAR: 360, AED: 360, IQD: 153000, SYP: 14400, USDT: 108, ITUNES: 112.5 } 
+            },
+            { 
+                id: 2004, 
+                name: "20000 FC POINTS", 
+                desc: "عرض حصري ومحدود لفترة قصيرة", 
+                image: "https://i.ibb.co/7T18RYb/fc-points20000-jpg.jpg", 
+                prices: { USD: 95, EUR: 90, TRY: 4275, ILS: 378, JOD: 70.2, SAR: 360, QAR: 360, AED: 360, IQD: 153000, SYP: 14400, USDT: 108, ITUNES: 112.5 } 
+            },
+            { 
+                id: 2005, 
+                name: "30000 FC POINTS", 
+                desc: "عرض حصري ومحدود لفترة قصيرة", 
+                image: "https://i.ibb.co/xSbfkZZh/fc-points30000-jpg.jpg", 
+                prices: { USD: 185, EUR: 170, TRY: 8075, ILS: 714, JOD: 132.6, SAR: 680, QAR: 680, AED: 680, IQD: 289000, SYP: 27200, USDT: 204, ITUNES: 212.5 } 
+            },
+            { 
+                id: 2006, 
+                name: "45000 FC POINTS", 
+                desc: "عرض حصري ومحدود لفترة قصيرة", 
+                image: "https://i.ibb.co/nqx1C27m/fc-points45000-jpg.jpg", 
+                prices: { USD: 270, EUR: 240, TRY: 11400, ILS: 1008, JOD: 187.2, SAR: 960, QAR: 960, AED: 960, IQD: 408000, SYP: 38400, USDT: 288, ITUNES: 300 } 
+            },
+            { 
+                id: 2007, 
+                name: "140,000 جوهرة", 
+                desc: "شحن مباشر كل حساب مرة واحدة", 
+                image: "https://i.ibb.co/F4vFHRBk/Jewels-140000-jpg.jpg", 
+                prices: { USD: 72, EUR: 60, TRY: 2946, ILS: 252, JOD: 52.5, SAR: 240, QAR: 240, AED: 240, IQD: 102000, SYP: 9600, USDT: 72, ITUNES: 75 } 
+            },
+            { 
+                id: 2008, 
+                name: "الامداد الشهري", 
+                desc: "كل يوم تستلم جواهر ونقاط ترقية تصنيف", 
+                image: "https://i.ibb.co/N2zTXFfk/Monthly-supply-jpg.jpg", 
+                prices: { USD: 10, EUR: 8, TRY: 392.8, ILS: 35, JOD: 7, SAR: 35, QAR: 35, AED: 35, IQD: 16200, SYP: 1280, USDT: 10, ITUNES: 10 } 
+            }
+        ];
 
-        // دالة تغيير العملات تلقائياً
-        function changeCurrency() {
-            const selectedCurrency = document.getElementById('currencySelect').value;
-            const cards = document.querySelectorAll('.card');
+        // ===== المنتجات =====
+        const products = [
+            { id: 2, name: "نمط وجه لوجه", name_en: "Face to Face", name_tr: "Yüz Yüze", prices: { USD: 20, EUR: 25, TRY: 850, ILS: 105, JOD: 19.5, SAR: 100, QAR: 100, AED: 100, IQD: 42500, SYP: 3200, USDT: 20, ITUNES: 25 }, category: "خدمات", image: "https://i.ibb.co/G4XpsNNj/Face-to-face-jpg.jpg", type: "normal" },
+            { id: 3, name: "نمط هجوم تنافسي", name_en: "Competitive Attack", name_tr: "Rekabetçi Atak", prices: { USD: 20, EUR: 25, TRY: 850, ILS: 105, JOD: 19.5, SAR: 100, QAR: 100, AED: 100, IQD: 42500, SYP: 3200, USDT: 20, ITUNES: 25 }, category: "خدمات", image: "https://i.ibb.co/zWRRG3XF/Competitive-attack-jpg.jpg", type: "normal" },
+            { id: 4, name: "مدير فني", name_en: "Technical Director", name_tr: "Teknik Direktör", prices: { USD: 20, EUR: 25, TRY: 850, ILS: 105, JOD: 19.5, SAR: 100, QAR: 100, AED: 100, IQD: 42500, SYP: 3200, USDT: 20, ITUNES: 25 }, category: "خدمات", image: "https://i.ibb.co/rfN8WHhB/Technical-Director-jpg.jpg", type: "normal" },
+            
+            { id: 7, name: "1700 ترقية تصنيف", name_en: "1700 OVR Upgrade", name_tr: "1700 Reyting Yükseltme", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 }, category: "عروض خاصة", image: "https://i.ibb.co/Kx20DxgQ/upgrade1700-jpg.jpg", type: "upgrade" },
+            
+            { 
+                id: 42, 
+                name: "تصريح نجم مصغر MAGUIRE", 
+                name_en: "Mini Star Pass MAGUIRE", 
+                name_tr: "Mini Yıldız Kartı MAGUIRE",
+                prices: { USD: 6, EUR: 5, TRY: 245.5, ILS: 21, JOD: 4.38, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 }, 
+                category: "عروض خاصة", 
+                image: "https://i.ibb.co/zhQP1Nf4/MAGUIRE-STARPASS-jpg.jpg", 
+                type: "maguire",
+                desc: "تصريح نجم مصغر للاعب MAGUIRE"
+            },
+            { 
+                id: 43, 
+                name: "تصريح نجم مصغر مميز MAGUIRE", 
+                name_en: "Premium Mini Star Pass MAGUIRE", 
+                name_tr: "Premium Mini Yıldız Kartı MAGUIRE",
+                prices: { USD: 12, EUR: 10, TRY: 491, ILS: 42, JOD: 8.75, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 }, 
+                category: "عروض خاصة", 
+                image: "https://i.ibb.co/zhQP1Nf4/MAGUIRE-STARPASS-jpg.jpg", 
+                type: "maguire-premium",
+                desc: "تصريح نجم مصغر مميز للاعب MAGUIRE مع مكافآت إضافية"
+            },
+            
+            // ===== منتجات GRIEZMANN =====
+            { 
+                id: 44, 
+                name: "تصريح نجم GRIEZMANN", 
+                name_en: "Star Pass GRIEZMANN", 
+                name_tr: "Yıldız Kartı GRIEZMANN",
+                prices: { USD: 12, EUR: 10, TRY: 491, ILS: 42, JOD: 8.75, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 }, 
+                category: "عروض خاصة", 
+                image: "https://i.ibb.co/NgF0XVDH/GRIEZMANN-STARPASS-jpg.jpg", 
+                type: "griezmann",
+                desc: "تصريح نجم للاعب GRIEZMANN"
+            },
+            { 
+                id: 45, 
+                name: "تصريح GRIEZMANN مميز", 
+                name_en: "Premium Star Pass GRIEZMANN", 
+                name_tr: "Premium Yıldız Kartı GRIEZMANN",
+                prices: { USD: 24, EUR: 20, TRY: 982, ILS: 84, JOD: 17.5, SAR: 80, QAR: 80, AED: 80, IQD: 34000, SYP: 3200, USDT: 24, ITUNES: 25 }, 
+                category: "عروض خاصة", 
+                image: "https://i.ibb.co/NgF0XVDH/GRIEZMANN-STARPASS-jpg.jpg", 
+                type: "griezmann-premium",
+                desc: "تاخد 6000 نقطة لفتح تصريح النجم"
+            },
+            { 
+                id: 46, 
+                name: "معزز يومي", 
+                name_en: "Daily Booster", 
+                name_tr: "Günlük Güçlendirici",
+                prices: { USD: 6, EUR: 5, TRY: 245.5, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 }, 
+                category: "عروض خاصة", 
+                image: "https://i.ibb.co/4nfR3GKT/Daily-booster-jpg.jpg", 
+                type: "daily-booster",
+                desc: "700 FC + درافت 3 + 350 شارد"
+            },
+            
+            // ===== قسم FC POINTS X2 (عروض مضاعفة) =====
+            { id: 8, name: "1000 FC X2", name_en: "1000 FC Points X2", name_tr: "1000 FC Puan X2", prices: { USD: 6, EUR: 5, TRY: 245.5, ILS: 21, JOD: 4.38, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 }, category: "FCX2", image: "https://i.ibb.co/zVDnqBfG/fc-points1000-jpg.jpg", type: "fc" },
+            { id: 9, name: "2000 FC X2", name_en: "2000 FC Points X2", name_tr: "2000 FC Puan X2", prices: { USD: 12, EUR: 10, TRY: 491, ILS: 42, JOD: 8.75, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 }, category: "FCX2", image: "https://i.ibb.co/3YG9hBdz/fc-points2000-jpg.jpg", type: "fc" },
+            { id: 10, name: "4000 FC X2", name_en: "4000 FC Points X2", name_tr: "4000 FC Puan X2", prices: { USD: 24, EUR: 20, TRY: 982, ILS: 84, JOD: 17.5, SAR: 80, QAR: 80, AED: 80, IQD: 34000, SYP: 3200, USDT: 24, ITUNES: 25 }, category: "FCX2", image: "https://i.ibb.co/Ymvt8r9/fc-points4000-jpg.jpg", type: "fc" },
+            { id: 11, name: "10000 FC X2", name_en: "10000 FC Points X2", name_tr: "10000 FC Puan X2", prices: { USD: 50, EUR: 50, TRY: 2455, ILS: 210, JOD: 43.75, SAR: 200, QAR: 200, AED: 200, IQD: 85000, SYP: 8000, USDT: 60, ITUNES: 62.5 }, category: "FCX2", image: "https://i.ibb.co/QFqh7FWB/fc-points10000-jpg.jpg", type: "fc" },
+            { id: 12, name: "20000 FC X2", name_en: "20000 FC Points X2", name_tr: "20000 FC Puan X2", prices: { USD: 100, EUR: 100, TRY: 4910, ILS: 420, JOD: 87.5, SAR: 400, QAR: 400, AED: 400, IQD: 170000, SYP: 16000, USDT: 120, ITUNES: 125 }, category: "FCX2", image: "https://i.ibb.co/VWG3p69b/fc-points20000-jpg.jpg", type: "fc" },
+            
+            // ===== قسم FC POINTS (العادية) =====
+            { id: 15, name: "750 FC", name_en: "750 FC Points", name_tr: "750 FC Puan", prices: { USD: 6, EUR: 5, TRY: 245.5, ILS: 21, JOD: 4.38, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 }, category: "FC", image: "https://i.ibb.co/FLff4WzY/fc-points750-jpg.jpg", type: "fc-normal" },
+            { id: 16, name: "1500 FC", name_en: "1500 FC Points", name_tr: "1500 FC Puan", prices: { USD: 12, EUR: 10, TRY: 491, ILS: 42, JOD: 8.75, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 }, category: "FC", image: "https://i.ibb.co/7xFnXqdt/fc-points1500-jpg.jpg", type: "fc-normal" },
+            { id: 17, name: "3000 FC", name_en: "3000 FC Points", name_tr: "3000 FC Puan", prices: { USD: 24, EUR: 20, TRY: 982, ILS: 84, JOD: 17.5, SAR: 80, QAR: 80, AED: 80, IQD: 34000, SYP: 3200, USDT: 24, ITUNES: 25 }, category: "FC", image: "https://i.ibb.co/n207hrx/fc-points3000-jpg.jpg", type: "fc-normal" },
+            { id: 18, name: "7500 FC", name_en: "7500 FC Points", name_tr: "7500 FC Puan", prices: { USD: 50, EUR: 50, TRY: 2455, ILS: 210, JOD: 43.75, SAR: 200, QAR: 200, AED: 200, IQD: 85000, SYP: 8000, USDT: 60, ITUNES: 62.5 }, category: "FC", image: "https://i.ibb.co/DPjhswn4/fc-points7500-jpg.jpg", type: "fc-normal" },
+            { id: 19, name: "15000 FC", name_en: "15000 FC Points", name_tr: "15000 FC Puan", prices: { USD: 100, EUR: 100, TRY: 4910, ILS: 420, JOD: 87.5, SAR: 400, QAR: 400, AED: 400, IQD: 170000, SYP: 16000, USDT: 120, ITUNES: 125 }, category: "FC", image: "https://i.ibb.co/9k7YZzMv/fc-points15000-jpg.jpg", type: "fc-normal" }
+        ];
 
-            cards.forEach(card => {
-                const priceTag = card.querySelector('.price-tag');
-                let newPrice = "";
+        // ===== عروض جديدة =====
+        const newOffers = [
+            {
+                id: 4005,
+                name: "5 قسائم أبطال",
+                desc: "احصل على 5 قسائم أبطال لتعزيز فريقك",
+                image: "https://i.ibb.co/CKbLQTnc/Withdrawal-voucher-5-jpg.jpg",
+                type: "voucher-champion",
+                prices: { USD: 6, EUR: 5, TRY: 245, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 }
+            },
+            {
+                id: 4006,
+                name: "10 قسائم أبطال",
+                desc: "احصل على 10 قسائم أبطال لتعزيز فريقك",
+                image: "https://i.ibb.co/nvpgD7x/Withdrawal-voucher-10-jpg.jpg",
+                type: "voucher-champion",
+                prices: { USD: 12, EUR: 10, TRY: 490, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 }
+            },
+            {
+                id: 4007,
+                name: "20 قسيمة سحب",
+                desc: "احصل على 20 قسيمة سحب لتعزيز فرصك",
+                image: "https://i.ibb.co/tW50xxb/Withdrawal-voucher-20-jpg.jpg",
+                type: "voucher-champion",
+                prices: { USD: 24, EUR: 20, TRY: 982, ILS: 84, JOD: 17.5, SAR: 80, QAR: 80, AED: 80, IQD: 34000, SYP: 3200, USDT: 24, ITUNES: 25 }
+            },
+            {
+                id: 4008,
+                name: "50 قسيمة سحب",
+                desc: "احصل على 50 قسيمة سحب لتعزيز فرصك بشكل كبير",
+                image: "https://i.ibb.co/3YvMnqz2/Withdrawal-voucher-50-jpg.jpg",
+                type: "voucher-champion",
+                prices: { USD: 60, EUR: 50, TRY: 2455, ILS: 210, JOD: 43.75, SAR: 200, QAR: 200, AED: 200, IQD: 85000, SYP: 8000, USDT: 60, ITUNES: 62.5 }
+            },
+            // ===== منتج جديد في عروض جديدة =====
+            {
+                id: 4009,
+                name: "لاعب 119-121 +10 درافت",
+                desc: "🎲 انت وحظك! احصل على لاعب من 119 إلى 121 مع 10 درافت",
+                image: "https://i.ibb.co/FkxYH4KH/Players-119-to-121-jpg.jpg",
+                type: "random-player",
+                prices: { USD: 12, EUR: 10, TRY: 491, ILS: 42, JOD: 8.75, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 }
+            }
+        ];
 
-                switch(selectedCurrency) {
-                    case "EUR": newPrice = card.getAttribute('data-price-eur'); break;
-                    case "TRY": newPrice = card.getAttribute('data-price-try'); break;
-                    case "SYP": newPrice = card.getAttribute('data-price-syp'); break;
-                    case "ILS": newPrice = card.getAttribute('data-price-ils'); break;
-                    case "JOD": newPrice = card.getAttribute('data-price-jod'); break;
-                    case "IQD": newPrice = card.getAttribute('data-price-iqd'); break;
-                    case "GCC": newPrice = card.getAttribute('data-price-gcc'); break;
-                    case "USDT": newPrice = card.getAttribute('data-price-usdt'); break;
-                    case "ITUNES": newPrice = card.getAttribute('data-price-itunes'); break;
-                    default: newPrice = card.getAttribute('data-price-usd'); break;
-                }
+        // ===== أفضل المبيعات =====
+        const bestSellers = [
+            {
+                id: 101,
+                name: "راؤؤل",
+                name_en: "RAUL",
+                name_tr: "RAUL",
+                desc: "🔥 خصم رائع! مع 10 درافت",
+                image: "https://i.ibb.co/5hws8CkB/RAUL-jpg.jpg",
+                type: "hot-sale",
+                prices: { USD: 6, EUR: 5, TRY: 245.5, ILS: 21, JOD: 4.38, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 }
+            },
+            {
+                id: 102,
+                name: "غارينشا",
+                name_en: "GARRINCHA",
+                name_tr: "GARRINCHA",
+                desc: "⚽ هجوم! مع سحبة",
+                image: "https://i.ibb.co/SXcy8PbH/GARRINCHA-jpg.jpg",
+                type: "hot-sale",
+                prices: { USD: 1.2, EUR: 1, TRY: 49.1, ILS: 4.2, JOD: 0.88, SAR: 4, QAR: 4, AED: 4, IQD: 1700, SYP: 160, USDT: 1.2, ITUNES: 1.25 }
+            }
+        ];
 
-                if(newPrice && priceTag) {
-                    priceTag.innerText = newPrice;
-                }
-            });
+        let currentCurrency = 'TRY';
+        let currentLang = 'ar';
+        const symbols = { USD: '$', EUR: '€', TRY: '₺', ILS: '₪', JOD: 'د.ا', SAR: '﷼', QAR: 'ر.ق', AED: 'د.إ', IQD: 'د.ع', SYP: 'ل.س', USDT: '🪙', ITUNES: '🎵' };
+        let tickerOpen = false;
+        let isSingleProductView = false;
+
+        // ===== دالة الحصول على المنتج حسب المعرف =====
+        function findProductById(id) {
+            let allProducts = [...products, ...specialOffers, ...bestSellers, ...newOffers];
+            return allProducts.find(p => p.id === parseInt(id));
         }
 
-        // دالة إرسال الطلب عبر الواتساب
-        function sendToWhatsApp(buttonElement) {
-            const card = buttonElement.closest('.card');
-            const productName = card.querySelector('h3').innerText;
-            const productDesc = card.querySelector('.offer-desc').innerText;
-            const productPrice = card.querySelector('.price-tag').innerText;
+        // ===== عرض منتج واحد فقط مع العملة المحددة =====
+        function showSingleProduct(productId, currency) {
+            if (currency && symbols[currency]) {
+                currentCurrency = currency;
+                document.getElementById('city-select').value = currency;
+            }
             
-            const message = `مرحباً Amir Store 👋\nأرغب في شراء المنتج التالي:\n\n📌 *المنتج:* ${productName}\n📝 *المواصفات:* ${productDesc}\n💰 *السعر:* ${productPrice}\n\nيرجى تزويدي بتفاصيل الدفع للشراء.`;
+            const product = findProductById(productId);
+            if (!product) {
+                showToast('❌ المنتج غير موجود');
+                return false;
+            }
+
+            document.body.classList.add('single-product-view');
+            document.getElementById('backToStoreBtn').classList.add('show');
             
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-            window.open(whatsappUrl, '_blank');
+            const grid = document.getElementById('firstNewOffersGrid');
+            if (!grid) return false;
+            
+            let cardClass = 'new-offer-card';
+            if (product.type === 'luxury') {
+                cardClass = 'luxury-raffle-card';
+            } else if (product.type === 'champions') {
+                cardClass = 'champions-card';
+            } else if (product.type === 'pogba') {
+                cardClass = 'pogba-card';
+            } else if (product.type === 'pogba-premium') {
+                cardClass = 'pogba-premium-card';
+            } else if (product.type === 'bestseller') {
+                cardClass = 'bestseller-card';
+            } else if (product.type === 'bestseller-new') {
+                cardClass = 'bestseller-new-card';
+            } else if (product.type === 'special') {
+                cardClass = 'special-offer-card';
+            } else if (product.type === 'monthly') {
+                cardClass = 'monthly-card';
+            } else if (product.type === 'buffon') {
+                cardClass = 'buffon-card';
+            } else if (product.type === 'buffon-premium') {
+                cardClass = 'buffon-premium-card';
+            } else if (product.type === 'premium') {
+                cardClass = 'premium-card';
+            } else if (product.type === 'upgrade') {
+                cardClass = 'upgrade-card';
+            } else if (product.type === 'fc') {
+                cardClass = 'fc-points-card';
+            } else if (product.type === 'fc-normal') {
+                cardClass = 'fc-normal-card';
+            } else if (product.type === 'voucher-champion') {
+                cardClass = 'voucher-champion-card';
+            } else if (product.type === 'maguire') {
+                cardClass = 'maguire-card';
+            } else if (product.type === 'maguire-premium') {
+                cardClass = 'maguire-premium-card';
+            } else if (product.type === 'griezmann') {
+                cardClass = 'griezmann-card';
+            } else if (product.type === 'griezmann-premium') {
+                cardClass = 'griezmann-premium-card';
+            } else if (product.type === 'daily-booster') {
+                cardClass = 'daily-booster-card';
+            } else if (product.type === 'random-player') {
+                cardClass = 'random-player-card';
+            } else if (product.type === 'hot-sale') {
+                cardClass = 'hot-sale-card';
+            }
+
+            let priceDisplay = '';
+            let sym = symbols[currentCurrency];
+            
+            let price = product.prices ? product.prices[currentCurrency] || product.prices.TRY : null;
+            let priceDisp = price ? formatPrice(price) : '';
+            
+            if (product.isFifaPoints) {
+                priceDisplay = `<div class="price" style="color: #ff6b6b;">🎮 يلزم ${product.fifaPoints} فيفا بوينت</div>`;
+            } else if (price !== null) {
+                priceDisplay = `<div class="price-tag">${sym} ${priceDisp}</div>`;
+            }
+
+            let descText = product.desc || '';
+            
+            grid.innerHTML = `
+                <div class="card ${cardClass}" data-product-id="${product.id}">
+                    <div class="badge">🎯 المنتج المطلوب</div>
+                    <div class="card-image-wrapper">
+                        <img src="${product.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x280?text=Image+Not+Found'" alt="${product.name}">
+                    </div>
+                    <h3>${product.name}</h3>
+                    <div class="offer-desc">✨ ${descText}</div>
+                    ${priceDisplay}
+                    <button class="btn-order" onclick='quickOrderSingle(${JSON.stringify(product)})'>📦 اطلب الآن</button>
+                    <button class="btn-share" onclick='shareSingleProduct(${JSON.stringify(product)})'>📢 مشاركة المنتج</button>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                const card = grid.querySelector('.card');
+                if (card) {
+                    const rect = card.getBoundingClientRect();
+                    const top = rect.top + window.pageYOffset - 100;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            }, 300);
+            
+            isSingleProductView = true;
+            return true;
         }
+
+        // ===== العودة إلى عرض جميع المنتجات =====
+        function backToStore() {
+            document.body.classList.remove('single-product-view');
+            document.getElementById('backToStoreBtn').classList.remove('show');
+            
+            displayProducts();
+            displaySpecialOffers();
+            renderNewOffers('firstNewOffersGrid');
+            renderTickerItems();
+            
+            const url = new URL(window.location);
+            url.searchParams.delete('product');
+            url.searchParams.delete('bundle');
+            url.searchParams.delete('offer');
+            url.searchParams.delete('currency');
+            window.history.replaceState({}, '', url);
+            
+            isSingleProductView = false;
+            showToast('✅ تم العودة إلى المتجر');
+        }
+
+        // ===== دوال الطلب والمشاركة للعرض المفرد =====
+        function quickOrderSingle(product) {
+            let price = product.prices ? product.prices[currentCurrency] || product.prices.TRY : null;
+            let sym = symbols[currentCurrency];
+            let formatted = price ? formatPrice(price) : '';
+            let msg = `مرحباً، أريد طلب: ${product.name}\n✨ ${product.desc || ''}\n💰 السعر: ${sym} ${formatted}`;
+            window.open(`https://wa.me/905356387200?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function shareSingleProduct(product) {
+            let url = getProductShareUrl(product);
+            let price = product.prices ? product.prices[currentCurrency] || product.prices.TRY : null;
+            let sym = symbols[currentCurrency];
+            let formatted = price ? formatPrice(price) : '';
+            let shareText = `🎁 *${product.name}*\n✨ ${product.desc || ''}\n💰 ${sym} ${formatted}\n🔗 ${url}`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: product.name,
+                    text: `🎁 ${product.name}\n✨ ${product.desc || ''}\n💰 ${sym} ${formatted}`,
+                    url: url
+                }).catch(() => {
+                    copyToClipboard(shareText);
+                });
+            } else {
+                copyToClipboard(shareText);
+            }
+        }
+
+        function copyToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast("✅ تم نسخ الرابط مع تفاصيل المنتج");
+                }).catch(() => {
+                    fallbackCopy(text);
+                });
+            } else {
+                fallbackCopy(text);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast("✅ تم نسخ الرابط مع تفاصيل المنتج");
+            } catch (err) {
+                showToast("❌ تعذر النسخ، حاول مرة أخرى");
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function getSpecialPrice(offer) { return offer.prices[currentCurrency] || offer.prices.TRY; }
+        function getPrice(product) { return product.prices[currentCurrency] || product.prices.TRY; }
+        function getBestsellerPrice(b) { return b.prices ? b.prices[currentCurrency] || b.prices.TRY : 0; }
+        function getNewOfferPrice(offer) {
+            if (offer.isFifaPoints) return null;
+            return offer.prices[currentCurrency] || offer.prices.TRY;
+        }
+        function formatPrice(price) {
+            if (price === null || price === undefined) return '';
+            if (currentCurrency === 'IQD' || currentCurrency === 'SYP') return Math.round(price).toLocaleString();
+            if (currentCurrency === 'JOD' || currentCurrency === 'USD' || currentCurrency === 'EUR' || currentCurrency === 'USDT') return price.toFixed(2);
+            if (currentCurrency === 'ITUNES') return price.toFixed(2);
+            return price % 1 === 0 ? price : price.toFixed(2);
+        }
+        function getProductName(p) { 
+            if (currentLang === 'en') return p.name_en || p.name;
+            if (currentLang === 'tr') return p.name_tr || p.name;
+            return p.name;
+        }
+
+        function getProductShareUrl(product) {
+            let baseUrl = window.location.origin + window.location.pathname;
+            return `${baseUrl}?product=${product.id}&currency=${currentCurrency}`;
+        }
+
+        function showToast(msg) { 
+            let t = document.getElementById('toast'); 
+            t.textContent = msg; 
+            t.style.display = 'block'; 
+            setTimeout(() => t.style.display = 'none', 3000); 
+        }
+
+        function handleProductLink() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('product') || urlParams.get('bundle') || urlParams.get('offer');
+            const currency = urlParams.get('currency');
+            
+            if (productId) {
+                setTimeout(() => {
+                    const success = showSingleProduct(productId, currency);
+                    if (success) {
+                        showToast(`🎯 تم فتح المنتج المطلوب`);
+                    }
+                }, 600);
+                return true;
+            }
+            return false;
+        }
+
+        function displayProducts() {
+            if (isSingleProductView) return;
+            
+            const cats = { خدمات: 'productsGrid2', 'عروض خاصة': 'productsGrid3', FCX2: 'productsGrid4', FC: 'productsGrid5' };
+            for(let cat in cats) {
+                let grid = document.getElementById(cats[cat]); if(!grid) continue;
+                let filtered = products.filter(p => p.category === cat);
+                grid.innerHTML = filtered.map(p => {
+                    let cardClass='', badgeText='⭐';
+                    if(p.type==='buffon'){ cardClass='buffon-card'; badgeText='🧤 BUFFON'; }
+                    else if(p.type==='buffon-premium'){ cardClass='buffon-premium-card'; badgeText='🧤 BUFFON مميز'; }
+                    else if(p.type==='premium'){ cardClass='premium-card'; badgeText='🔥 مميز'; }
+                    else if(p.type==='upgrade'){ cardClass='upgrade-card'; badgeText='⬆️ ترقية'; }
+                    else if(p.type==='luxury'){ cardClass='luxury-card'; badgeText='🎟️ قسيمة 10'; }
+                    else if(p.type==='voucher'){ cardClass='voucher-card'; badgeText='🎫 40 قسيمة'; }
+                    else if(p.type==='pogba'){ cardClass='pogba-card'; badgeText='⭐ Pogba'; }
+                    else if(p.type==='pogba-premium'){ cardClass='pogba-premium-card'; badgeText='⭐ Pogba مميز'; }
+                    else if(p.type==='maguire'){ cardClass='maguire-card'; badgeText='⭐ MAGUIRE'; }
+                    else if(p.type==='maguire-premium'){ cardClass='maguire-premium-card'; badgeText='⭐ MAGUIRE مميز'; }
+                    else if(p.type==='griezmann'){ cardClass='griezmann-card'; badgeText='⭐ GRIEZMANN'; }
+                    else if(p.type==='griezmann-premium'){ cardClass='griezmann-premium-card'; badgeText='⭐ GRIEZMANN مميز'; }
+                    else if(p.type==='daily-booster'){ cardClass='daily-booster-card'; badgeText='☀️ معزز يومي'; }
+                    else if(p.type==='fc'){ cardClass='fc-points-card'; badgeText='⚡ X2'; }
+                    else if(p.type==='fc-normal'){ cardClass='fc-normal-card'; badgeText='⚽ FC'; }
+                    let price = getPrice(p);
+                    let sym = symbols[currentCurrency];
+                    let priceDisp = formatPrice(price);
+                    let displayName = getProductName(p);
+                    let descHtml = p.desc ? `<div class="offer-desc">✨ ${p.desc}</div>` : '';
+                    return `<div class="card ${cardClass}" data-product-id="${p.id}"><div class="badge">${badgeText}</div><div class="card-image-wrapper"><img src="${p.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x280?text=Image+Not+Found'" alt="${displayName}"></div><h3>${displayName}</h3>${descHtml}<div class="price">${sym} ${priceDisp}</div><button class="btn-order" onclick='quickOrder(${JSON.stringify(p)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareProduct(${JSON.stringify(p)})'>📢 مشاركة</button></div>`;
+                }).join('');
+            }
+            let bsGrid = document.getElementById('bestsellersGrid');
+            if(bsGrid) {
+                bsGrid.innerHTML = bestSellers.map(b => {
+                    let price = getBestsellerPrice(b);
+                    let sym = symbols[currentCurrency];
+                    let priceDisp = formatPrice(price);
+                    let cardClass = 'hot-sale-card';
+                    let badgeText = '🔥 عرض ساخن';
+                    let displayName = getProductName(b);
+                    return `<div class="card ${cardClass}" data-product-id="${b.id}"><div class="badge">${badgeText}</div><div class="card-image-wrapper"><img src="${b.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x280?text=Image+Not+Found'" alt="${displayName}"></div><h3>${displayName}</h3><div class="offer-desc">✨ ${b.desc}</div><div class="price-tag">${sym} ${priceDisp}</div><button class="btn-order" onclick='orderBestseller(${JSON.stringify(b)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareBestseller(${JSON.stringify(b)})'>📢 مشاركة العرض</button></div>`;
+                }).join('');
+            }
+            renderNewOffers('firstNewOffersGrid');
+        }
+
+        function displaySpecialOffers() {
+            if (isSingleProductView) return;
+            
+            let grid = document.getElementById('specialOffersGrid');
+            if(grid) {
+                grid.innerHTML = specialOffers.map(offer => {
+                    let price = getSpecialPrice(offer);
+                    let sym = symbols[currentCurrency];
+                    let priceDisp = formatPrice(price);
+                    let cardClass = offer.id === 2008 ? 'monthly-card' : 'special-offer-card';
+                    return `<div class="card ${cardClass}" data-product-id="${offer.id}"><div class="badge">🎁 عرض لفترة محدودة</div><div class="card-image-wrapper"><img src="${offer.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x280?text=Image+Not+Found'" alt="${offer.name}"></div><h3>${offer.name}</h3><div class="offer-desc">✨ ${offer.desc}</div><div class="price-tag">${sym} ${priceDisp}</div><button class="btn-order" onclick='quickOrderSpecial(${JSON.stringify(offer)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareSpecial(${JSON.stringify(offer)})'>📢 مشاركة العرض</button></div>`;
+                }).join('');
+            }
+        }
+
+        // ===== عرض العروض الجديدة =====
+        function renderNewOffers(containerId) {
+            if (isSingleProductView) return;
+            
+            const grid = document.getElementById(containerId);
+            if(!grid) return;
+            
+            grid.innerHTML = newOffers.map(offer => {
+                let priceDisplay = '';
+                let sym = symbols[currentCurrency];
+                let cardClass = 'new-offer-card';
+                
+                if (offer.type === 'luxury') {
+                    cardClass = 'luxury-raffle-card';
+                } else if (offer.type === 'champions') {
+                    cardClass = 'champions-card';
+                } else if (offer.type === 'voucher-champion') {
+                    cardClass = 'voucher-champion-card';
+                } else if (offer.type === 'random-player') {
+                    cardClass = 'random-player-card';
+                }
+                
+                if (offer.isFifaPoints) {
+                    priceDisplay = `<div class="price" style="color: #ff6b6b;">🎮 يلزم ${offer.fifaPoints} فيفا بوينت</div>`;
+                } else {
+                    let price = getNewOfferPrice(offer);
+                    let priceDisp = formatPrice(price);
+                    priceDisplay = `<div class="price-tag">${sym} ${priceDisp}</div>`;
+                }
+                return `<div class="card ${cardClass}" data-product-id="${offer.id}"><div class="badge">🎫 عرض جديد</div><div class="card-image-wrapper"><img src="${offer.image}" class="card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x280?text=Image+Not+Found'" alt="${offer.name}"></div><h3>${offer.name}</h3><div class="offer-desc">✨ ${offer.desc}</div>${priceDisplay}<button class="btn-order" onclick='quickOrderNew(${JSON.stringify(offer)})'>📦 اطلب الآن</button><button class="btn-share" onclick='shareNewOffer(${JSON.stringify(offer)})'>📢 مشاركة العرض</button></div>`;
+            }).join('');
+        }
+
+        function renderTickerItems() {
+            const body = document.getElementById('tickerBody');
+            if (!body) return;
+            
+            body.innerHTML = newOffers.map(item => {
+                let priceDisplay = '';
+                let sym = symbols[currentCurrency];
+                
+                if (item.isFifaPoints) {
+                    priceDisplay = `🎮 ${item.fifaPoints} فيفا بوينت`;
+                } else {
+                    let price = getPrice(item);
+                    let priceDisp = formatPrice(price);
+                    priceDisplay = `${sym} ${priceDisp}`;
+                }
+                
+                return `
+                    <div class="notif-ticker-item" data-product-id="${item.id}">
+                        <img src="${item.image}" loading="lazy" onerror="this.src='https://via.placeholder.com/70x70?text=No+Image'" alt="${item.name}">
+                        <div class="notif-ticker-item-info">
+                            <div class="name">${item.name}</div>
+                            <div class="price">${priceDisplay}</div>
+                            <div class="desc">${item.desc}</div>
+                        </div>
+                        <button class="btn-buy" onclick='quickOrderNew(${JSON.stringify(item)})'>اطلب</button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleTicker() {
+            const ticker = document.getElementById('notifTicker');
+            const btn = document.getElementById('tickerToggleBtn');
+            
+            tickerOpen = !tickerOpen;
+            
+            if (tickerOpen) {
+                ticker.classList.add('open');
+                btn.textContent = '▲ إخفاء المنتجات';
+                localStorage.setItem('tickerOpen', 'true');
+            } else {
+                ticker.classList.remove('open');
+                btn.textContent = '▼ عرض المنتجات';
+                localStorage.setItem('tickerOpen', 'false');
+            }
+        }
+
+        function checkTickerState() {
+            const saved = localStorage.getItem('tickerOpen');
+            if (saved === 'true') {
+                const ticker = document.getElementById('notifTicker');
+                const btn = document.getElementById('tickerToggleBtn');
+                ticker.classList.add('open');
+                btn.textContent = '▲ إخفاء المنتجات';
+                tickerOpen = true;
+            }
+        }
+
+        function changeCity() { 
+            currentCurrency = document.getElementById('city-select').value; 
+            if (!isSingleProductView) {
+                displayProducts(); 
+                displaySpecialOffers(); 
+                renderNewOffers('firstNewOffersGrid');
+                renderTickerItems();
+            } else {
+                const urlParams = new URLSearchParams(window.location.search);
+                const productId = urlParams.get('product');
+                if (productId) showSingleProduct(productId, currentCurrency);
+            }
+            showToast(`✅ العملة: ${currentCurrency}`); 
+        }
+        
+        function setLanguage(lang) { 
+            currentLang = lang; 
+            document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr'; 
+            document.querySelectorAll('.lang-switch button').forEach(btn=>btn.classList.remove('active')); 
+            document.getElementById(`lang-${lang}`).classList.add('active'); 
+            document.getElementById('slogan').innerText = lang==='ar'?'أسرع خدمات رفع التصنيف والشحن | دعم 24 ساعة':(lang==='en'?'Fastest ranking & top-up services | 24/7 Support':'En hızlı sıralama ve yükleme hizmetleri | 7/24 Destek'); 
+            if (!isSingleProductView) {
+                displayProducts(); 
+                displaySpecialOffers(); 
+                renderNewOffers('firstNewOffersGrid');
+                renderTickerItems();
+            } else {
+                const urlParams = new URLSearchParams(window.location.search);
+                const productId = urlParams.get('product');
+                if (productId) showSingleProduct(productId, currentCurrency);
+            }
+        }
+        
+        function scrollToSection(id) { 
+            if (isSingleProductView) return;
+            let el = document.getElementById(id); 
+            if(el) { 
+                let top = el.getBoundingClientRect().top + window.pageYOffset - 120; 
+                window.scrollTo({top, behavior:'smooth'}); 
+            } 
+        }
+        
+        function mobileNavChange() { 
+            if (isSingleProductView) {
+                backToStore();
+                return;
+            }
+            let val = document.getElementById('mobileNavSelect').value; 
+            if(val) { 
+                scrollToSection(val); 
+                document.getElementById('mobileNavSelect').value = ''; 
+            } 
+        }
+        
+        function scrollToTop() { window.scrollTo({top:0, behavior:'smooth'}); }
+        window.addEventListener('scroll', () => { let btn = document.getElementById('scrollTopBtn'); window.scrollY > 300 ? btn.classList.add('show') : btn.classList.remove('show'); });
+
+        function quickOrderSpecial(offer) { 
+            let price = getSpecialPrice(offer);
+            let sym = symbols[currentCurrency];
+            let formatted = formatPrice(price);
+            let msg = `مرحباً، أريد طلب العرض المميز: ${offer.name}\n✨ ${offer.desc}\n💰 السعر: ${sym} ${formatted}`; 
+            window.open(`https://wa.me/905356387200?text=${encodeURIComponent(msg)}`, '_blank'); 
+        }
+        
+        function shareSpecial(offer) { 
+            let url = getProductShareUrl(offer);
+            let price = getSpecialPrice(offer);
+            let sym = symbols[currentCurrency];
+            let formatted = formatPrice(price);
+            let shareText = `🔥 *${offer.name}*\n✨ ${offer.desc}\n💰 ${sym} ${formatted}\n🔗 ${url}`; 
+            if (navigator.share) {
+                navigator.share({
+                    title: offer.name,
+                    text: `🔥 ${offer.name}\n✨ ${offer.desc}\n💰 ${sym} ${formatted}`,
+                    url: url
+                }).catch(() => copyToClipboard(shareText));
+            } else {
+                copyToClipboard(shareText);
+            }
+        }
+        
+        function quickOrder(p) { 
+            let price = getPrice(p);
+            let sym = symbols[currentCurrency];
+            let formatted = formatPrice(price);
+            let msg = `مرحباً، أريد طلب: ${getProductName(p)}\n💰 السعر: ${sym} ${formatted}`; 
+            window.open(`https://wa.me/905356387200?text=${encodeURIComponent(msg)}`, '_blank'); 
+        }
+        
+        function orderBestseller(b) { 
+            let price = getBestsellerPrice(b);
+            let sym = symbols[currentCurrency];
+            let formatted = formatPrice(price);
+            let msg = `🏆 طلب عرض حصري:\n📦 الباقة: ${b.name}\n✨ المحتوى: ${b.desc}\n💰 السعر: ${sym} ${formatted}`; 
+            window.open(`https://wa.me/905356387200?text=${encodeURIComponent(msg)}`, '_blank'); 
+        }
+        
+        function sendOrder() { 
+            let n=document.getElementById('orderName').value.trim(), p=document.getElementById('orderPhone').value.trim(), d=document.getElementById('orderDetails').value.trim(); 
+            if(!n||!p||!d){alert('❌ الرجاء ملء جميع الحقول'); return;} 
+            window.open(`https://wa.me/905356387200?text=${encodeURIComponent(`📦 طلب جديد:\n👤 الاسم: ${n}\n📱 الهاتف: ${p}\n📋 الطلب: ${d}`)}`, '_blank'); 
+        }
+        
+        function shareProduct(product) { 
+            let url = getProductShareUrl(product);
+            let price = getPrice(product);
+            let sym = symbols[currentCurrency];
+            let formatted = formatPrice(price);
+            let shareText = `🎁 *${getProductName(product)}*\n💰 ${sym} ${formatted}\n🔗 ${url}`; 
+            if (navigator.share) {
+                navigator.share({
+                    title: getProductName(product),
+                    text: `🎁 ${getProductName(product)}\n💰 ${sym} ${formatted}`,
+                    url: url
+                }).catch(() => copyToClipboard(shareText));
+            } else {
+                copyToClipboard(shareText);
+            }
+        }
+        
+        function shareBestseller(b) { 
+            let url = getProductShareUrl(b);
+            let price = getBestsellerPrice(b);
+            let sym = symbols[currentCurrency];
+            let formatted = formatPrice(price);
+            let shareText = `🏆 *${b.name}*\n✨ ${b.desc}\n💰 ${sym} ${formatted}\n🔗 ${url}`; 
+            if (navigator.share) {
+                navigator.share({
+                    title: b.name,
+                    text: `🏆 ${b.name}\n✨ ${b.desc}\n💰 ${sym} ${formatted}`,
+                    url: url
+                }).catch(() => copyToClipboard(shareText));
+            } else {
+                copyToClipboard(shareText);
+            }
+        }
+
+        function quickOrderNew(offer) {
+            let msg;
+            if (offer.isFifaPoints) {
+                msg = `مرحباً، أريد طلب: ${offer.name}\n✨ ${offer.desc}\n💰 يلزم ${offer.fifaPoints} فيفا بوينت`;
+            } else {
+                let price = getNewOfferPrice(offer);
+                let sym = symbols[currentCurrency];
+                let formatted = formatPrice(price);
+                msg = `مرحباً، أريد طلب: ${offer.name}\n✨ ${offer.desc}\n💰 السعر: ${sym} ${formatted}`;
+            }
+            window.open(`https://wa.me/905356387200?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function shareNewOffer(offer) {
+            let url = getProductShareUrl(offer);
+            let sym = symbols[currentCurrency];
+            let formatted = '';
+            if (!offer.isFifaPoints) {
+                let price = getNewOfferPrice(offer);
+                formatted = formatPrice(price);
+            }
+            let shareText;
+            if (offer.isFifaPoints) {
+                shareText = `🎫 *${offer.name}*\n✨ ${offer.desc}\n💰 يلزم ${offer.fifaPoints} فيفا بوينت\n🔗 ${url}`;
+            } else {
+                shareText = `🎫 *${offer.name}*\n✨ ${offer.desc}\n💰 ${sym} ${formatted}\n🔗 ${url}`;
+            }
+            if (navigator.share) {
+                navigator.share({
+                    title: offer.name,
+                    text: `🎫 ${offer.name}\n✨ ${offer.desc}\n💰 ${sym} ${formatted}`,
+                    url: url
+                }).catch(() => copyToClipboard(shareText));
+            } else {
+                copyToClipboard(shareText);
+            }
+        }
+
+        function shareStore() { 
+            let url = window.location.origin + window.location.pathname; 
+            let shareText = `🔰 *أمير ستور* 🔰\n✅ أسرع خدمات FC موبايل\n🛒 ${url}\n📱 واتساب: +905356387200`; 
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Amir Store',
+                    text: '🔰 أمير ستور - أسرع خدمات FC موبايل',
+                    url: url
+                }).catch(() => copyToClipboard(shareText));
+            } else {
+                copyToClipboard(shareText);
+            }
+        }
+
+        displayProducts(); 
+        displaySpecialOffers();
+        renderNewOffers('firstNewOffersGrid');
+        renderTickerItems();
+        checkTickerState();
+        
+        setTimeout(() => {
+            handleProductLink();
+        }, 800);
+
+        window.addEventListener('popstate', function() {
+            handleProductLink();
+        });
     </script>
 </body>
 </html>
