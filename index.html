@@ -639,6 +639,89 @@
         }
         .scroll-top.show { opacity: 1; visibility: visible; }
 
+        /* ===== عرض المنتج المفرد ===== */
+        .single-product-view .section:not(.section-first) {
+            display: none !important;
+        }
+        .single-product-view .order-form {
+            display: none !important;
+        }
+        .single-product-view .notif-ticker {
+            display: none !important;
+        }
+        .single-product-view .section-first {
+            margin: 20px 10px;
+        }
+        .single-product-view .section-first .section-title {
+            display: none;
+        }
+        .single-product-view .products-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        .single-product-view .card {
+            min-width: unset;
+            max-width: 100%;
+            transform: scale(1.05);
+            border: 3px solid #f9c74f;
+            box-shadow: 0 0 50px rgba(249, 199, 79, 0.3);
+        }
+        .single-product-view .card-image {
+            height: 280px;
+        }
+        .single-product-view .card-image-wrapper {
+            min-height: 300px;
+        }
+        .single-product-view .card h3 {
+            font-size: 1.6rem;
+        }
+        .single-product-view .price-tag {
+            font-size: 30px;
+            padding: 10px 28px;
+        }
+        .single-product-view .offer-desc {
+            font-size: 18px;
+            padding: 14px 18px;
+        }
+        .single-product-view .btn-order {
+            font-size: 20px;
+            padding: 16px 10px;
+        }
+        .single-product-view .btn-share {
+            font-size: 18px;
+            padding: 14px 10px;
+        }
+
+        /* ===== زر العودة إلى المتجر ===== */
+        .back-to-store-btn {
+            display: none;
+            background: #2c5a57;
+            color: #f9c74f;
+            border: 2px solid #f9c74f;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px auto 20px;
+            transition: 0.3s;
+            width: fit-content;
+            font-family: inherit;
+        }
+        .back-to-store-btn:hover {
+            background: #f9c74f;
+            color: #0a1f1e;
+        }
+        .back-to-store-btn.show {
+            display: block;
+        }
+        .single-product-view .back-to-store-btn {
+            display: block;
+        }
+
         body.light-mode {
             background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
             color: #1a1a1a;
@@ -725,6 +808,15 @@
         body.light-mode #welcomeNotif .notif-text { color: #666; }
         body.light-mode #welcomeNotif .notif-close { color: #999; }
         body.light-mode .scroll-top { background: #d4af37; color: #ffffff; }
+        body.light-mode .back-to-store-btn {
+            background: #e8ecf1;
+            color: #8b6914;
+            border-color: #d4af37;
+        }
+        body.light-mode .back-to-store-btn:hover {
+            background: #d4af37;
+            color: #ffffff;
+        }
 
         @media (max-width: 600px) {
             .card { min-width: 220px; max-width: 250px; }
@@ -734,6 +826,10 @@
             .splash-logo { width: 120px; height: 120px; }
             #installBtn { bottom: 70px; left: 12px; padding: 8px 14px; font-size: 12px; }
             #welcomeNotif { top: 10px; right: 10px; left: 10px; max-width: unset; }
+            .single-product-view .card-image { height: 220px; }
+            .single-product-view .card-image-wrapper { min-height: 240px; }
+            .single-product-view .card h3 { font-size: 1.4rem; }
+            .single-product-view .price-tag { font-size: 24px; padding: 8px 22px; }
         }
     </style>
 </head>
@@ -822,6 +918,8 @@
         <h1>⚡ AMIR STORE ⚡</h1>
         <p id="slogan">أسرع خدمات رفع التصنيف والشحن | دعم 24 ساعة</p>
     </div>
+
+    <button class="back-to-store-btn" id="backToStoreBtn" onclick="backToStore()">← العودة إلى المتجر</button>
 
     <div id="section-first" class="section-first">
         <div class="section-title">🎫 عروض جديدة 🔥</div>
@@ -1047,6 +1145,28 @@
             `;
         }
 
+        function buildSingleCardHTML(product) {
+            const sym = symbols[currentCurrency];
+            const price = product.prices ? (product.prices[currentCurrency] || product.prices.TRY) : null;
+            const priceDisplay = price !== null ? `<div class="price-tag">${sym} ${formatPrice(price)}</div>` : '';
+            const descHtml = product.desc ? `<div class="offer-desc">✨ ${product.desc}</div>` : '';
+            const cardClass = product.type ? `card ${product.type}-card` : 'card';
+
+            return `
+                <div class="${cardClass}" data-product-id="${product.id}">
+                    <div class="badge">🎯 المنتج المطلوب</div>
+                    <div class="card-image-wrapper">
+                        <img src="${product.image}" class="card-image" loading="lazy" alt="${product.name}">
+                    </div>
+                    <h3>${product.name}</h3>
+                    ${descHtml}
+                    ${priceDisplay}
+                    <button class="btn-order" data-action="order" data-id="${product.id}">📦 اطلب الآن</button>
+                    <button class="btn-share" data-action="share" data-id="${product.id}">📢 مشاركة</button>
+                </div>
+            `;
+        }
+
         function displayProducts() {
             const cats = { 'خدمات': 'productsGrid2', 'عروض خاصة': 'productsGrid3', 'FCX2': 'productsGrid4', 'FC': 'productsGrid5' };
             for (const cat in cats) {
@@ -1092,13 +1212,117 @@
             }).join('');
         }
 
-        function changeCity() {
-            currentCurrency = document.getElementById('city-select').value;
+        // ===== عرض منتج واحد =====
+        function showSingleProduct(productId, currency) {
+            if (currency && symbols[currency]) {
+                currentCurrency = currency;
+                document.getElementById('city-select').value = currency;
+            }
+
+            const product = findProductById(productId);
+            if (!product) {
+                showToast('❌ المنتج غير موجود');
+                return false;
+            }
+
+            document.body.classList.add('single-product-view');
+            document.getElementById('backToStoreBtn').classList.add('show');
+
+            const grid = document.getElementById('firstNewOffersGrid');
+            if (!grid) return false;
+
+            grid.innerHTML = buildSingleCardHTML(product);
+
+            setTimeout(() => {
+                const card = grid.querySelector('.card');
+                if (card) {
+                    const top = card.getBoundingClientRect().top + window.pageYOffset - 100;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            }, 300);
+
+            return true;
+        }
+
+        // ===== العودة إلى المتجر =====
+        function backToStore() {
+            document.body.classList.remove('single-product-view');
+            document.getElementById('backToStoreBtn').classList.remove('show');
+
             displayProducts();
             displaySpecialOffers();
             displayLuxuryVouchers();
             renderNewOffers();
             renderTickerItems();
+
+            const url = new URL(window.location);
+            ['product', 'bundle', 'offer', 'currency'].forEach(k => url.searchParams.delete(k));
+            window.history.replaceState({}, '', url);
+
+            showToast('✅ تم العودة إلى المتجر');
+        }
+
+        // ===== رابط المشاركة =====
+        function getProductShareUrl(product) {
+            const base = window.location.origin + window.location.pathname;
+            return `${base}?product=${product.id}&currency=${currentCurrency}`;
+        }
+
+        // ===== نسخ للحافظة =====
+        function copyToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text)
+                    .then(() => showToast('✅ تم نسخ الرابط'))
+                    .catch(() => fallbackCopy(text));
+            } else {
+                fallbackCopy(text);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-999999px';
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); showToast('✅ تم النسخ'); }
+            catch (e) { showToast('❌ تعذر النسخ'); }
+            document.body.removeChild(ta);
+        }
+
+        // ===== معالجة الرابط عند فتح الصفحة =====
+        function handleProductLink() {
+            const params = new URLSearchParams(window.location.search);
+            const pid = params.get('product') || params.get('bundle') || params.get('offer');
+            const currency = params.get('currency');
+            if (pid) {
+                setTimeout(() => {
+                    if (showSingleProduct(pid, currency)) {
+                        showToast('🎯 تم فتح المنتج المطلوب');
+                    }
+                }, 600);
+                return true;
+            }
+            return false;
+        }
+
+        // ===== الأحداث =====
+        function changeCity() {
+            currentCurrency = document.getElementById('city-select').value;
+            if (document.body.classList.contains('single-product-view')) {
+                const params = new URLSearchParams(window.location.search);
+                const pid = params.get('product');
+                if (pid) {
+                    showSingleProduct(pid, currentCurrency);
+                }
+            } else {
+                displayProducts();
+                displaySpecialOffers();
+                displayLuxuryVouchers();
+                renderNewOffers();
+                renderTickerItems();
+            }
             showToast(`✅ ${currentCurrency}`);
         }
 
@@ -1143,11 +1367,12 @@
         function shareProduct(product) {
             const price = product.prices[currentCurrency] || product.prices.TRY;
             const sym = symbols[currentCurrency];
-            const text = `🎁 ${product.name}\n💰 ${sym} ${formatPrice(price)}\n🔗 ${window.location.href}`;
+            const url = getProductShareUrl(product);
+            const text = `🎁 ${product.name}\n💰 ${sym} ${formatPrice(price)}\n🔗 ${url}`;
             if (navigator.share) {
-                navigator.share({ title: product.name, text }).catch(() => {});
+                navigator.share({ title: product.name, text, url }).catch(() => copyToClipboard(text));
             } else {
-                navigator.clipboard.writeText(text).then(() => showToast('✅ تم النسخ')).catch(() => {});
+                copyToClipboard(text);
             }
         }
 
@@ -1156,7 +1381,7 @@
             if (navigator.share) {
                 navigator.share({ title: 'Amir Store', text }).catch(() => {});
             } else {
-                navigator.clipboard.writeText(text).then(() => showToast('✅ تم النسخ')).catch(() => {});
+                copyToClipboard(text);
             }
         }
 
@@ -1204,6 +1429,8 @@
             document.getElementById('scrollTopBtn').classList.toggle('show', window.scrollY > 300);
         });
 
+        window.addEventListener('popstate', handleProductLink);
+
         document.addEventListener('DOMContentLoaded', loadSavedTheme);
 
         window.addEventListener('load', () => {
@@ -1223,6 +1450,8 @@
             displayLuxuryVouchers();
             renderNewOffers();
             renderTickerItems();
+
+            setTimeout(handleProductLink, 800);
         });
     </script>
 </body>
