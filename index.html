@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Amir Store | متجر FC موبايل الاحترافي</title>
     <meta name="description" content="Amir Store - أسرع خدمات شحن FC Mobile ورفع التصنيف بأفضل الأسعار، دعم 24 ساعة، تسليم فوري.">
-    <meta name="keywords" content="FC Mobile, شحن, شدات, أمير ستور, Amir Store, FC Points, رفع تصنيف">
     <meta name="theme-color" content="#0d1f1e">
 
     <meta property="og:title" content="Amir Store | متجر FC موبايل الاحترافي">
@@ -603,7 +602,7 @@
 
         .toast {
             position: fixed;
-            bottom: 20px;
+            bottom: 100px;
             left: 50%;
             transform: translateX(-50%);
             background: #20c997;
@@ -618,7 +617,7 @@
 
         .scroll-top {
             position: fixed;
-            bottom: 15px;
+            bottom: 100px;
             right: 15px;
             background: #f9c74f;
             color: #0a1f1e;
@@ -640,62 +639,39 @@
         .scroll-top.show { opacity: 1; visibility: visible; }
 
         /* ===== عرض المنتج المفرد ===== */
-        .single-product-view .section:not(.section-first) {
-            display: none !important;
-        }
-        .single-product-view .order-form {
-            display: none !important;
-        }
-        .single-product-view .notif-ticker {
-            display: none !important;
-        }
+        .single-product-view .section:not(.section-first) { display: none !important; }
+        .single-product-view .order-form { display: none !important; }
+        .single-product-view .notif-ticker { display: none !important; }
         .single-product-view .section-first {
-            margin: 20px 10px;
+            margin: 10px 10px 110px 10px;
         }
-        .single-product-view .section-first .section-title {
-            display: none;
-        }
+        .single-product-view .section-first .section-title { display: none; }
         .single-product-view .products-grid {
             display: grid;
             grid-template-columns: 1fr;
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto;
             padding: 0;
         }
         .single-product-view .card {
             min-width: unset;
             max-width: 100%;
-            transform: scale(1.05);
-            border: 3px solid #f9c74f;
-            box-shadow: 0 0 50px rgba(249, 199, 79, 0.3);
+            border: 2px solid #f9c74f;
+            box-shadow: 0 0 30px rgba(249, 199, 79, 0.25);
+            padding: 14px;
+            transform: none;
         }
-        .single-product-view .card-image {
-            height: 280px;
-        }
-        .single-product-view .card-image-wrapper {
-            min-height: 300px;
-        }
-        .single-product-view .card h3 {
-            font-size: 1.6rem;
-        }
-        .single-product-view .price-tag {
-            font-size: 30px;
-            padding: 10px 28px;
-        }
-        .single-product-view .offer-desc {
-            font-size: 18px;
-            padding: 14px 18px;
-        }
-        .single-product-view .btn-order {
-            font-size: 20px;
-            padding: 16px 10px;
-        }
-        .single-product-view .btn-share {
-            font-size: 18px;
-            padding: 14px 10px;
+        .single-product-view .card-image { height: 220px; }
+        .single-product-view .card-image-wrapper { min-height: 240px; padding: 8px; }
+        .single-product-view .card h3 { font-size: 1.3rem; min-height: auto; margin: 8px 0; }
+        .single-product-view .price-tag { font-size: 24px; padding: 8px 22px; }
+        .single-product-view .offer-desc { font-size: 14px; padding: 10px 12px; min-height: 40px; }
+        .single-product-view .card .btn-order,
+        .single-product-view .card .btn-share {
+            display: none;
         }
 
-        /* ===== زر العودة إلى المتجر ===== */
+        /* ===== زر العودة ===== */
         .back-to-store-btn {
             display: none;
             background: #2c5a57;
@@ -711,17 +687,93 @@
             width: fit-content;
             font-family: inherit;
         }
-        .back-to-store-btn:hover {
-            background: #f9c74f;
-            color: #0a1f1e;
+        .back-to-store-btn:hover { background: #f9c74f; color: #0a1f1e; }
+        .back-to-store-btn.show { display: block; }
+        .single-product-view .back-to-store-btn { display: block; }
+
+        /* ===== شريط الشراء الثابت ===== */
+        .sticky-buy-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, rgba(13, 31, 30, 0.98), rgba(13, 31, 30, 1));
+            border-top: 2px solid #f9c74f;
+            padding: 12px 16px;
+            z-index: 999;
+            box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            animation: slideUp 0.4s ease;
         }
-        .back-to-store-btn.show {
-            display: block;
-        }
-        .single-product-view .back-to-store-btn {
-            display: block;
+        .sticky-buy-bar.show { display: block; }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
         }
 
+        .sticky-buy-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .sticky-buy-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .sticky-buy-name {
+            font-size: 13px;
+            color: #fff;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 4px;
+        }
+
+        .sticky-buy-price {
+            font-size: 16px;
+            color: #f9c74f;
+            font-weight: bold;
+        }
+
+        .sticky-buy-btn {
+            background: linear-gradient(135deg, #f9844a, #f96b2a);
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            font-family: inherit;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(249, 132, 74, 0.4);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .sticky-buy-btn:hover {
+            transform: scale(0.97);
+            box-shadow: 0 6px 20px rgba(249, 132, 74, 0.6);
+        }
+        .sticky-buy-btn:active { transform: scale(0.93); }
+
+        body.light-mode .sticky-buy-bar {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 1));
+            border-top-color: #d4af37;
+            box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.1);
+        }
+        body.light-mode .sticky-buy-name { color: #1a1a1a; }
+        body.light-mode .sticky-buy-price { color: #8b6914; }
+
+        /* ===== الوضع الفاتح ===== */
         body.light-mode {
             background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
             color: #1a1a1a;
@@ -824,12 +876,16 @@
             .header h1 { font-size: 1.3em; }
             .header-logo { width: 90px; height: 90px; }
             .splash-logo { width: 120px; height: 120px; }
-            #installBtn { bottom: 70px; left: 12px; padding: 8px 14px; font-size: 12px; }
+            #installBtn { bottom: 80px; left: 12px; padding: 8px 14px; font-size: 12px; }
             #welcomeNotif { top: 10px; right: 10px; left: 10px; max-width: unset; }
-            .single-product-view .card-image { height: 220px; }
-            .single-product-view .card-image-wrapper { min-height: 240px; }
-            .single-product-view .card h3 { font-size: 1.4rem; }
-            .single-product-view .price-tag { font-size: 24px; padding: 8px 22px; }
+            .single-product-view .card-image { height: 190px; }
+            .single-product-view .card-image-wrapper { min-height: 210px; }
+            .single-product-view .card h3 { font-size: 1.15rem; }
+            .single-product-view .price-tag { font-size: 22px; padding: 8px 20px; }
+            .sticky-buy-bar { padding: 10px 12px; }
+            .sticky-buy-name { font-size: 11px; }
+            .sticky-buy-price { font-size: 14px; }
+            .sticky-buy-btn { padding: 12px 18px; font-size: 14px; }
         }
     </style>
 </head>
@@ -978,12 +1034,35 @@
         <div class="copyright">© 2026 Amir Store</div>
     </footer>
 
+    <!-- شريط الشراء الثابت -->
+    <div class="sticky-buy-bar" id="stickyBuyBar">
+        <div class="sticky-buy-content">
+            <div class="sticky-buy-info">
+                <div class="sticky-buy-name" id="stickyBuyName">اسم المنتج</div>
+                <div class="sticky-buy-price" id="stickyBuyPrice">$ 0.00</div>
+            </div>
+            <button class="sticky-buy-btn" id="stickyBuyBtn" onclick="stickyOrder()">
+                📦 اطلب الآن
+            </button>
+        </div>
+    </div>
+
     <div id="toast" class="toast"></div>
     <button class="scroll-top" id="scrollTopBtn" onclick="scrollTo(0,0)">↑</button>
 
     <script>
         const WHATSAPP_NUMBER = '905356387200';
 
+        // ===== متغيرات عامة =====
+        let currentCurrency = 'TRY';
+        let currentLang = 'ar';
+        let tickerOpen = false;
+        let currentSingleProduct = null;
+        let deferredPrompt = null;
+
+        const symbols = { USD: '$', EUR: '€', TRY: '₺', ILS: '₪', JOD: 'د.ا', SAR: '﷼', QAR: 'ر.ق', AED: 'د.إ', IQD: 'د.ع', SYP: 'ل.س', USDT: '🪙', ITUNES: '🎵' };
+
+        // ===== تبديل الألوان =====
         function toggleTheme() {
             const body = document.body;
             const btn = document.getElementById('themeToggleBtn');
@@ -1041,46 +1120,11 @@
         ];
 
         const luxuryVouchers = [
-            { 
-                id: 5001, 
-                name: "20 قسيمة فاخرة + 3000 قطعة النجم", 
-                desc: "خصم مميز", 
-                image: "https://i.ibb.co/LhvzGCnW/20-luxury-vouchers-3000-star-items.jpg", 
-                type: "luxury", 
-                prices: { USD: 30, EUR: 25, TRY: 1227.5, ILS: 105, JOD: 21.88, SAR: 100, QAR: 100, AED: 100, IQD: 42500, SYP: 4000, USDT: 30, ITUNES: 31.25 } 
-            },
-            { 
-                id: 5002, 
-                name: "10 قسائم فاخرة", 
-                desc: "خصم fc", 
-                image: "https://i.ibb.co/n85pf7bZ/10-luxury-vouchers.jpg", 
-                type: "luxury", 
-                prices: { USD: 18, EUR: 15, TRY: 736.5, ILS: 63, JOD: 13.13, SAR: 60, QAR: 60, AED: 60, IQD: 25500, SYP: 2400, USDT: 18, ITUNES: 18.75 } 
-            },
-            { 
-                id: 5003, 
-                name: "20 قسيمة فاخرة", 
-                desc: "خصم fc مميز", 
-                image: "https://i.ibb.co/1GdJ6fD3/20-luxury-vouchers.jpg", 
-                type: "luxury", 
-                prices: { USD: 36, EUR: 30, TRY: 1473, ILS: 126, JOD: 26.25, SAR: 120, QAR: 120, AED: 120, IQD: 51000, SYP: 4800, USDT: 36, ITUNES: 37.5 } 
-            },
-            { 
-                id: 5004, 
-                name: "30 قسيمة فاخرة", 
-                desc: "خصم fc", 
-                image: "https://i.ibb.co/b5WwxH4Y/30-luxury-vouchers.jpg", 
-                type: "luxury", 
-                prices: { USD: 54, EUR: 45, TRY: 2209.5, ILS: 189, JOD: 39.38, SAR: 120, QAR: 120, AED: 120, IQD: 51000, SYP: 7200, USDT: 54, ITUNES: 56.25 } 
-            },
-            { 
-                id: 5005, 
-                name: "50 قسيمة فاخرة", 
-                desc: "خصم مميز", 
-                image: "https://i.ibb.co/DD38D5Mh/50-luxury-vouchers.jpg", 
-                type: "luxury", 
-                prices: { USD: 60, EUR: 60, TRY: 2946, ILS: 252, JOD: 52.5, SAR: 240, QAR: 240, AED: 240, IQD: 102000, SYP: 9600, USDT: 72, ITUNES: 75 } 
-            }
+            { id: 5001, name: "20 قسيمة فاخرة + 3000 قطعة النجم", desc: "خصم مميز", image: "https://i.ibb.co/LhvzGCnW/20-luxury-vouchers-3000-star-items.jpg", type: "luxury", prices: { USD: 30, EUR: 25, TRY: 1227.5, ILS: 105, JOD: 21.88, SAR: 100, QAR: 100, AED: 100, IQD: 42500, SYP: 4000, USDT: 30, ITUNES: 31.25 } },
+            { id: 5002, name: "10 قسائم فاخرة", desc: "خصم fc", image: "https://i.ibb.co/n85pf7bZ/10-luxury-vouchers.jpg", type: "luxury", prices: { USD: 18, EUR: 15, TRY: 736.5, ILS: 63, JOD: 13.13, SAR: 60, QAR: 60, AED: 60, IQD: 25500, SYP: 2400, USDT: 18, ITUNES: 18.75 } },
+            { id: 5003, name: "20 قسيمة فاخرة", desc: "خصم fc مميز", image: "https://i.ibb.co/1GdJ6fD3/20-luxury-vouchers.jpg", type: "luxury", prices: { USD: 36, EUR: 30, TRY: 1473, ILS: 126, JOD: 26.25, SAR: 120, QAR: 120, AED: 120, IQD: 51000, SYP: 4800, USDT: 36, ITUNES: 37.5 } },
+            { id: 5004, name: "30 قسيمة فاخرة", desc: "خصم fc", image: "https://i.ibb.co/b5WwxH4Y/30-luxury-vouchers.jpg", type: "luxury", prices: { USD: 54, EUR: 45, TRY: 2209.5, ILS: 189, JOD: 39.38, SAR: 120, QAR: 120, AED: 120, IQD: 51000, SYP: 7200, USDT: 54, ITUNES: 56.25 } },
+            { id: 5005, name: "50 قسيمة فاخرة", desc: "خصم مميز", image: "https://i.ibb.co/DD38D5Mh/50-luxury-vouchers.jpg", type: "luxury", prices: { USD: 60, EUR: 60, TRY: 2946, ILS: 252, JOD: 52.5, SAR: 240, QAR: 240, AED: 240, IQD: 102000, SYP: 9600, USDT: 72, ITUNES: 75 } }
         ];
 
         const newOffers = [
@@ -1089,14 +1133,7 @@
             { id: 4009, name: "لاعب 119-121 + 10 درافت", desc: "🎲 انت وحظك! احصل على لاعب من 119 إلى 121 مع 10 درافت", image: "https://i.ibb.co/ynxV6xc1/Players-119-to-121-1.jpg", type: "random-player", prices: { USD: 12, EUR: 10, TRY: 491, ILS: 42, JOD: 8.75, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 } },
             { id: 4010, name: "لاعب 119-121 + 10 درافت (2)", desc: "🎲 انت وحظك! احصل على لاعب من 119 إلى 121 مع 10 درافت", image: "https://i.ibb.co/prbh8zFC/Players-119-to-121-2.jpg", type: "random-player", prices: { USD: 12, EUR: 10, TRY: 491, ILS: 42, JOD: 8.75, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 } },
             { id: 4011, name: "لاعب 119-121 + 10 درافت (3)", desc: "🎲 انت وحظك! احصل على لاعب من 119 إلى 121 مع 10 درافت", image: "https://i.ibb.co/XZ0tcZWC/Players-119-to-121-3.jpg", type: "random-player", prices: { USD: 12, EUR: 10, TRY: 491, ILS: 42, JOD: 8.75, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 } },
-            { 
-                id: 4012, 
-                name: "لاعب من 120 إلى 122 مضمون + 10 سحبات", 
-                desc: "مضمون بس أول فتحة + 3000 ترقية تصنيف + 10 آلاف نقاط تصريح", 
-                image: "https://i.ibb.co/99Czhc7x/Player-120-122-10-draws-3000-rank-upgrades-10-000-permission-points.jpg", 
-                type: "random-player", 
-                prices: { USD: 35, EUR: 35, TRY: 1718.5, ILS: 147, JOD: 30.63, SAR: 140, QAR: 140, AED: 140, IQD: 59500, SYP: 5600, USDT: 35, ITUNES: 43.75 } 
-            }
+            { id: 4012, name: "لاعب من 120 إلى 122 مضمون + 10 سحبات", desc: "مضمون بس أول فتحة + 3000 ترقية تصنيف + 10 آلاف نقاط تصريح", image: "https://i.ibb.co/99Czhc7x/Player-120-122-10-draws-3000-rank-upgrades-10-000-permission-points.jpg", type: "random-player", prices: { USD: 35, EUR: 35, TRY: 1718.5, ILS: 147, JOD: 30.63, SAR: 140, QAR: 140, AED: 140, IQD: 59500, SYP: 5600, USDT: 35, ITUNES: 43.75 } }
         ];
 
         const bestSellers = [
@@ -1107,11 +1144,7 @@
             { id: 105, name: "10 سحبات + GATTUSO", desc: "🎁 10 سحبات + لاعب GATTUSO", image: "https://i.ibb.co/rRF7dXVs/GATTUSO.jpg", type: "hot-sale", prices: { USD: 6, EUR: 5, TRY: 245.5, ILS: 21, JOD: 4.38, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 } }
         ];
 
-        let currentCurrency = 'TRY';
-        let currentLang = 'ar';
-        let tickerOpen = false;
-        const symbols = { USD: '$', EUR: '€', TRY: '₺', ILS: '₪', JOD: 'د.ا', SAR: '﷼', QAR: 'ر.ق', AED: 'د.إ', IQD: 'د.ع', SYP: 'ل.س', USDT: '🪙', ITUNES: '🎵' };
-
+        // ===== Helper Functions =====
         function formatPrice(price) {
             if (!price && price !== 0) return '';
             if (currentCurrency === 'IQD' || currentCurrency === 'SYP') return Math.round(price).toLocaleString();
@@ -1161,8 +1194,6 @@
                     <h3>${product.name}</h3>
                     ${descHtml}
                     ${priceDisplay}
-                    <button class="btn-order" data-action="order" data-id="${product.id}">📦 اطلب الآن</button>
-                    <button class="btn-share" data-action="share" data-id="${product.id}">📢 مشاركة</button>
                 </div>
             `;
         }
@@ -1212,6 +1243,21 @@
             }).join('');
         }
 
+        // ===== الشريط الثابت =====
+        function updateStickyBuyBar(product) {
+            if (!product) return;
+            const sym = symbols[currentCurrency];
+            const price = product.prices ? (product.prices[currentCurrency] || product.prices.TRY) : null;
+            const priceDisp = price !== null ? `${sym} ${formatPrice(price)}` : '—';
+            document.getElementById('stickyBuyName').textContent = product.name;
+            document.getElementById('stickyBuyPrice').textContent = priceDisp;
+        }
+
+        function stickyOrder() {
+            if (!currentSingleProduct) return;
+            quickOrder(currentSingleProduct);
+        }
+
         // ===== عرض منتج واحد =====
         function showSingleProduct(productId, currency) {
             if (currency && symbols[currency]) {
@@ -1225,6 +1271,8 @@
                 return false;
             }
 
+            currentSingleProduct = product;
+
             document.body.classList.add('single-product-view');
             document.getElementById('backToStoreBtn').classList.add('show');
 
@@ -1233,13 +1281,12 @@
 
             grid.innerHTML = buildSingleCardHTML(product);
 
+            updateStickyBuyBar(product);
+            document.getElementById('stickyBuyBar').classList.add('show');
+
             setTimeout(() => {
-                const card = grid.querySelector('.card');
-                if (card) {
-                    const top = card.getBoundingClientRect().top + window.pageYOffset - 100;
-                    window.scrollTo({ top, behavior: 'smooth' });
-                }
-            }, 300);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 200);
 
             return true;
         }
@@ -1248,6 +1295,9 @@
         function backToStore() {
             document.body.classList.remove('single-product-view');
             document.getElementById('backToStoreBtn').classList.remove('show');
+            document.getElementById('stickyBuyBar').classList.remove('show');
+
+            currentSingleProduct = null;
 
             displayProducts();
             displaySpecialOffers();
@@ -1291,7 +1341,7 @@
             document.body.removeChild(ta);
         }
 
-        // ===== معالجة الرابط عند فتح الصفحة =====
+        // ===== معالجة الرابط =====
         function handleProductLink() {
             const params = new URLSearchParams(window.location.search);
             const pid = params.get('product') || params.get('bundle') || params.get('offer');
@@ -1310,12 +1360,10 @@
         // ===== الأحداث =====
         function changeCity() {
             currentCurrency = document.getElementById('city-select').value;
-            if (document.body.classList.contains('single-product-view')) {
-                const params = new URLSearchParams(window.location.search);
-                const pid = params.get('product');
-                if (pid) {
-                    showSingleProduct(pid, currentCurrency);
-                }
+            if (document.body.classList.contains('single-product-view') && currentSingleProduct) {
+                const grid = document.getElementById('firstNewOffersGrid');
+                if (grid) grid.innerHTML = buildSingleCardHTML(currentSingleProduct);
+                updateStickyBuyBar(currentSingleProduct);
             } else {
                 displayProducts();
                 displaySpecialOffers();
@@ -1394,7 +1442,6 @@
             window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        let deferredPrompt = null;
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
@@ -1416,10 +1463,18 @@
         window.addEventListener('online', () => document.getElementById('offlineBar').classList.remove('show'));
         window.addEventListener('offline', () => document.getElementById('offlineBar').classList.add('show'));
 
+        // ===== معالجة زر الطلب/المشاركة =====
         document.addEventListener('click', (e) => {
             const btn = e.target.closest('button[data-action]');
             if (!btn) return;
-            const product = findProductById(btn.dataset.id);
+
+            let product = null;
+            if (document.body.classList.contains('single-product-view') && currentSingleProduct) {
+                product = currentSingleProduct;
+            } else {
+                product = findProductById(btn.dataset.id);
+            }
+
             if (!product) return;
             if (btn.dataset.action === 'order') quickOrder(product);
             if (btn.dataset.action === 'share') shareProduct(product);
