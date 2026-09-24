@@ -535,6 +535,88 @@
             letter-spacing: 0.5px;
         }
 
+        .card.bestseller-card {
+            border-top: 4px solid #f9c74f;
+            background: linear-gradient(145deg, rgba(249, 199, 79, 0.15), rgba(15, 45, 40, 0.95));
+            box-shadow: 0 0 25px rgba(249, 199, 79, 0.25);
+        }
+        .card.bestseller-card::before {
+            content: "🏆 الأكثر مبيعاً";
+            position: absolute;
+            top: -12px;
+            right: 16px;
+            background: linear-gradient(135deg, #f9c74f, #f8961e);
+            color: #0a1f1e;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 10px;
+            font-weight: bold;
+            z-index: 2;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(249, 199, 79, 0.4);
+        }
+
+        .card.cucurella-card {
+            border-top: 4px solid #00d2ff;
+            background: linear-gradient(145deg, rgba(0, 210, 255, 0.15), rgba(15, 45, 40, 0.95));
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.25);
+        }
+        .card.cucurella-card::before {
+            content: "🌟 تصريح نجم";
+            position: absolute;
+            top: -12px;
+            right: 16px;
+            background: linear-gradient(135deg, #00d2ff, #0099cc);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 10px;
+            font-weight: bold;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+
+        .card.cucurella-premium-card {
+            border-top: 4px solid #9d4edd;
+            background: linear-gradient(145deg, rgba(157, 78, 221, 0.15), rgba(15, 45, 40, 0.95));
+            box-shadow: 0 0 25px rgba(157, 78, 221, 0.25);
+        }
+        .card.cucurella-premium-card::before {
+            content: "⚡ فتح فوري";
+            position: absolute;
+            top: -12px;
+            right: 16px;
+            background: linear-gradient(135deg, #9d4edd, #7b2cbf);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 10px;
+            font-weight: bold;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+
+        .card.new-offer-card {
+            border-top: 4px solid #00d2ff;
+            background: linear-gradient(145deg, rgba(0, 210, 255, 0.15), rgba(15, 45, 40, 0.95));
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.25);
+        }
+        .card.new-offer-card::before {
+            content: "🎉 ذكرى سنوية";
+            position: absolute;
+            top: -12px;
+            right: 16px;
+            background: linear-gradient(135deg, #00d2ff, #0077b6);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 10px;
+            font-weight: bold;
+            z-index: 2;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(0, 210, 255, 0.4);
+        }
+
         .order-form {
             background: rgba(0, 0, 0, 0.5);
             padding: 20px 16px;
@@ -1107,7 +1189,8 @@
             { id: 3, name: "نمط هجوم تنافسي", prices: { USD: 20, EUR: 25, TRY: 850, ILS: 105, JOD: 19.5, SAR: 100, QAR: 100, AED: 100, IQD: 42500, SYP: 3200, USDT: 20, ITUNES: 25 }, category: "خدمات", image: "https://i.ibb.co/zWRRG3XF/Competitive-attack-jpg.jpg", type: "new-offer" },
             { id: 4, name: "مدير فني", prices: { USD: 20, EUR: 25, TRY: 850, ILS: 105, JOD: 19.5, SAR: 100, QAR: 100, AED: 100, IQD: 42500, SYP: 3200, USDT: 20, ITUNES: 25 }, category: "خدمات", image: "https://i.ibb.co/rfN8WHhB/Technical-Director-jpg.jpg", type: "new-offer" },
             { id: 7, name: "1700 ترقية تصنيف", prices: { USD: 12, EUR: 10, TRY: 475, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 }, category: "عروض خاصة", image: "https://i.ibb.co/Kx20DxgQ/upgrade1700-jpg.jpg", type: "upgrade" },
-            { id: 44, name: "GRIEZMANN", desc: "تصريح نجم", prices: { USD: 12, EUR: 10, TRY: 491, ILS: 42, JOD: 8.75, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 }, category: "عروض خاصة", image: "https://i.ibb.co/NgF0XVDH/GRIEZMANN-STARPASS-jpg.jpg", type: "griezmann" },
+            { id: 44, name: "تصريح CUCURELLA", desc: "خصم مع جوائز فخمة", prices: { USD: 12, EUR: 10, TRY: 491, ILS: 42, JOD: 8.75, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1660, USDT: 12, ITUNES: 12.5 }, category: "عروض خاصة", image: "https://i.ibb.co/fY6r2C05/CUCURELLA-starpass.jpg", type: "cucurella" },
+            { id: 45, name: "تصريح CUCURELLA مميز", desc: "تاخد 6000 نقطة تصريح لفتح التصريح فوراً بدون مهام", prices: { USD: 24, EUR: 20, TRY: 982, ILS: 84, JOD: 17.5, SAR: 80, QAR: 80, AED: 80, IQD: 34000, SYP: 3320, USDT: 24, ITUNES: 25 }, category: "عروض خاصة", image: "https://i.ibb.co/fY6r2C05/CUCURELLA-starpass.jpg", type: "cucurella-premium" },
             { id: 46, name: "معزز يومي", desc: "700 FC + درافت", prices: { USD: 6, EUR: 5, TRY: 245.5, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 }, category: "عروض خاصة", image: "https://i.ibb.co/4nfR3GKT/Daily-booster-jpg.jpg", type: "daily-booster" },
             { id: 8, name: "1000 FC X2", prices: { USD: 6, EUR: 5, TRY: 245.5, ILS: 21, JOD: 4.38, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 }, category: "FCX2", image: "https://i.ibb.co/zVDnqBfG/fc-points1000-jpg.jpg", type: "fc" },
             { id: 9, name: "2000 FC X2", prices: { USD: 12, EUR: 10, TRY: 491, ILS: 42, JOD: 8.75, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 }, category: "FCX2", image: "https://i.ibb.co/3YG9hBdz/fc-points2000-jpg.jpg", type: "fc" },
@@ -1128,20 +1211,135 @@
         ];
 
         const newOffers = [
-            { id: 4005, name: "5 قسائم أبطال", desc: "قسائم لتعزيز فريقك", image: "https://i.ibb.co/CKbLQTnc/Withdrawal-voucher-5-jpg.jpg", type: "new-offer", prices: { USD: 6, EUR: 5, TRY: 245, ILS: 21, JOD: 4, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 } },
-            { id: 4006, name: "10 قسائم أبطال", desc: "قسائم لتعزيز فريقك", image: "https://i.ibb.co/nvpgD7x/Withdrawal-voucher-10-jpg.jpg", type: "new-offer", prices: { USD: 12, EUR: 10, TRY: 490, ILS: 42, JOD: 8, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 } },
-            { id: 4009, name: "لاعب 119-121 + 10 درافت", desc: "🎲 انت وحظك! احصل على لاعب من 119 إلى 121 مع 10 درافت", image: "https://i.ibb.co/ynxV6xc1/Players-119-to-121-1.jpg", type: "random-player", prices: { USD: 12, EUR: 10, TRY: 491, ILS: 42, JOD: 8.75, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 } },
-            { id: 4010, name: "لاعب 119-121 + 10 درافت (2)", desc: "🎲 انت وحظك! احصل على لاعب من 119 إلى 121 مع 10 درافت", image: "https://i.ibb.co/prbh8zFC/Players-119-to-121-2.jpg", type: "random-player", prices: { USD: 12, EUR: 10, TRY: 491, ILS: 42, JOD: 8.75, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 } },
-            { id: 4011, name: "لاعب 119-121 + 10 درافت (3)", desc: "🎲 انت وحظك! احصل على لاعب من 119 إلى 121 مع 10 درافت", image: "https://i.ibb.co/XZ0tcZWC/Players-119-to-121-3.jpg", type: "random-player", prices: { USD: 12, EUR: 10, TRY: 491, ILS: 42, JOD: 8.75, SAR: 40, QAR: 40, AED: 40, IQD: 17000, SYP: 1600, USDT: 12, ITUNES: 12.5 } },
-            { id: 4012, name: "لاعب من 120 إلى 122 مضمون + 10 سحبات", desc: "مضمون بس أول فتحة + 3000 ترقية تصنيف + 10 آلاف نقاط تصريح", image: "https://i.ibb.co/99Czhc7x/Player-120-122-10-draws-3000-rank-upgrades-10-000-permission-points.jpg", type: "random-player", prices: { USD: 35, EUR: 35, TRY: 1718.5, ILS: 147, JOD: 30.63, SAR: 140, QAR: 140, AED: 140, IQD: 59500, SYP: 5600, USDT: 35, ITUNES: 43.75 } }
+            { 
+                id: 7001, 
+                name: "10 قسيمة + لاعب من 119 إلى 121", 
+                desc: "🎉 من حدث الذكرى السنوية", 
+                image: "https://i.ibb.co/1JqgVXhb/Player-from-119-to-121-Anniversary.jpg", 
+                type: "new-offer", 
+                prices: { 
+                    USD: 12, 
+                    EUR: 10, 
+                    TRY: 491, 
+                    ILS: 42, 
+                    JOD: 8.75, 
+                    SAR: 40, 
+                    QAR: 40, 
+                    AED: 40, 
+                    IQD: 17000, 
+                    SYP: 1660, 
+                    USDT: 12, 
+                    ITUNES: 12.5 
+                } 
+            }
         ];
 
         const bestSellers = [
-            { id: 101, name: "راؤؤل", desc: "🔥 خصم رائع! مع 10 درافت", image: "https://i.ibb.co/5hws8CkB/RAUL-jpg.jpg", type: "hot-sale", prices: { USD: 6, EUR: 5, TRY: 245.5, ILS: 21, JOD: 4.38, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 } },
-            { id: 102, name: "غارينشا", desc: "⚽ هجوم! مع سحبة", image: "https://i.ibb.co/SXcy8PbH/GARRINCHA-jpg.jpg", type: "hot-sale", prices: { USD: 1.2, EUR: 1, TRY: 49.1, ILS: 4.2, JOD: 0.88, SAR: 4, QAR: 4, AED: 4, IQD: 1700, SYP: 160, USDT: 1.2, ITUNES: 1.25 } },
-            { id: 103, name: "10 سحبات + MAKELELE", desc: "🎁 10 سحبات + لاعب MAKELELE", image: "https://i.ibb.co/r2vs4rrz/makelele.jpg", type: "hot-sale", prices: { USD: 6, EUR: 5, TRY: 245.5, ILS: 21, JOD: 4.38, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 } },
-            { id: 104, name: "10 سحبات + BAGGIO", desc: "🎁 10 سحبات + لاعب BAGGIO", image: "https://i.ibb.co/kd1VFPT/BAGGIO.jpg", type: "hot-sale", prices: { USD: 6, EUR: 5, TRY: 245.5, ILS: 21, JOD: 4.38, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 } },
-            { id: 105, name: "10 سحبات + GATTUSO", desc: "🎁 10 سحبات + لاعب GATTUSO", image: "https://i.ibb.co/rRF7dXVs/GATTUSO.jpg", type: "hot-sale", prices: { USD: 6, EUR: 5, TRY: 245.5, ILS: 21, JOD: 4.38, SAR: 20, QAR: 20, AED: 20, IQD: 8500, SYP: 800, USDT: 6, ITUNES: 6.25 } }
+            { 
+                id: 6001, 
+                name: "OKOCHA + 2 قسيمة سحب", 
+                desc: "🎁 عرض حصري", 
+                image: "https://i.ibb.co/Y7tyXWMb/OKOCHA.jpg", 
+                type: "bestseller", 
+                prices: { 
+                    USD: 3, 
+                    EUR: 2.5, 
+                    TRY: 122.75, 
+                    ILS: 10.5, 
+                    JOD: 2.19, 
+                    SAR: 10, 
+                    QAR: 10, 
+                    AED: 10, 
+                    IQD: 4250, 
+                    SYP: 415, 
+                    USDT: 3, 
+                    ITUNES: 3.13 
+                } 
+            },
+            { 
+                id: 6002, 
+                name: "MORIENTES + 10 درافت", 
+                desc: "✨ خصم مميز", 
+                image: "https://i.ibb.co/8LQB5fqj/MORIENTES.jpg", 
+                type: "bestseller", 
+                prices: { 
+                    USD: 6, 
+                    EUR: 5, 
+                    TRY: 245.5, 
+                    ILS: 21, 
+                    JOD: 4.38, 
+                    SAR: 20, 
+                    QAR: 20, 
+                    AED: 20, 
+                    IQD: 8500, 
+                    SYP: 830, 
+                    USDT: 6, 
+                    ITUNES: 6.25 
+                } 
+            },
+            { 
+                id: 6003, 
+                name: "LAHM + 10 درافت", 
+                desc: "✨ خصم مميز", 
+                image: "https://i.ibb.co/W4yLn8qX/LAHM.jpg", 
+                type: "bestseller", 
+                prices: { 
+                    USD: 6, 
+                    EUR: 5, 
+                    TRY: 245.5, 
+                    ILS: 21, 
+                    JOD: 4.38, 
+                    SAR: 20, 
+                    QAR: 20, 
+                    AED: 20, 
+                    IQD: 8500, 
+                    SYP: 830, 
+                    USDT: 6, 
+                    ITUNES: 6.25 
+                } 
+            },
+            { 
+                id: 6004, 
+                name: "HAMSIK + 10 درافت", 
+                desc: "✨ خصومات مميزة", 
+                image: "https://i.ibb.co/qYfVbGS7/HAMSIK.jpg", 
+                type: "bestseller", 
+                prices: { 
+                    USD: 6, 
+                    EUR: 5, 
+                    TRY: 245.5, 
+                    ILS: 21, 
+                    JOD: 4.38, 
+                    SAR: 20, 
+                    QAR: 20, 
+                    AED: 20, 
+                    IQD: 8500, 
+                    SYP: 830, 
+                    USDT: 6, 
+                    ITUNES: 6.25 
+                } 
+            },
+            { 
+                id: 6005, 
+                name: "عرض مميز جدا", 
+                desc: "خصم مميز", 
+                image: "https://i.ibb.co/hJQNtgRJ/A-very-special-offer.jpg", 
+                type: "bestseller", 
+                prices: { 
+                    USD: 20.4, 
+                    EUR: 17, 
+                    TRY: 834.7, 
+                    ILS: 71.4, 
+                    JOD: 14.88, 
+                    SAR: 68, 
+                    QAR: 68, 
+                    AED: 68, 
+                    IQD: 28900, 
+                    SYP: 2822, 
+                    USDT: 20.4, 
+                    ITUNES: 21.25 
+                } 
+            }
         ];
 
         // ===== Helper Functions =====
@@ -1221,12 +1419,21 @@
 
         function renderNewOffers() {
             const grid = document.getElementById('firstNewOffersGrid');
-            if (grid) grid.innerHTML = newOffers.map(buildCardHTML).join('');
+            if (!grid) return;
+            if (newOffers.length === 0) {
+                grid.innerHTML = '<div style="text-align:center;padding:40px 20px;color:#888;width:100%;font-size:14px">لا توجد عروض جديدة حالياً</div>';
+                return;
+            }
+            grid.innerHTML = newOffers.map(buildCardHTML).join('');
         }
 
         function renderTickerItems() {
             const body = document.getElementById('tickerBody');
             if (!body) return;
+            if (newOffers.length === 0) {
+                body.innerHTML = '<div style="text-align:center;padding:20px;color:#888;width:100%">لا توجد عروض جديدة حالياً</div>';
+                return;
+            }
             body.innerHTML = newOffers.map(item => {
                 const sym = symbols[currentCurrency];
                 const price = item.prices[currentCurrency] || item.prices.TRY;
@@ -1276,10 +1483,9 @@
             document.body.classList.add('single-product-view');
             document.getElementById('backToStoreBtn').classList.add('show');
 
-            const grid = document.getElementById('firstNewOffersGrid');
-            if (!grid) return false;
-
-            grid.innerHTML = buildSingleCardHTML(product);
+            const targetGrid = document.getElementById('firstNewOffersGrid');
+            if (!targetGrid) return false;
+            targetGrid.innerHTML = buildSingleCardHTML(product);
 
             updateStickyBuyBar(product);
             document.getElementById('stickyBuyBar').classList.add('show');
